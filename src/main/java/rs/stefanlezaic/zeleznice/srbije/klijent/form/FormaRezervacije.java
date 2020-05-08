@@ -17,9 +17,7 @@ import java.awt.Toolkit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
@@ -28,7 +26,9 @@ import javax.swing.JTable;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabelePolasci;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabeleRezervacija;
+import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Kalendar;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
+import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
 
 /**
@@ -38,13 +38,15 @@ import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
 public final class FormaRezervacije extends javax.swing.JFrame {
 
     private Klijent k;
-    Sat s = new Sat();
     SimpleDateFormat smf = new SimpleDateFormat("dd.MM.yyyy");
     ModelTabelePolasci mtp = new ModelTabelePolasci();
     ModelTabeleRezervacija mtr = new ModelTabeleRezervacija();
     ArrayList<Rezervacija> listaRezervacija = new ArrayList<>();
     ArrayList<MedjuStanica> listaMedjustanica = new ArrayList<>();
-    Tema t = new Tema();
+    Sat sat;
+    Tema tema;
+    Tabela tabela;
+    Kalendar kalendar;
     public static int BROJ_PRIKAZA = 0;
     public static int DUGME = 0;
 
@@ -53,24 +55,20 @@ public final class FormaRezervacije extends javax.swing.JFrame {
      */
     public FormaRezervacije() {
         initComponents();
-        this.setSize(1336, 768);
-        t.blackTheme(this);
-        lblWhiteMode.setVisible(true);
-        lblDarkMode.setVisible(false);
+        tema = new Tema(this);
+        kalendar = new Kalendar(cmbDani, cmbMeseci, cmbGodina);
+        kalendar.srediDaneMeseceGodinu();
+        tabela = new Tabela(this);
+        sat = new Sat(lblSat);
+        ukljuciDarkMode();
         centrirajFrame();
         menuOdjavaSaDesneStrane();
-        postaviVelicinuPanela(1560, 570);
-        panelMojeRezervacije.setVisible(false);
-        panelKlijenta.setVisible(false);
-        srediDaneMeseceGodinu();
-        ulepsajTabelu(tablePolasci);
-        ulepsajTabelu(tabelMojeRezeravacije);
+        pokreniPanelRezervacija();
         srediTabelu();
         ucitajStanice();
         ucitajMedjustanice();
         pretraziZaDatumPolaske(new Date());
 
-        s.sat(lblSat);
     }
 
     /**
@@ -607,15 +605,11 @@ public final class FormaRezervacije extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPretraziPolaskeActionPerformed
 
     private void cmbGodinaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGodinaItemStateChanged
-        int godina = (int) cmbGodina.getSelectedItem();
-        postaviZaPrestupnuGodinu(godina);
+        kalendar.promena();
     }//GEN-LAST:event_cmbGodinaItemStateChanged
 
     private void cmbMeseciItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMeseciItemStateChanged
-        int index = cmbMeseci.getSelectedIndex();
-        int godina = (int) cmbGodina.getSelectedItem();
-        postaviDaneZaOdgovarajuciMesec(index);
-        postaviZaPrestupnuGodinu(godina);
+        kalendar.promena();
     }//GEN-LAST:event_cmbMeseciItemStateChanged
 
     private void btnRezervisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRezervisiActionPerformed
@@ -779,44 +773,29 @@ public final class FormaRezervacije extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRefreshTabelaActionPerformed
 
     private void menuPretragaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuPretragaMouseClicked
-        panelKlijenta.setVisible(false);
-        panelMojeRezervacije.setVisible(false);
-        panelRezervacije.setVisible(true);
+        pokreniPanelRezervacija();
     }//GEN-LAST:event_menuPretragaMouseClicked
 
     private void menuNalogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuNalogMouseClicked
-        panelKlijenta.setVisible(true);
-        panelMojeRezervacije.setVisible(false);
-        panelRezervacije.setVisible(false);
-        txtEmail.setText(k.getEmail());
-        txtIme.setText(k.getIme());
-        txtPrezime.setText(k.getPrezime());
-        txtKorisnickoIme.setText(k.getKorisnickoIme());;
+        pokreniPanelNalog();
+
     }//GEN-LAST:event_menuNalogMouseClicked
 
     private void menuMojeRezervacijeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuMojeRezervacijeMouseClicked
-        panelKlijenta.setVisible(false);
-        panelRezervacije.setVisible(false);
-        panelMojeRezervacije.setVisible(true);
+        pokreniPanelMojeRezervacije();
         ucitajMojeRezervacije();
     }//GEN-LAST:event_menuMojeRezervacijeMouseClicked
 
     private void jMenuOdjavaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuOdjavaMouseClicked
-        this.setVisible(false);
-        FormaLoginRegistracija flr = new FormaLoginRegistracija();
-        flr.setVisible(true);
+        odjaviSe();
     }//GEN-LAST:event_jMenuOdjavaMouseClicked
 
     private void lblDarkModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDarkModeMouseClicked
-        lblWhiteMode.setVisible(true);
-        lblDarkMode.setVisible(false);
-        t.blackTheme(this);
+        ukljuciDarkMode();
     }//GEN-LAST:event_lblDarkModeMouseClicked
 
     private void lblWhiteModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblWhiteModeMouseClicked
-        lblWhiteMode.setVisible(false);
-        lblDarkMode.setVisible(true);
-        t.whiteTheme(this);
+        iskljuciDarkMode();
     }//GEN-LAST:event_lblWhiteModeMouseClicked
 
     /**
@@ -920,62 +899,18 @@ public final class FormaRezervacije extends javax.swing.JFrame {
 
     public void setK(Klijent k) {
         this.k = k;
+        txtEmail.setText(k.getEmail());
+        txtIme.setText(k.getIme());
+        txtPrezime.setText(k.getPrezime());
+        txtKorisnickoIme.setText(k.getKorisnickoIme());
     }
 
     private void centrirajFrame() {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
-    }
-
-    private void srediDaneMeseceGodinu() {
-        cmbDani.removeAllItems();
-        cmbGodina.removeAllItems();
-        GregorianCalendar gc = new GregorianCalendar();
-        int godina = gc.get(Calendar.YEAR);
-        int mesec = gc.get(Calendar.MONTH);
-        int dan = gc.get(Calendar.DAY_OF_MONTH);
-        for (int i = godina; i < godina + 10; i++) {
-            cmbGodina.addItem(i);
-        }
-        postaviDaneZaOdgovarajuciMesec(dan);
-        postaviZaPrestupnuGodinu(godina);
-        postaviDaneZaOdgovarajuciMesec(mesec);
-        cmbGodina.setSelectedItem(godina);
-        cmbMeseci.setSelectedIndex(mesec);
-        cmbDani.setSelectedItem(dan);
-
-    }
-
-    private void postaviDaneZaOdgovarajuciMesec(int index) {
-        if (index == 0 || index == 2 || index == 4 || index == 6 || index == 7 || index == 9 || index == 11) {
-            cmbDani.removeAllItems();
-            for (int i = 1; i <= 31; i++) {
-                cmbDani.addItem(i);
-            }
-        }
-        if (index == 3 || index == 5 || index == 8 || index == 10) {
-            cmbDani.removeAllItems();
-            for (int i = 1; i <= 30; i++) {
-                cmbDani.addItem(i);
-            }
-        }
-    }
-
-    private void postaviZaPrestupnuGodinu(int godina) {
-        if (cmbMeseci.getSelectedIndex() == 1) {
-            if (godina % 4 == 0) {
-                cmbDani.removeAllItems();
-                for (int i = 1; i <= 29; i++) {
-                    cmbDani.addItem(i);
-                }
-            } else {
-                cmbDani.removeAllItems();
-                for (int i = 1; i <= 28; i++) {
-                    cmbDani.addItem(i);
-                }
-            }
-        }
+        this.setSize(1336, 768);
+        postaviVelicinuPanela(1336, 768);
     }
 
     private void ucitajStanice() {
@@ -1181,5 +1116,42 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         Menu.add(Box.createHorizontalGlue());
         Menu.add(Box.createHorizontalGlue());
         Menu.add(jMenuOdjava);
+    }
+
+    private void ukljuciDarkMode() {
+        lblWhiteMode.setVisible(true);
+        lblDarkMode.setVisible(false);
+        tema.blackTheme();
+    }
+
+    private void iskljuciDarkMode() {
+        lblWhiteMode.setVisible(false);
+        lblDarkMode.setVisible(true);
+        tema.whiteTheme();
+    }
+
+    private void pokreniPanelRezervacija() {
+        panelRezervacije.setVisible(true);
+        panelKlijenta.setVisible(false);
+        panelMojeRezervacije.setVisible(false);
+    }
+
+    private void pokreniPanelNalog() {
+        panelRezervacije.setVisible(false);
+        panelKlijenta.setVisible(true);
+        panelMojeRezervacije.setVisible(false);
+
+    }
+
+    private void pokreniPanelMojeRezervacije() {
+        panelRezervacije.setVisible(false);
+        panelKlijenta.setVisible(false);
+        panelMojeRezervacije.setVisible(true);
+    }
+
+    private void odjaviSe() {
+        this.setVisible(false);
+        FormaLoginRegistracija flr = new FormaLoginRegistracija();
+        flr.setVisible(true);
     }
 }
