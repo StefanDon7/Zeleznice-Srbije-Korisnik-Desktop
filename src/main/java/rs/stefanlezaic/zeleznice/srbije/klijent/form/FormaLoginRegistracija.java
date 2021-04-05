@@ -357,10 +357,10 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         String prezime = txtPrezime.getText();
         String email = txtEmail.getText();
         //mozda ne bih treba da smaram server sa upitom o tome da li je sve popunio al nema veze stoji i na serverskoj strani
-//        if (korisnickoIme.isEmpty() || lozinka.isEmpty() || ime.isEmpty() || prezime.isEmpty() || email.isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!");
-//            return;
-//        }
+        if (korisnickoIme.isEmpty() || lozinka.isEmpty() || ime.isEmpty() || prezime.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!");
+            return;
+        }
 
         Klijent klijent = new Klijent(-1, korisnickoIme, lozinka, ime, prezime, email);
         try {

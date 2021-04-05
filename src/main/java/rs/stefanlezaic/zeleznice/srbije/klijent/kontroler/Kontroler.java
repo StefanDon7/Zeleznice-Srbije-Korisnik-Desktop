@@ -171,5 +171,18 @@ public class Kontroler {
         }
         return listaPolazaka;
     }
+    public ArrayList<Polazak> vratiMiPolaskeZaDatumPocetnuIKrajnjuStanicu(Polazak p) throws Exception {
+        kz = new KlijentskiZahtev();
+        kz.setOperacija(Konstante.VRATI_POLASKE_ZA_POCETNU_I_KRAJNJU_STANICU);
+        kz.setParametar(p);
+        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
+        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
+        ArrayList<Polazak> listaPolazaka = (ArrayList<Polazak>) so.getOdgovor();
+        if (so.getStatus() == ResponseStatus.ERROR) {
+            Exception ex = (Exception) so.getError();
+            throw ex;
+        }
+        return listaPolazaka;
+    }
 
 }
