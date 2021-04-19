@@ -14,7 +14,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,10 +26,15 @@ import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabelePolasci;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabeleRezervacija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
-import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Kalendar;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.InvalidProductException;
+import rs.stefanlezaic.zeleznice.srbije.lib.kalendar.Vreme;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
 import rs.stefanlezaic.zeleznice.srbije.lib.swing.Tabela;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
 
 /**
  *
@@ -47,7 +51,6 @@ public final class FormaRezervacije extends javax.swing.JFrame {
     Sat sat;
     Tema tema;
     Tabela tabela;
-    Kalendar kalendar;
     public static int BROJ_PRIKAZA = 0;
     public static int DUGME = 0;
 
@@ -57,9 +60,11 @@ public final class FormaRezervacije extends javax.swing.JFrame {
     public FormaRezervacije() {
         initComponents();
         tema = new Tema(this);
-        kalendar = new Kalendar(cmbDani, cmbMeseci, cmbGodina);
-        kalendar.srediDaneMeseceGodinu();
-        tabela = new Tabela(this);
+        panelDatum1.postavi(10, Vreme.Unapred);
+        panelDatum1.postaviDanasnjiDatum();
+        tabela = new Tabela();
+        tabela.ulepsajTabelu(tablePolasci);
+        tabela.ulepsajTabelu(tabelMojeRezeravacije);
         sat = new Sat(lblSat);
         ukljuciDarkMode();
         centrirajFrame();
@@ -84,6 +89,23 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         lblWhiteMode = new javax.swing.JLabel();
         lblDarkMode = new javax.swing.JLabel();
+        panelRezervacije = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cmbPocetnaStanica = new javax.swing.JComboBox();
+        cmbKrajnjaStanica = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        btnPretraziPolaske = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablePolasci = new javax.swing.JTable();
+        lblNazivTabele = new javax.swing.JLabel();
+        btnRezervisi = new javax.swing.JButton();
+        cmbViseOPolasku = new javax.swing.JButton();
+        btnSviPolasciDUGME = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnRefreshTabela = new javax.swing.JButton();
+        lblSat = new javax.swing.JLabel();
+        panelDatum1 = new rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum();
         panelKlijenta = new javax.swing.JPanel();
         lblEmailRegistracija = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
@@ -98,25 +120,6 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         lblPotvrdaLozinkeRegistracija = new javax.swing.JLabel();
         txtPasswordPotvrda = new javax.swing.JPasswordField();
         btnPromeni = new javax.swing.JButton();
-        panelRezervacije = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        cmbPocetnaStanica = new javax.swing.JComboBox();
-        cmbKrajnjaStanica = new javax.swing.JComboBox();
-        jLabel5 = new javax.swing.JLabel();
-        btnPretraziPolaske = new javax.swing.JButton();
-        cmbGodina = new javax.swing.JComboBox();
-        cmbMeseci = new javax.swing.JComboBox();
-        cmbDani = new javax.swing.JComboBox();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablePolasci = new javax.swing.JTable();
-        lblNazivTabele = new javax.swing.JLabel();
-        btnRezervisi = new javax.swing.JButton();
-        cmbViseOPolasku = new javax.swing.JButton();
-        btnSviPolasciDUGME = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btnRefreshTabela = new javax.swing.JButton();
-        lblSat = new javax.swing.JLabel();
         panelMojeRezervacije = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelMojeRezeravacije = new javax.swing.JTable();
@@ -164,114 +167,6 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         getContentPane().add(lblDarkMode);
         lblDarkMode.setBounds(10, 10, 190, 50);
 
-        panelKlijenta.setBackground(new java.awt.Color(44, 44, 44));
-        panelKlijenta.setForeground(new java.awt.Color(255, 255, 255));
-        panelKlijenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.setMaximumSize(new java.awt.Dimension(1336, 768));
-        panelKlijenta.setLayout(null);
-
-        lblEmailRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblEmailRegistracija.setForeground(java.awt.Color.white);
-        lblEmailRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_email_sign_32px_1.png"))); // NOI18N
-        lblEmailRegistracija.setText("Email:");
-        lblEmailRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblEmailRegistracija);
-        lblEmailRegistracija.setBounds(130, 100, 140, 30);
-
-        txtEmail.setBackground(new java.awt.Color(44, 44, 44));
-        txtEmail.setForeground(java.awt.Color.white);
-        txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtEmail.setEnabled(false);
-        panelKlijenta.add(txtEmail);
-        txtEmail.setBounds(280, 100, 218, 30);
-
-        lblImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblImeRegistracija.setForeground(java.awt.Color.white);
-        lblImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
-        lblImeRegistracija.setText("Ime:");
-        panelKlijenta.add(lblImeRegistracija);
-        lblImeRegistracija.setBounds(130, 140, 140, 30);
-
-        txtIme.setBackground(new java.awt.Color(44, 44, 44));
-        txtIme.setForeground(java.awt.Color.white);
-        txtIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtIme.setEnabled(false);
-        panelKlijenta.add(txtIme);
-        txtIme.setBounds(280, 140, 218, 30);
-
-        lblPrezimeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblPrezimeRegistracija.setForeground(java.awt.Color.white);
-        lblPrezimeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
-        lblPrezimeRegistracija.setText("Prezime:");
-        lblPrezimeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblPrezimeRegistracija);
-        lblPrezimeRegistracija.setBounds(130, 180, 140, 30);
-
-        txtPrezime.setBackground(new java.awt.Color(44, 44, 44));
-        txtPrezime.setForeground(java.awt.Color.white);
-        txtPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtPrezime.setEnabled(false);
-        panelKlijenta.add(txtPrezime);
-        txtPrezime.setBounds(280, 180, 218, 30);
-
-        lblKorisnickoImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblKorisnickoImeRegistracija.setForeground(java.awt.Color.white);
-        lblKorisnickoImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_32px.png"))); // NOI18N
-        lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
-        lblKorisnickoImeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblKorisnickoImeRegistracija);
-        lblKorisnickoImeRegistracija.setBounds(130, 220, 140, 30);
-
-        txtKorisnickoIme.setBackground(new java.awt.Color(44, 44, 44));
-        txtKorisnickoIme.setForeground(java.awt.Color.white);
-        txtKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(txtKorisnickoIme);
-        txtKorisnickoIme.setBounds(280, 220, 218, 30);
-
-        lblLozinakRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblLozinakRegistracija.setForeground(java.awt.Color.white);
-        lblLozinakRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_key_32px.png"))); // NOI18N
-        lblLozinakRegistracija.setText("Lozinka:");
-        lblLozinakRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblLozinakRegistracija);
-        lblLozinakRegistracija.setBounds(130, 260, 140, 30);
-
-        txtPassword.setBackground(new java.awt.Color(44, 44, 44));
-        txtPassword.setForeground(java.awt.Color.white);
-        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(txtPassword);
-        txtPassword.setBounds(280, 260, 218, 30);
-
-        lblPotvrdaLozinkeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblPotvrdaLozinkeRegistracija.setForeground(java.awt.Color.white);
-        lblPotvrdaLozinkeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_grand_master_key_32px.png"))); // NOI18N
-        lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
-        lblPotvrdaLozinkeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblPotvrdaLozinkeRegistracija);
-        lblPotvrdaLozinkeRegistracija.setBounds(130, 300, 140, 30);
-
-        txtPasswordPotvrda.setBackground(new java.awt.Color(44, 44, 44));
-        txtPasswordPotvrda.setForeground(java.awt.Color.white);
-        txtPasswordPotvrda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(txtPasswordPotvrda);
-        txtPasswordPotvrda.setBounds(280, 300, 218, 30);
-
-        btnPromeni.setBackground(new java.awt.Color(34, 40, 44));
-        btnPromeni.setForeground(java.awt.Color.white);
-        btnPromeni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_update_64px.png"))); // NOI18N
-        btnPromeni.setText("Promeni");
-        btnPromeni.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnPromeni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPromeniActionPerformed(evt);
-            }
-        });
-        panelKlijenta.add(btnPromeni);
-        btnPromeni.setBounds(280, 342, 218, 60);
-
-        getContentPane().add(panelKlijenta);
-        panelKlijenta.setBounds(0, 0, 1336, 768);
-
         panelRezervacije.setBackground(new java.awt.Color(44, 44, 44));
         panelRezervacije.setForeground(new java.awt.Color(255, 255, 255));
         panelRezervacije.setToolTipText("");
@@ -299,16 +194,18 @@ public final class FormaRezervacije extends javax.swing.JFrame {
 
         cmbPocetnaStanica.setBackground(new java.awt.Color(34, 40, 44));
         cmbPocetnaStanica.setForeground(java.awt.Color.white);
+        cmbPocetnaStanica.setBorder(null);
         panelRezervacije.add(cmbPocetnaStanica);
-        cmbPocetnaStanica.setBounds(120, 160, 270, 40);
+        cmbPocetnaStanica.setBounds(120, 160, 340, 40);
 
         cmbKrajnjaStanica.setBackground(new java.awt.Color(34, 40, 44));
         cmbKrajnjaStanica.setForeground(java.awt.Color.white);
         cmbKrajnjaStanica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cmbKrajnjaStanica.setSelectedIndex(-1);
         cmbKrajnjaStanica.setToolTipText("");
+        cmbKrajnjaStanica.setBorder(null);
         panelRezervacije.add(cmbKrajnjaStanica);
-        cmbKrajnjaStanica.setBounds(120, 220, 270, 40);
+        cmbKrajnjaStanica.setBounds(120, 220, 340, 40);
 
         jLabel5.setBackground(new java.awt.Color(34, 40, 44));
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -322,6 +219,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnPretraziPolaske.setForeground(java.awt.Color.white);
         btnPretraziPolaske.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_google_web_search_64px.png"))); // NOI18N
         btnPretraziPolaske.setText("PRETRAZI POLASKE");
+        btnPretraziPolaske.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPretraziPolaske.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPretraziPolaske.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,37 +228,6 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         });
         panelRezervacije.add(btnPretraziPolaske);
         btnPretraziPolaske.setBounds(120, 340, 270, 60);
-
-        cmbGodina.setBackground(new java.awt.Color(34, 40, 44));
-        cmbGodina.setForeground(java.awt.Color.white);
-        cmbGodina.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbGodina.setSelectedIndex(-1);
-        cmbGodina.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbGodinaItemStateChanged(evt);
-            }
-        });
-        panelRezervacije.add(cmbGodina);
-        cmbGodina.setBounds(300, 280, 90, 40);
-
-        cmbMeseci.setBackground(new java.awt.Color(34, 40, 44));
-        cmbMeseci.setForeground(java.awt.Color.white);
-        cmbMeseci.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januar", "Februar", "Mart", "April", "Maj", "Jun", "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar" }));
-        cmbMeseci.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbMeseciItemStateChanged(evt);
-            }
-        });
-        panelRezervacije.add(cmbMeseci);
-        cmbMeseci.setBounds(190, 280, 100, 40);
-
-        cmbDani.setBackground(new java.awt.Color(34, 40, 44));
-        cmbDani.setForeground(java.awt.Color.white);
-        cmbDani.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbDani.setSelectedIndex(-1);
-        cmbDani.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelRezervacije.add(cmbDani);
-        cmbDani.setBounds(120, 280, 60, 40);
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -384,7 +251,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tablePolasci);
 
         panelRezervacije.add(jScrollPane2);
-        jScrollPane2.setBounds(400, 160, 900, 320);
+        jScrollPane2.setBounds(470, 160, 830, 320);
 
         lblNazivTabele.setBackground(new java.awt.Color(34, 40, 44));
         lblNazivTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -396,6 +263,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnRezervisi.setForeground(java.awt.Color.white);
         btnRezervisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_checked_64px.png"))); // NOI18N
         btnRezervisi.setText("REZERVISI POLAZAK");
+        btnRezervisi.setBorder(null);
         btnRezervisi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRezervisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,6 +277,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         cmbViseOPolasku.setForeground(java.awt.Color.white);
         cmbViseOPolasku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_information_64px.png"))); // NOI18N
         cmbViseOPolasku.setToolTipText("");
+        cmbViseOPolasku.setBorder(null);
         cmbViseOPolasku.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbViseOPolaskuActionPerformed(evt);
@@ -422,6 +291,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnSviPolasciDUGME.setForeground(java.awt.Color.white);
         btnSviPolasciDUGME.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_schedule_64px.png"))); // NOI18N
         btnSviPolasciDUGME.setText("Danasnji polasci");
+        btnSviPolasciDUGME.setBorder(null);
         btnSviPolasciDUGME.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSviPolasciDUGME.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -444,6 +314,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnRefreshTabela.setForeground(java.awt.Color.white);
         btnRefreshTabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_synchronize_64px_1.png"))); // NOI18N
         btnRefreshTabela.setText("Osvezi");
+        btnRefreshTabela.setBorder(null);
         btnRefreshTabela.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRefreshTabela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -462,9 +333,126 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         lblSat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         panelRezervacije.add(lblSat);
         lblSat.setBounds(860, 10, 440, 60);
+        panelRezervacije.add(panelDatum1);
+        panelDatum1.setBounds(120, 280, 340, 40);
 
         getContentPane().add(panelRezervacije);
         panelRezervacije.setBounds(0, 0, 1336, 768);
+
+        panelKlijenta.setBackground(new java.awt.Color(44, 44, 44));
+        panelKlijenta.setForeground(new java.awt.Color(255, 255, 255));
+        panelKlijenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.setMaximumSize(new java.awt.Dimension(1336, 768));
+        panelKlijenta.setLayout(null);
+
+        lblEmailRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblEmailRegistracija.setForeground(java.awt.Color.white);
+        lblEmailRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_email_sign_32px_1.png"))); // NOI18N
+        lblEmailRegistracija.setText("Email:");
+        lblEmailRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblEmailRegistracija);
+        lblEmailRegistracija.setBounds(130, 100, 140, 30);
+
+        txtEmail.setBackground(new java.awt.Color(44, 44, 44));
+        txtEmail.setForeground(java.awt.Color.white);
+        txtEmail.setBorder(null);
+        txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtEmail.setEnabled(false);
+        panelKlijenta.add(txtEmail);
+        txtEmail.setBounds(280, 100, 218, 30);
+
+        lblImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblImeRegistracija.setForeground(java.awt.Color.white);
+        lblImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
+        lblImeRegistracija.setText("Ime:");
+        panelKlijenta.add(lblImeRegistracija);
+        lblImeRegistracija.setBounds(130, 140, 140, 30);
+
+        txtIme.setBackground(new java.awt.Color(44, 44, 44));
+        txtIme.setForeground(java.awt.Color.white);
+        txtIme.setBorder(null);
+        txtIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtIme.setEnabled(false);
+        panelKlijenta.add(txtIme);
+        txtIme.setBounds(280, 140, 218, 30);
+
+        lblPrezimeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblPrezimeRegistracija.setForeground(java.awt.Color.white);
+        lblPrezimeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
+        lblPrezimeRegistracija.setText("Prezime:");
+        lblPrezimeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblPrezimeRegistracija);
+        lblPrezimeRegistracija.setBounds(130, 180, 140, 30);
+
+        txtPrezime.setBackground(new java.awt.Color(44, 44, 44));
+        txtPrezime.setForeground(java.awt.Color.white);
+        txtPrezime.setBorder(null);
+        txtPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtPrezime.setEnabled(false);
+        panelKlijenta.add(txtPrezime);
+        txtPrezime.setBounds(280, 180, 218, 30);
+
+        lblKorisnickoImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblKorisnickoImeRegistracija.setForeground(java.awt.Color.white);
+        lblKorisnickoImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_32px.png"))); // NOI18N
+        lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
+        lblKorisnickoImeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblKorisnickoImeRegistracija);
+        lblKorisnickoImeRegistracija.setBounds(130, 220, 140, 30);
+
+        txtKorisnickoIme.setBackground(new java.awt.Color(44, 44, 44));
+        txtKorisnickoIme.setForeground(java.awt.Color.white);
+        txtKorisnickoIme.setBorder(null);
+        txtKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(txtKorisnickoIme);
+        txtKorisnickoIme.setBounds(280, 220, 218, 30);
+
+        lblLozinakRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblLozinakRegistracija.setForeground(java.awt.Color.white);
+        lblLozinakRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_key_32px.png"))); // NOI18N
+        lblLozinakRegistracija.setText("Lozinka:");
+        lblLozinakRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblLozinakRegistracija);
+        lblLozinakRegistracija.setBounds(130, 260, 140, 30);
+
+        txtPassword.setBackground(new java.awt.Color(44, 44, 44));
+        txtPassword.setForeground(java.awt.Color.white);
+        txtPassword.setBorder(null);
+        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(txtPassword);
+        txtPassword.setBounds(280, 260, 218, 30);
+
+        lblPotvrdaLozinkeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblPotvrdaLozinkeRegistracija.setForeground(java.awt.Color.white);
+        lblPotvrdaLozinkeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_grand_master_key_32px.png"))); // NOI18N
+        lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
+        lblPotvrdaLozinkeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblPotvrdaLozinkeRegistracija);
+        lblPotvrdaLozinkeRegistracija.setBounds(130, 300, 140, 30);
+
+        txtPasswordPotvrda.setBackground(new java.awt.Color(44, 44, 44));
+        txtPasswordPotvrda.setForeground(java.awt.Color.white);
+        txtPasswordPotvrda.setBorder(null);
+        txtPasswordPotvrda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(txtPasswordPotvrda);
+        txtPasswordPotvrda.setBounds(280, 300, 218, 30);
+
+        btnPromeni.setBackground(new java.awt.Color(34, 40, 44));
+        btnPromeni.setForeground(java.awt.Color.white);
+        btnPromeni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_update_64px.png"))); // NOI18N
+        btnPromeni.setText("Promeni");
+        btnPromeni.setBorder(null);
+        btnPromeni.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPromeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromeniActionPerformed(evt);
+            }
+        });
+        panelKlijenta.add(btnPromeni);
+        btnPromeni.setBounds(280, 342, 218, 60);
+
+        getContentPane().add(panelKlijenta);
+        panelKlijenta.setBounds(0, 0, 1336, 768);
 
         panelMojeRezervacije.setBackground(new java.awt.Color(44, 44, 44));
         panelMojeRezervacije.setForeground(new java.awt.Color(255, 255, 255));
@@ -514,6 +502,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         cmbAktivneRezervacije.setForeground(java.awt.Color.white);
         cmbAktivneRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_calendar_64px.png"))); // NOI18N
         cmbAktivneRezervacije.setText("Aktivne rezervacije");
+        cmbAktivneRezervacije.setBorder(null);
         cmbAktivneRezervacije.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbAktivneRezervacijeActionPerformed(evt);
@@ -526,6 +515,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnRealizovaneRezervacije.setForeground(java.awt.Color.white);
         btnRealizovaneRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_checked_64px.png"))); // NOI18N
         btnRealizovaneRezervacije.setText("Realizovane rezervacije");
+        btnRealizovaneRezervacije.setBorder(null);
         btnRealizovaneRezervacije.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRealizovaneRezervacijeActionPerformed(evt);
@@ -538,6 +528,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnOtkaziRezervaciju.setForeground(java.awt.Color.white);
         btnOtkaziRezervaciju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_cancel_64px.png"))); // NOI18N
         btnOtkaziRezervaciju.setText("Oktazi rezervaciju");
+        btnOtkaziRezervaciju.setBorder(null);
         btnOtkaziRezervaciju.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnOtkaziRezervaciju.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -605,18 +596,10 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         pretraziPolaskeZaDatum();
     }//GEN-LAST:event_btnPretraziPolaskeActionPerformed
 
-    private void cmbGodinaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGodinaItemStateChanged
-        kalendar.promena();
-    }//GEN-LAST:event_cmbGodinaItemStateChanged
-
-    private void cmbMeseciItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbMeseciItemStateChanged
-        kalendar.promena();
-    }//GEN-LAST:event_cmbMeseciItemStateChanged
-
     private void btnRezervisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRezervisiActionPerformed
         int red = tablePolasci.getSelectedRow();
         if (red == -1) {
-            JOptionPane.showMessageDialog(this, "Morate obeleziti polazak u tabeli za koji zelite da rezervisete kartu!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Morate izabrati polazak!"));
             return;
         }
         Polazak p = mtp.vratiListu().get(red);
@@ -640,10 +623,10 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         Rezervacija r = new Rezervacija(k, p, d);
         try {
             Kontroler.getInstance().rezervisiPolazak(r);
-            JOptionPane.showMessageDialog(this, "Uspesno ste rezervisali kartu za polazak:" + r.getPolazak().getNaziv());
-            btnRefreshTabelaActionPerformed(evt);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno ste rezervisali kartu za polazak!"));
+//            btnRefreshTabelaActionPerformed(evt);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
         }
 
     }//GEN-LAST:event_btnRezervisiActionPerformed
@@ -658,7 +641,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         char[] niz2 = txtPasswordPotvrda.getPassword();
         String lozinka2 = String.copyValueOf(niz2);
         if (k.getKorisnickoIme().equals(korisnickoIme) && lozinka.isEmpty() && lozinka2.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nema promena");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Niste napravili nikakvu promenu!"));
             return;
         }
         if (lozinka.isEmpty() && lozinka2.isEmpty()) {
@@ -666,17 +649,16 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             lozinka2 = k.getLozinka();
         }
         if (!lozinka.equals(lozinka2)) {
-            JOptionPane.showMessageDialog(this, "Niste dobro potvrdili lozinku!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Potrvrda lozinke nije dobra!"));
             return;
         }
         Klijent klijent = new Klijent(k.getKlijentID(), korisnickoIme, lozinka, ime, prezime, email);
         try {
             Kontroler.getInstance().IzmeniNalog(klijent);
             k = klijent;
-            JOptionPane.showMessageDialog(this, "Uspesno ste izmenili podatake!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno ste izmenili podatake!"));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
-            return;
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.toString()));
         } finally {
             txtPassword.setText("");
             txtPasswordPotvrda.setText("");
@@ -719,7 +701,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
     private void btnOtkaziRezervacijuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtkaziRezervacijuActionPerformed
         int broj = tabelMojeRezeravacije.getSelectedRow();
         if (broj == -1) {
-            JOptionPane.showMessageDialog(this, "Morate da obelezite polazak za koji zelite da otkazete rezervaciju!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Izaberite polazak!"));
             return;
         }
         Rezervacija r = mtr.getList().get(broj);
@@ -727,22 +709,25 @@ public final class FormaRezervacije extends javax.swing.JFrame {
 
         //Ovo bi trebalo da ide u validaciju
         if (danasnji.after(r.getPolazak().getDatumPolaska())) {
-            JOptionPane.showMessageDialog(this, "Polazak je vec realizovan!", "NEUSPESNO OTKAZIVANJE KARTE!", 1);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Polazak je vec realizovan!"));
             return;
         }
         try {
             Kontroler.getInstance().otkaziRezervaciju(r);
-            JOptionPane.showMessageDialog(this, "Uspesno ste otkazali rezervaciju!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Uspesno ste otkazali rezervaciju!"));
             mtr.izbrisiIzTabele(broj);
+        } catch (InvalidProductException ex) {
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.toString()));
         } catch (Exception ex) {
-            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.toString()));
+
         }
     }//GEN-LAST:event_btnOtkaziRezervacijuActionPerformed
 
     private void cmbViseOPolaskuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbViseOPolaskuActionPerformed
         int broj = tablePolasci.getSelectedRow();
         if (broj == -1) {
-            JOptionPane.showMessageDialog(this, "Izaberite polazak za koji zelite da vidite sve medjustanice!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Izaberite polazak za koji zelite da vidite sve medjustanice!"));
             return;
         }
         Polazak p = mtp.getList().get(broj);
@@ -750,9 +735,9 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         ArrayList<MedjuStanica> listaMedjustanica;
         try {
             listaMedjustanica = Kontroler.getInstance().vratiMiMedjustaniceLiniju(m);
-            JOptionPane.showMessageDialog(this, ispisiListu(listaMedjustanica), "LISTA MEDJUSTANICA", 1);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention(ispisiListu(listaMedjustanica)));
         } catch (Exception ex) {
-            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.toString()));
         }
     }//GEN-LAST:event_cmbViseOPolaskuActionPerformed
 
@@ -800,49 +785,6 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         iskljuciDarkMode();
     }//GEN-LAST:event_lblWhiteModeMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormaRezervacije.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormaRezervacije.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormaRezervacije.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormaRezervacije.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormaRezervacije().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
@@ -854,10 +796,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
     private javax.swing.JButton btnRezervisi;
     private javax.swing.JButton btnSviPolasciDUGME;
     private javax.swing.JButton cmbAktivneRezervacije;
-    private javax.swing.JComboBox cmbDani;
-    private javax.swing.JComboBox cmbGodina;
     private javax.swing.JComboBox cmbKrajnjaStanica;
-    private javax.swing.JComboBox cmbMeseci;
     private javax.swing.JComboBox cmbPocetnaStanica;
     private javax.swing.JButton cmbViseOPolasku;
     private javax.swing.JLabel jLabel2;
@@ -882,6 +821,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
     private javax.swing.JMenu menuMojeRezervacije;
     private javax.swing.JMenu menuNalog;
     private javax.swing.JMenu menuPretraga;
+    private rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum panelDatum1;
     private javax.swing.JPanel panelKlijenta;
     private javax.swing.JPanel panelMojeRezervacije;
     private javax.swing.JPanel panelRezervacije;
@@ -971,20 +911,15 @@ public final class FormaRezervacije extends javax.swing.JFrame {
 
     public void pretraziPolaskeZaDatum() {
         DUGME = 1;
-        //u kalendaru meseci idu od 0 a u util datu idu od 1
-        int godina = (int) cmbGodina.getSelectedItem();
-        int mesec = cmbMeseci.getSelectedIndex() + 1;
-        int dan = (int) cmbDani.getSelectedItem();
-        Stanica pocetna = (Stanica) cmbPocetnaStanica.getSelectedItem();
-        Stanica krajnja = (Stanica) cmbKrajnjaStanica.getSelectedItem();
-        String datum = dan + "." + mesec + "." + godina;
         Date date = null;
         try {
-            date = smf.parse(datum);
-        } catch (ParseException ex) {
-            Logger.getLogger(FormaRezervacije.class
-                    .getName()).log(Level.SEVERE, null, ex);
+            date = panelDatum1.getUtilDate();
+        } catch (Exception ex) {
+            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Stanica pocetna = (Stanica) cmbPocetnaStanica.getSelectedItem();
+        Stanica krajnja = (Stanica) cmbKrajnjaStanica.getSelectedItem();
+
         Polazak p = new Polazak(-1, "", date, null, new Linija(-1, null, -1, -1, pocetna, krajnja, null), null);
 
         ArrayList<Polazak> listPolazaka = new ArrayList<>();
@@ -996,12 +931,9 @@ public final class FormaRezervacije extends javax.swing.JFrame {
 
         mtp.ocistiTabelu();
         if (listPolazaka.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nema polazaka na relaciji " + pocetna.getNaziv() + " - " + krajnja.getNaziv() + " za datum: " + datum);
-            lblNazivTabele.setText("Nema polazaka na relaciji " + pocetna.getNaziv() + " - " + krajnja.getNaziv() + " za datum: " + datum);
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Nema polazaka za datu realaciju!"));
             return;
-        } else {
-            lblNazivTabele.setText("Lista polazaka za datum: " + datum + " na liniji: " + pocetna.getNaziv() + " - " + krajnja.getNaziv());
-        }
+        } 
         mtp.setList(listPolazaka);
         tablePolasci.setModel(mtp);
     }

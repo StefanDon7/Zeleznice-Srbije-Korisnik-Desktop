@@ -11,8 +11,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.EntityNotFoundException;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
 
 /**
  *
@@ -29,7 +36,6 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         lblProblemKorisnik.setVisible(false);
         centrirajFrejm();
         lblRegistrationChange();
-
     }
 
     /**
@@ -263,7 +269,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         lblProblemKorisnik.setFont(new java.awt.Font("Arial Unicode MS", 1, 14)); // NOI18N
         lblProblemKorisnik.setForeground(new java.awt.Color(204, 0, 51));
         lblProblemKorisnik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/problem_klijent_postoji.png"))); // NOI18N
-        lblProblemKorisnik.setText("Postoji korisnik sa zadatim email!");
+        lblProblemKorisnik.setText("Postoji korisnik sa tim email!");
         panelLevi.add(lblProblemKorisnik);
         lblProblemKorisnik.setBounds(760, 80, 430, 50);
 
@@ -327,16 +333,20 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         Klijent k = new Klijent(-1, "korisnickoIme", lozinka, "ime", "prezime", email);
         //mozda ne bih treba da smaram server sa upitom o tome da li je sve popunio al nema veze stoji i na serverskoj strani
         if (email.isEmpty() || lozinka.isEmpty()) {
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Sva polja moraju biti popunjena!"));
             return;
         }
         Klijent klijent;
         try {
             klijent = Kontroler.getInstance().UlogujSe(k);
-            JOptionPane.showMessageDialog(this, "Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ".\nUspesno ste se prijavili!");
-
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelSuccess("Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ".\nUspesno ste se prijavili!"));
             prikaziGlavnuFormu(klijent);
+        } catch (EntityNotFoundException ex) {
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
+        } catch (SQLException ex) {
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.getMessage()));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.toString());
+            Logger.getLogger(FormaLoginRegistracija.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPrijaviSeActionPerformed
 
@@ -347,7 +357,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         char[] niz2 = txtPasswordPotvrda.getPassword();
         String lozinka2 = String.copyValueOf(niz2);
         if (!lozinka.equals(lozinka2)) {
-            JOptionPane.showMessageDialog(this, "Potvrda lozinke neuspesna");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelError("Potvrda lozinke neuspesna!"));
             txtPassword.setText("");
             txtPasswordPotvrda.setText("");
             return;
@@ -358,7 +368,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         String email = txtEmail.getText();
         //mozda ne bih treba da smaram server sa upitom o tome da li je sve popunio al nema veze stoji i na serverskoj strani
         if (korisnickoIme.isEmpty() || lozinka.isEmpty() || ime.isEmpty() || prezime.isEmpty() || email.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!");
+            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Sva polja moraju biti popunjena!"));
             return;
         }
 
@@ -372,16 +382,15 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
             txtKorisnickoIme.setText("");
         } catch (Exception ex) {
             if (ex instanceof InvalidProductException) {
-                JOptionPane.showMessageDialog(this, ex.toString(), "Paznja", 2);
+                new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.toString()));
             } else if (ex instanceof SQLException) {
                 lblProblemKorisnik.setVisible(true);
                 txtEmail.setForeground(Color.red);
-                JOptionPane.showMessageDialog(this, "Korisnik ne moze biti unesen!", "Greska", 0);
+                new JOptionPaneExample().createAndDisplayGUI(this, new PanelError("Korisnik ne moze biti unesen!"));
             }
         } finally {
             txtEmail.setForeground(new Color(0, 0, 51));
             txtEmail.setText("");
-
         }
     }//GEN-LAST:event_btnRegistrujSeActionPerformed
 
@@ -395,41 +404,6 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lblRegistrujSeMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Dracula".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormaLoginRegistracija.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormaLoginRegistracija.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormaLoginRegistracija.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormaLoginRegistracija.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormaLoginRegistracija().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPrijaviSe;
@@ -468,7 +442,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
     }
 
-    private void prikaziGlavnuFormu(Klijent klijent) {
+    public void prikaziGlavnuFormu(Klijent klijent) {
         FormaRezervacije fr = new FormaRezervacije();
         fr.setK(klijent);
         fr.setVisible(true);

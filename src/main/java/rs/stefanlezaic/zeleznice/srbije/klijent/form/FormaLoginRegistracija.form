@@ -502,7 +502,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/problem_klijent_postoji.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Postoji korisnik sa zadatim email!"/>
+            <Property name="text" type="java.lang.String" value="Postoji korisnik sa tim email!"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

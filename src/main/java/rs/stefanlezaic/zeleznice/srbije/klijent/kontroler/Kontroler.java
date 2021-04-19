@@ -160,7 +160,7 @@ public class Kontroler {
 
     public ArrayList<Polazak> vratiMiPolaskeZaDatum(Polazak p) throws Exception {
         kz = new KlijentskiZahtev();
-        kz.setOperacija(Konstante.VRATI_POLASKE);
+        kz.setOperacija(Konstante.VRATI_POLASKE_ZA_DATUM);
         kz.setParametar(p);
         KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
         ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
