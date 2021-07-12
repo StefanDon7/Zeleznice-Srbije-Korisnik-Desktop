@@ -59,12 +59,14 @@ public final class FormaRezervacije extends javax.swing.JFrame {
      */
     public FormaRezervacije() {
         initComponents();
+        this.setSize(1336, 768);
+        postaviVelicinuPanela(1336, 768);
         tema = new Tema(this);
         panelDatum1.postavi(10, Vreme.Unapred);
         panelDatum1.postaviDanasnjiDatum();
         tabela = new Tabela();
-        tabela.ulepsajTabelu(tablePolasci);
-        tabela.ulepsajTabelu(tabelMojeRezeravacije);
+        tabela.urediTabelu(tablePolasci);
+        tabela.urediTabelu(tabelMojeRezeravacije);
         sat = new Sat(lblSat);
         ukljuciDarkMode();
         centrirajFrame();
@@ -89,6 +91,21 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         lblWhiteMode = new javax.swing.JLabel();
         lblDarkMode = new javax.swing.JLabel();
+        lblSat = new javax.swing.JLabel();
+        panelKlijenta = new javax.swing.JPanel();
+        lblEmailRegistracija = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblImeRegistracija = new javax.swing.JLabel();
+        txtIme = new javax.swing.JTextField();
+        lblPrezimeRegistracija = new javax.swing.JLabel();
+        txtPrezime = new javax.swing.JTextField();
+        lblKorisnickoImeRegistracija = new javax.swing.JLabel();
+        txtKorisnickoIme = new javax.swing.JTextField();
+        lblLozinakRegistracija = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        lblPotvrdaLozinkeRegistracija = new javax.swing.JLabel();
+        txtPasswordPotvrda = new javax.swing.JPasswordField();
+        btnPromeni = new javax.swing.JButton();
         panelRezervacije = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -104,22 +121,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnSviPolasciDUGME = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnRefreshTabela = new javax.swing.JButton();
-        lblSat = new javax.swing.JLabel();
         panelDatum1 = new rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum();
-        panelKlijenta = new javax.swing.JPanel();
-        lblEmailRegistracija = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        lblImeRegistracija = new javax.swing.JLabel();
-        txtIme = new javax.swing.JTextField();
-        lblPrezimeRegistracija = new javax.swing.JLabel();
-        txtPrezime = new javax.swing.JTextField();
-        lblKorisnickoImeRegistracija = new javax.swing.JLabel();
-        txtKorisnickoIme = new javax.swing.JTextField();
-        lblLozinakRegistracija = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
-        lblPotvrdaLozinkeRegistracija = new javax.swing.JLabel();
-        txtPasswordPotvrda = new javax.swing.JPasswordField();
-        btnPromeni = new javax.swing.JButton();
         panelMojeRezervacije = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelMojeRezeravacije = new javax.swing.JTable();
@@ -166,6 +168,130 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         });
         getContentPane().add(lblDarkMode);
         lblDarkMode.setBounds(10, 10, 190, 50);
+
+        lblSat.setBackground(new java.awt.Color(34, 40, 44));
+        lblSat.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblSat.setForeground(java.awt.Color.white);
+        lblSat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_schedule_64px.png"))); // NOI18N
+        lblSat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(lblSat);
+        lblSat.setBounds(860, 700, 440, 60);
+
+        panelKlijenta.setBackground(new java.awt.Color(44, 44, 44));
+        panelKlijenta.setForeground(new java.awt.Color(255, 255, 255));
+        panelKlijenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.setMaximumSize(new java.awt.Dimension(1336, 768));
+        panelKlijenta.setLayout(null);
+
+        lblEmailRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblEmailRegistracija.setForeground(java.awt.Color.white);
+        lblEmailRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_email_sign_32px_1.png"))); // NOI18N
+        lblEmailRegistracija.setText("Email:");
+        lblEmailRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblEmailRegistracija);
+        lblEmailRegistracija.setBounds(130, 100, 140, 30);
+
+        txtEmail.setBackground(new java.awt.Color(102, 102, 102));
+        txtEmail.setForeground(java.awt.Color.black);
+        txtEmail.setBorder(null);
+        txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtEmail.setEnabled(false);
+        panelKlijenta.add(txtEmail);
+        txtEmail.setBounds(280, 100, 218, 30);
+
+        lblImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblImeRegistracija.setForeground(java.awt.Color.white);
+        lblImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
+        lblImeRegistracija.setText("Ime:");
+        panelKlijenta.add(lblImeRegistracija);
+        lblImeRegistracija.setBounds(130, 140, 140, 30);
+
+        txtIme.setBackground(new java.awt.Color(102, 102, 102));
+        txtIme.setForeground(java.awt.Color.black);
+        txtIme.setBorder(null);
+        txtIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtIme.setEnabled(false);
+        panelKlijenta.add(txtIme);
+        txtIme.setBounds(280, 140, 218, 30);
+
+        lblPrezimeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblPrezimeRegistracija.setForeground(java.awt.Color.white);
+        lblPrezimeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
+        lblPrezimeRegistracija.setText("Prezime:");
+        lblPrezimeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblPrezimeRegistracija);
+        lblPrezimeRegistracija.setBounds(130, 180, 140, 30);
+
+        txtPrezime.setBackground(new java.awt.Color(102, 102, 102));
+        txtPrezime.setForeground(java.awt.Color.black);
+        txtPrezime.setBorder(null);
+        txtPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtPrezime.setEnabled(false);
+        panelKlijenta.add(txtPrezime);
+        txtPrezime.setBounds(280, 180, 218, 30);
+
+        lblKorisnickoImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblKorisnickoImeRegistracija.setForeground(java.awt.Color.white);
+        lblKorisnickoImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_32px.png"))); // NOI18N
+        lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
+        lblKorisnickoImeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblKorisnickoImeRegistracija);
+        lblKorisnickoImeRegistracija.setBounds(130, 220, 140, 30);
+
+        txtKorisnickoIme.setBackground(new java.awt.Color(102, 102, 102));
+        txtKorisnickoIme.setForeground(java.awt.Color.black);
+        txtKorisnickoIme.setBorder(null);
+        txtKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(txtKorisnickoIme);
+        txtKorisnickoIme.setBounds(280, 220, 218, 30);
+
+        lblLozinakRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblLozinakRegistracija.setForeground(java.awt.Color.white);
+        lblLozinakRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_key_32px.png"))); // NOI18N
+        lblLozinakRegistracija.setText("Lozinka:");
+        lblLozinakRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblLozinakRegistracija);
+        lblLozinakRegistracija.setBounds(130, 260, 140, 30);
+
+        txtPassword.setBackground(new java.awt.Color(102, 102, 102));
+        txtPassword.setForeground(java.awt.Color.black);
+        txtPassword.setBorder(null);
+        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(txtPassword);
+        txtPassword.setBounds(280, 260, 218, 30);
+
+        lblPotvrdaLozinkeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
+        lblPotvrdaLozinkeRegistracija.setForeground(java.awt.Color.white);
+        lblPotvrdaLozinkeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_grand_master_key_32px.png"))); // NOI18N
+        lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
+        lblPotvrdaLozinkeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(lblPotvrdaLozinkeRegistracija);
+        lblPotvrdaLozinkeRegistracija.setBounds(130, 300, 140, 30);
+
+        txtPasswordPotvrda.setBackground(new java.awt.Color(102, 102, 102));
+        txtPasswordPotvrda.setForeground(java.awt.Color.black);
+        txtPasswordPotvrda.setBorder(null);
+        txtPasswordPotvrda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelKlijenta.add(txtPasswordPotvrda);
+        txtPasswordPotvrda.setBounds(280, 300, 218, 30);
+
+        btnPromeni.setBackground(new java.awt.Color(34, 40, 44));
+        btnPromeni.setForeground(java.awt.Color.white);
+        btnPromeni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_update_64px.png"))); // NOI18N
+        btnPromeni.setText("Promeni");
+        btnPromeni.setBorder(null);
+        btnPromeni.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPromeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromeniActionPerformed(evt);
+            }
+        });
+        panelKlijenta.add(btnPromeni);
+        btnPromeni.setBounds(280, 342, 218, 60);
+
+        getContentPane().add(panelKlijenta);
+        panelKlijenta.setBounds(0, 0, 1336, 768);
 
         panelRezervacije.setBackground(new java.awt.Color(44, 44, 44));
         panelRezervacije.setForeground(new java.awt.Color(255, 255, 255));
@@ -299,7 +425,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelRezervacije.add(btnSviPolasciDUGME);
-        btnSviPolasciDUGME.setBounds(1000, 90, 200, 60);
+        btnSviPolasciDUGME.setBounds(990, 90, 200, 60);
 
         jLabel2.setBackground(new java.awt.Color(34, 40, 44));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -313,7 +439,6 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         btnRefreshTabela.setBackground(new java.awt.Color(34, 40, 44));
         btnRefreshTabela.setForeground(java.awt.Color.white);
         btnRefreshTabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_synchronize_64px_1.png"))); // NOI18N
-        btnRefreshTabela.setText("Osvezi");
         btnRefreshTabela.setBorder(null);
         btnRefreshTabela.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRefreshTabela.addActionListener(new java.awt.event.ActionListener() {
@@ -322,137 +447,14 @@ public final class FormaRezervacije extends javax.swing.JFrame {
             }
         });
         panelRezervacije.add(btnRefreshTabela);
-        btnRefreshTabela.setBounds(850, 90, 150, 60);
+        btnRefreshTabela.setBounds(920, 90, 64, 60);
         btnRefreshTabela.getAccessibleContext().setAccessibleDescription("Osvezi tabelu");
 
-        lblSat.setBackground(new java.awt.Color(34, 40, 44));
-        lblSat.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        lblSat.setForeground(java.awt.Color.white);
-        lblSat.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblSat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_schedule_64px.png"))); // NOI18N
-        lblSat.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelRezervacije.add(lblSat);
-        lblSat.setBounds(860, 10, 440, 60);
         panelRezervacije.add(panelDatum1);
         panelDatum1.setBounds(120, 280, 340, 40);
 
         getContentPane().add(panelRezervacije);
         panelRezervacije.setBounds(0, 0, 1336, 768);
-
-        panelKlijenta.setBackground(new java.awt.Color(44, 44, 44));
-        panelKlijenta.setForeground(new java.awt.Color(255, 255, 255));
-        panelKlijenta.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.setMaximumSize(new java.awt.Dimension(1336, 768));
-        panelKlijenta.setLayout(null);
-
-        lblEmailRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblEmailRegistracija.setForeground(java.awt.Color.white);
-        lblEmailRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_email_sign_32px_1.png"))); // NOI18N
-        lblEmailRegistracija.setText("Email:");
-        lblEmailRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblEmailRegistracija);
-        lblEmailRegistracija.setBounds(130, 100, 140, 30);
-
-        txtEmail.setBackground(new java.awt.Color(44, 44, 44));
-        txtEmail.setForeground(java.awt.Color.white);
-        txtEmail.setBorder(null);
-        txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtEmail.setEnabled(false);
-        panelKlijenta.add(txtEmail);
-        txtEmail.setBounds(280, 100, 218, 30);
-
-        lblImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblImeRegistracija.setForeground(java.awt.Color.white);
-        lblImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
-        lblImeRegistracija.setText("Ime:");
-        panelKlijenta.add(lblImeRegistracija);
-        lblImeRegistracija.setBounds(130, 140, 140, 30);
-
-        txtIme.setBackground(new java.awt.Color(44, 44, 44));
-        txtIme.setForeground(java.awt.Color.white);
-        txtIme.setBorder(null);
-        txtIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtIme.setEnabled(false);
-        panelKlijenta.add(txtIme);
-        txtIme.setBounds(280, 140, 218, 30);
-
-        lblPrezimeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblPrezimeRegistracija.setForeground(java.awt.Color.white);
-        lblPrezimeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
-        lblPrezimeRegistracija.setText("Prezime:");
-        lblPrezimeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblPrezimeRegistracija);
-        lblPrezimeRegistracija.setBounds(130, 180, 140, 30);
-
-        txtPrezime.setBackground(new java.awt.Color(44, 44, 44));
-        txtPrezime.setForeground(java.awt.Color.white);
-        txtPrezime.setBorder(null);
-        txtPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        txtPrezime.setEnabled(false);
-        panelKlijenta.add(txtPrezime);
-        txtPrezime.setBounds(280, 180, 218, 30);
-
-        lblKorisnickoImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblKorisnickoImeRegistracija.setForeground(java.awt.Color.white);
-        lblKorisnickoImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_32px.png"))); // NOI18N
-        lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
-        lblKorisnickoImeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblKorisnickoImeRegistracija);
-        lblKorisnickoImeRegistracija.setBounds(130, 220, 140, 30);
-
-        txtKorisnickoIme.setBackground(new java.awt.Color(44, 44, 44));
-        txtKorisnickoIme.setForeground(java.awt.Color.white);
-        txtKorisnickoIme.setBorder(null);
-        txtKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(txtKorisnickoIme);
-        txtKorisnickoIme.setBounds(280, 220, 218, 30);
-
-        lblLozinakRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblLozinakRegistracija.setForeground(java.awt.Color.white);
-        lblLozinakRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_key_32px.png"))); // NOI18N
-        lblLozinakRegistracija.setText("Lozinka:");
-        lblLozinakRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblLozinakRegistracija);
-        lblLozinakRegistracija.setBounds(130, 260, 140, 30);
-
-        txtPassword.setBackground(new java.awt.Color(44, 44, 44));
-        txtPassword.setForeground(java.awt.Color.white);
-        txtPassword.setBorder(null);
-        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(txtPassword);
-        txtPassword.setBounds(280, 260, 218, 30);
-
-        lblPotvrdaLozinkeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblPotvrdaLozinkeRegistracija.setForeground(java.awt.Color.white);
-        lblPotvrdaLozinkeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_grand_master_key_32px.png"))); // NOI18N
-        lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
-        lblPotvrdaLozinkeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(lblPotvrdaLozinkeRegistracija);
-        lblPotvrdaLozinkeRegistracija.setBounds(130, 300, 140, 30);
-
-        txtPasswordPotvrda.setBackground(new java.awt.Color(44, 44, 44));
-        txtPasswordPotvrda.setForeground(java.awt.Color.white);
-        txtPasswordPotvrda.setBorder(null);
-        txtPasswordPotvrda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelKlijenta.add(txtPasswordPotvrda);
-        txtPasswordPotvrda.setBounds(280, 300, 218, 30);
-
-        btnPromeni.setBackground(new java.awt.Color(34, 40, 44));
-        btnPromeni.setForeground(java.awt.Color.white);
-        btnPromeni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_update_64px.png"))); // NOI18N
-        btnPromeni.setText("Promeni");
-        btnPromeni.setBorder(null);
-        btnPromeni.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnPromeni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPromeniActionPerformed(evt);
-            }
-        });
-        panelKlijenta.add(btnPromeni);
-        btnPromeni.setBounds(280, 342, 218, 60);
-
-        getContentPane().add(panelKlijenta);
-        panelKlijenta.setBounds(0, 0, 1336, 768);
 
         panelMojeRezervacije.setBackground(new java.awt.Color(44, 44, 44));
         panelMojeRezervacije.setForeground(new java.awt.Color(255, 255, 255));
@@ -735,7 +737,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         ArrayList<MedjuStanica> listaMedjustanica;
         try {
             listaMedjustanica = Kontroler.getInstance().vratiMiMedjustaniceLiniju(m);
-            new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention(ispisiListu(listaMedjustanica)));
+            JOptionPane.showMessageDialog(this, ispisiListu(listaMedjustanica), p.getLinija().getStanicaPocetna() + "-" + p.getLinija().getStanicaKrajnja() + " (" + p.getLinija().getTipLinije() + ")", 1);
         } catch (Exception ex) {
             new JOptionPaneExample().createAndDisplayGUI(this, new PanelError(ex.toString()));
         }
@@ -851,8 +853,6 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         Toolkit toolkit = getToolkit();
         Dimension size = toolkit.getScreenSize();
         setLocation(size.width / 2 - getWidth() / 2, size.height / 2 - getHeight() / 2);
-        this.setSize(1336, 768);
-        postaviVelicinuPanela(1336, 768);
     }
 
     private void ucitajStanice() {
@@ -933,7 +933,7 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         if (listPolazaka.isEmpty()) {
             new JOptionPaneExample().createAndDisplayGUI(this, new PanelAttention("Nema polazaka za datu realaciju!"));
             return;
-        } 
+        }
         mtp.setList(listPolazaka);
         tablePolasci.setModel(mtp);
     }
