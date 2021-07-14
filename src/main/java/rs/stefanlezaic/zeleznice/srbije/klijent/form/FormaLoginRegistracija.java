@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler.KontrolerGlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.EntityNotFoundException;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
@@ -443,9 +444,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     }
 
     public void prikaziGlavnuFormu(Klijent klijent) {
-        FormaRezervacije fr = new FormaRezervacije();
-        fr.setK(klijent);
-        fr.setVisible(true);
+        KontrolerGlavnaForma kgf=new KontrolerGlavnaForma(klijent);
         this.setVisible(false);
     }
 

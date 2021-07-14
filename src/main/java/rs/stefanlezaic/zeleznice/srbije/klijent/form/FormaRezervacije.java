@@ -67,7 +67,6 @@ public final class FormaRezervacije extends javax.swing.JFrame {
         tabela = new Tabela();
         tabela.urediTabelu(tablePolasci);
         tabela.urediTabelu(tabelMojeRezeravacije);
-        sat = new Sat(lblSat);
         ukljuciDarkMode();
         centrirajFrame();
         menuOdjavaSaDesneStrane();
