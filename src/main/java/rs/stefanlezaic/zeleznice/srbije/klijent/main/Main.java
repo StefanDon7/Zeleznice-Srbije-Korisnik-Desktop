@@ -9,6 +9,8 @@ import java.awt.Color;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.FormaLoginRegistracija;
+import rs.stefanlezaic.zeleznice.srbije.klijent.form.PocetnaForma;
+import rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler.KontrolerPocetneForme;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 
 /**
@@ -26,7 +28,7 @@ public class Main {
                 UIManager.put("Button.background", new Color(155, 155, 155));
             }
         });
-        FormaLoginRegistracija frm = new FormaLoginRegistracija();
-        frm.setVisible(true);
+        KontrolerPocetneForme kontrolerPocetneForme=new KontrolerPocetneForme(new PocetnaForma());
+        kontrolerPocetneForme.otvoriFormu();
     }
 }

@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import javax.swing.Box;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.FormaLoginRegistracija;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
+import rs.stefanlezaic.zeleznice.srbije.klijent.form.PocetnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerKorisnik;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerPretragaPolazaka;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerRezervacije;
@@ -30,16 +31,18 @@ public class KontrolerGlavnaForma {
     private KontrolerPretragaPolazaka kpk;
     private KontrolerKorisnik kk;
     private KontrolerRezervacije kr;
+    private KontrolerPocetneForme kontrolerPocetneForme;
 
-    public KontrolerGlavnaForma(Klijent korisnik) {
+    public KontrolerGlavnaForma(Klijent korisnik, KontrolerPocetneForme kontrolerPocetneForme) {
         this.glavnaForma = new GlavnaForma();
         this.korisnik = korisnik;
-        tema=new Tema(glavnaForma);
+        this.kontrolerPocetneForme = kontrolerPocetneForme;
+        tema = new Tema(glavnaForma);
         tema.blackTheme();
         ucitajPotrebneKontrolere();
         otvoriFormu();
         pokreniPanelPretraga();
-        srediFormu();
+        centrirajFormu();
         menuOdjavaSaDesneStrane();
         addListener();
     }
@@ -151,8 +154,9 @@ public class KontrolerGlavnaForma {
     private void menuOdjaviSe() {
         glavnaForma.setVisible(false);
         glavnaForma = null;
-        FormaLoginRegistracija flr = new FormaLoginRegistracija();
-        flr.setVisible(true);
+        kontrolerPocetneForme.otvoriFormu();
+        kontrolerPocetneForme.getKontrolerRegistracija().ocistiFormu();
+        kontrolerPocetneForme.getKontrolerUlogujSe().ocistiFormu();
     }
 
     private void pokreniPanelPretraga() {
@@ -174,9 +178,9 @@ public class KontrolerGlavnaForma {
     }
 
     private void ucitajPotrebneKontrolere() {
-         kpk = new KontrolerPretragaPolazaka(glavnaForma, glavnaForma.getPanelPretragraPolazaka(),korisnik);
-         kk = new KontrolerKorisnik(glavnaForma,glavnaForma.getPanelKorisnik(), korisnik);
-         kr = new KontrolerRezervacije(glavnaForma,glavnaForma.getPanelRezervacije(), korisnik);
+        kpk = new KontrolerPretragaPolazaka(glavnaForma, glavnaForma.getPanelPretragraPolazaka(), korisnik);
+        kk = new KontrolerKorisnik(glavnaForma, glavnaForma.getPanelKorisnik(), korisnik);
+        kr = new KontrolerRezervacije(glavnaForma, glavnaForma.getPanelRezervacije(), korisnik);
     }
 
     private void menuOdjavaSaDesneStrane() {
@@ -193,7 +197,7 @@ public class KontrolerGlavnaForma {
         glavnaForma.setVisible(false);
     }
 
-    private void srediFormu() {
+    private void centrirajFormu() {
         Toolkit toolkit = glavnaForma.getToolkit();
         Dimension size = toolkit.getScreenSize();
         glavnaForma.setLocation(size.width / 2 - glavnaForma.getWidth() / 2, size.height / 2 - glavnaForma.getHeight() / 2);

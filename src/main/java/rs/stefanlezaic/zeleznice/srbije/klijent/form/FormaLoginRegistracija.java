@@ -444,8 +444,7 @@ public class FormaLoginRegistracija extends javax.swing.JFrame {
     }
 
     public void prikaziGlavnuFormu(Klijent klijent) {
-        KontrolerGlavnaForma kgf=new KontrolerGlavnaForma(klijent);
-        this.setVisible(false);
+        
     }
 
     private void lblLoginChange() {

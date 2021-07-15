@@ -5,7 +5,6 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.form;
 
-import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
