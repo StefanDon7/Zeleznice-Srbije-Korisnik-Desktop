@@ -29,6 +29,7 @@ public class KontrolerPocetneForme {
         this.kontrolerUlogujSe = new KontrolerUlogujSe(pocetnaForma, pocetnaForma.getPanelUlogujSe(), this);
         this.kontrolerRegistracija = new KontrolerRegistracija(pocetnaForma, pocetnaForma.getPanelRegistracija());
         prebaciNaPanelUlogujSe();
+        ucitajIkonice();
         centrirajFormu();
         addListener();
     }
@@ -40,7 +41,6 @@ public class KontrolerPocetneForme {
     public KontrolerUlogujSe getKontrolerUlogujSe() {
         return kontrolerUlogujSe;
     }
-    
 
     private void addListener() {
         pocetnaForma.lblUlogujSeActionListener(new MouseListener() {
@@ -107,10 +107,14 @@ public class KontrolerPocetneForme {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                pocetnaForma.getLblExit().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/exit1.png")));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+                pocetnaForma.getLblExit().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/exit.png")));
             }
         });
     }
@@ -161,8 +165,22 @@ public class KontrolerPocetneForme {
 
     public void prikaziGlavnuFormu(Klijent klijent) {
         this.zatvoriFormu();
-        new KontrolerGlavnaForma(klijent,this);
+        new KontrolerGlavnaForma(klijent, this);
+    }
 
+    private void ucitajIkonice() {
+        pocetnaForma.getPanelDugme().getLblRegistrujSe().setIcon(new javax.swing.ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/registerPanel.png")));
+        pocetnaForma.getPanelDugme().getLblUlogujSe().setIcon(new javax.swing.ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/loginPanel.png")));
+        pocetnaForma.getLblExit().setIcon(new javax.swing.ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/exit.png")));
+        pocetnaForma.getPozadinaSlika().setIcon(new javax.swing.ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/slika.jpg")));
+        pocetnaForma.getPanelDugme().getLblU().setIcon(new javax.swing.ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/login.png")));
+        pocetnaForma.getPanelDugme().getLblR().setIcon(new javax.swing.ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/register.png")));
     }
 
 }

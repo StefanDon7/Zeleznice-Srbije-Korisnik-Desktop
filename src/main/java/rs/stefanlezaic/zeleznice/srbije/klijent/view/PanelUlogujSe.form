@@ -30,9 +30,6 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_email.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Email:"/>
       </Properties>
       <Constraints>
@@ -73,9 +70,6 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_password prvi.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Lozinka:"/>
       </Properties>
       <Constraints>
@@ -114,9 +108,6 @@
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="0" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_login.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Uloguj se"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">

@@ -38,19 +38,11 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblExit">
       <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_close_window_96px.png"/>
-        </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
-          </Border>
-        </Property>
+        <Property name="alignmentX" type="float" value="0.5"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="561" y="-1" width="40" height="40"/>
+          <AbsoluteConstraints x="540" y="0" width="64" height="64"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -64,7 +56,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelUlogujSe" name="panelUlogujSe">
+    <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRegistracija" name="panelRegistracija">
       <Properties>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
@@ -74,7 +66,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRegistracija" name="panelRegistracija">
+    <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelUlogujSe" name="panelUlogujSe">
       <Properties>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
@@ -91,9 +83,6 @@
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="0" red="0" type="rgb"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/rffw88nr-1354076846.jpg"/>
         </Property>
       </Properties>
       <Constraints>

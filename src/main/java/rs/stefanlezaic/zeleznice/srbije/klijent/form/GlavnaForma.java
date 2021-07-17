@@ -69,8 +69,8 @@ public class GlavnaForma extends javax.swing.JFrame {
     private void initComponents() {
 
         panelPretragraPolazaka = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka();
-        panelKorisnik = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik();
         panelRezervacije = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRezervacije();
+        panelKorisnik = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik();
         Menu = new javax.swing.JMenuBar();
         menuPretraga = new javax.swing.JMenu();
         menuNalog = new javax.swing.JMenu();
@@ -80,30 +80,30 @@ public class GlavnaForma extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(panelPretragraPolazaka, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 490));
-        getContentPane().add(panelKorisnik, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 390, 320));
         getContentPane().add(panelRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(panelKorisnik, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Menu.setMaximumSize(new java.awt.Dimension(1336, 80));
         Menu.setMinimumSize(new java.awt.Dimension(1336, 80));
         Menu.setPreferredSize(new java.awt.Dimension(1336, 80));
 
-        menuPretraga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/meniPretraga.png"))); // NOI18N
         menuPretraga.setText("Pretraga");
+        menuPretraga.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         menuPretraga.setMaximumSize(new java.awt.Dimension(200, 80));
         Menu.add(menuPretraga);
 
-        menuNalog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/meniNalog.png"))); // NOI18N
         menuNalog.setText("Nalog");
+        menuNalog.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         menuNalog.setMaximumSize(new java.awt.Dimension(200, 80));
         Menu.add(menuNalog);
 
-        menuMojeRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/meniRezervacije.png"))); // NOI18N
-        menuMojeRezervacije.setText("Moje rezervacije");
+        menuMojeRezervacije.setText("Rezervacije");
+        menuMojeRezervacije.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         menuMojeRezervacije.setMaximumSize(new java.awt.Dimension(200, 80));
         Menu.add(menuMojeRezervacije);
 
-        menuOdjava.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_shutdown_100px.png"))); // NOI18N
         menuOdjava.setText("Odjavi se");
+        menuOdjava.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         menuOdjava.setMaximumSize(new java.awt.Dimension(200, 80));
         menuOdjava.setMinimumSize(new java.awt.Dimension(200, 30));
         Menu.add(menuOdjava);

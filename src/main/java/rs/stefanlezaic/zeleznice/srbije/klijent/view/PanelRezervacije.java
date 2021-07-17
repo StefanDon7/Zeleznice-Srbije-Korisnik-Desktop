@@ -47,34 +47,29 @@ public class PanelRezervacije extends javax.swing.JPanel {
         lblNazivTabeleMojeRezervacije.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblNazivTabeleMojeRezervacije.setForeground(java.awt.Color.white);
         lblNazivTabeleMojeRezervacije.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblNazivTabeleMojeRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_grid_64px.png"))); // NOI18N
         lblNazivTabeleMojeRezervacije.setText("Tabela rezervacija:");
         add(lblNazivTabeleMojeRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 740, 60));
 
         btnRefreshTabela.setBackground(new java.awt.Color(34, 40, 44));
         btnRefreshTabela.setForeground(java.awt.Color.white);
-        btnRefreshTabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_synchronize_64px_1.png"))); // NOI18N
         btnRefreshTabela.setBorder(null);
         btnRefreshTabela.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 60, 60));
 
         btnAktivneRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         btnAktivneRezervacije.setForeground(java.awt.Color.white);
-        btnAktivneRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_calendar_64px.png"))); // NOI18N
         btnAktivneRezervacije.setText("Aktivne rezervacije");
         btnAktivneRezervacije.setBorder(null);
         add(btnAktivneRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 220, 60));
 
         btnRealizovaneRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         btnRealizovaneRezervacije.setForeground(java.awt.Color.white);
-        btnRealizovaneRezervacije.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_checked_64px.png"))); // NOI18N
         btnRealizovaneRezervacije.setText("Realizovane rezervacije");
         btnRealizovaneRezervacije.setBorder(null);
         add(btnRealizovaneRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, 220, 60));
 
         btnOtkaziRezervaciju.setBackground(new java.awt.Color(34, 40, 44));
         btnOtkaziRezervaciju.setForeground(java.awt.Color.white);
-        btnOtkaziRezervaciju.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_cancel_64px.png"))); // NOI18N
         btnOtkaziRezervaciju.setText("Oktazi rezervaciju");
         btnOtkaziRezervaciju.setBorder(null);
         btnOtkaziRezervaciju.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -130,6 +125,11 @@ public class PanelRezervacije extends javax.swing.JPanel {
     public JTable getTabelMojeRezeravacije() {
         return tabelMojeRezeravacije;
     }
+
+    public JButton getBtnRefreshTabela() {
+        return btnRefreshTabela;
+    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

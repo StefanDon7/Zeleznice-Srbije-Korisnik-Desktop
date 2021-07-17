@@ -36,11 +36,11 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblDo = new javax.swing.JLabel();
+        lblOd = new javax.swing.JLabel();
         cmbPocetnaStanica = new javax.swing.JComboBox();
         cmbKrajnjaStanica = new javax.swing.JComboBox();
-        jLabel5 = new javax.swing.JLabel();
+        lblDatum = new javax.swing.JLabel();
         btnPretraziPolaske = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablePolasci = new javax.swing.JTable();
@@ -54,25 +54,23 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setBackground(new java.awt.Color(34, 40, 44));
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(java.awt.Color.white);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_place_marker_32px.png"))); // NOI18N
-        jLabel3.setText("Do:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 90, 40));
+        lblDo.setBackground(new java.awt.Color(34, 40, 44));
+        lblDo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDo.setForeground(java.awt.Color.white);
+        lblDo.setText("Do:");
+        add(lblDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 90, 40));
 
-        jLabel4.setBackground(new java.awt.Color(34, 40, 44));
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(java.awt.Color.white);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_user_location_32px.png"))); // NOI18N
-        jLabel4.setText("Od:");
-        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, 40));
+        lblOd.setBackground(new java.awt.Color(34, 40, 44));
+        lblOd.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblOd.setForeground(java.awt.Color.white);
+        lblOd.setText("Od:");
+        lblOd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(lblOd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, 40));
 
         cmbPocetnaStanica.setBackground(new java.awt.Color(34, 40, 44));
         cmbPocetnaStanica.setForeground(java.awt.Color.white);
         cmbPocetnaStanica.setBorder(null);
-        add(cmbPocetnaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 340, 40));
+        add(cmbPocetnaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 350, 40));
 
         cmbKrajnjaStanica.setBackground(new java.awt.Color(34, 40, 44));
         cmbKrajnjaStanica.setForeground(java.awt.Color.white);
@@ -80,22 +78,20 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         cmbKrajnjaStanica.setSelectedIndex(-1);
         cmbKrajnjaStanica.setToolTipText("");
         cmbKrajnjaStanica.setBorder(null);
-        add(cmbKrajnjaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 340, 40));
+        add(cmbKrajnjaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 350, 40));
 
-        jLabel5.setBackground(new java.awt.Color(34, 40, 44));
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(java.awt.Color.white);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_schedule_32px.png"))); // NOI18N
-        jLabel5.setText("Datum:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 90, 40));
+        lblDatum.setBackground(new java.awt.Color(34, 40, 44));
+        lblDatum.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDatum.setForeground(java.awt.Color.white);
+        lblDatum.setText("Datum:");
+        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 90, 40));
 
         btnPretraziPolaske.setBackground(new java.awt.Color(34, 40, 44));
         btnPretraziPolaske.setForeground(java.awt.Color.white);
-        btnPretraziPolaske.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_google_web_search_64px.png"))); // NOI18N
         btnPretraziPolaske.setText("PRETRAZI POLASKE");
         btnPretraziPolaske.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPretraziPolaske.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnPretraziPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 340, 60));
+        add(btnPretraziPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 350, 60));
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -118,7 +114,7 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         tablePolasci.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tablePolasci);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 830, 320));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 820, 320));
 
         lblNazivTabele.setBackground(new java.awt.Color(34, 40, 44));
         lblNazivTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -127,22 +123,19 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
 
         btnRezervisi.setBackground(new java.awt.Color(34, 40, 44));
         btnRezervisi.setForeground(java.awt.Color.white);
-        btnRezervisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_checked_64px.png"))); // NOI18N
         btnRezervisi.setText("REZERVISI POLAZAK");
         btnRezervisi.setBorder(null);
         btnRezervisi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnRezervisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 410, 270, 70));
+        add(btnRezervisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 410, 270, 60));
 
         btnViseOPolasku.setBackground(new java.awt.Color(34, 40, 44));
         btnViseOPolasku.setForeground(java.awt.Color.white);
-        btnViseOPolasku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_information_64px.png"))); // NOI18N
         btnViseOPolasku.setToolTipText("");
         btnViseOPolasku.setBorder(null);
         add(btnViseOPolasku, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 10, 100, 60));
 
         btnSviPolasciDanas.setBackground(new java.awt.Color(34, 40, 44));
         btnSviPolasciDanas.setForeground(java.awt.Color.white);
-        btnSviPolasciDanas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_schedule_64px.png"))); // NOI18N
         btnSviPolasciDanas.setText("Danasnji polasci");
         btnSviPolasciDanas.setBorder(null);
         btnSviPolasciDanas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -151,18 +144,17 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         jLabel2.setBackground(new java.awt.Color(34, 40, 44));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setForeground(java.awt.Color.white);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_search_32px.png"))); // NOI18N
         jLabel2.setText("Pretraga:");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 40));
 
         btnRefreshTabela.setBackground(new java.awt.Color(34, 40, 44));
         btnRefreshTabela.setForeground(java.awt.Color.white);
-        btnRefreshTabela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_synchronize_64px_1.png"))); // NOI18N
         btnRefreshTabela.setBorder(null);
         btnRefreshTabela.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnRefreshTabela.setOpaque(false);
         add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 60, 60));
-        add(panelDatum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 340, 40));
+        add(panelDatum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 360, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnPretraziPolaske() {
@@ -204,6 +196,27 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
     public JLabel getLblNazivTabele() {
         return lblNazivTabele;
     }
+
+    public JButton getBtnSviPolasciDanas() {
+        return btnSviPolasciDanas;
+    }
+
+    public JButton getBtnViseOPolasku() {
+        return btnViseOPolasku;
+    }
+
+    public JLabel getLblDatum() {
+        return lblDatum;
+    }
+
+    public JLabel getLblDo() {
+        return lblDo;
+    }
+
+    public JLabel getLblOd() {
+        return lblOd;
+    }
+    
     
 
 
@@ -216,11 +229,11 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
     private javax.swing.JComboBox cmbKrajnjaStanica;
     private javax.swing.JComboBox cmbPocetnaStanica;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblDatum;
+    private javax.swing.JLabel lblDo;
     private javax.swing.JLabel lblNazivTabele;
+    private javax.swing.JLabel lblOd;
     private rs.stefanlezaic.zeleznice.srbije.lib.view.PanelDatum panelDatum1;
     private javax.swing.JTable tablePolasci;
     // End of variables declaration//GEN-END:variables

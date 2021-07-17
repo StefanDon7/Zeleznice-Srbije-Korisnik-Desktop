@@ -8,10 +8,8 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.main;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import rs.stefanlezaic.zeleznice.srbije.klijent.form.FormaLoginRegistracija;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.PocetnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler.KontrolerPocetneForme;
-import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 
 /**
  *

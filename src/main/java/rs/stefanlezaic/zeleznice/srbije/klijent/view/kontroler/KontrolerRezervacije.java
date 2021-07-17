@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.FormaRezervacije;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
@@ -43,6 +44,7 @@ public class KontrolerRezervacije {
         this.glavnaForma = glavnaForma;
         this.korisnik = korisnik;
         this.panelRezervacije = panelRezervacije;
+        ucitajIkonice();
         ucitajSveRezervacije();
         uradiTabelu();
         addListener();
@@ -147,6 +149,19 @@ public class KontrolerRezervacije {
     private void uradiTabelu() {
         tabela.urediTabelu(panelRezervacije.getTabelMojeRezeravacije());
         panelRezervacije.getTabelMojeRezeravacije().setModel(mtr);
+    }
+
+    private void ucitajIkonice() {
+        panelRezervacije.getLblNazivTabeleMojeRezervacije().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/lista.png")));
+        panelRezervacije.getBtnAktivneRezervacije().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/voz.png")));
+        panelRezervacije.getBtnOtkaziRezervaciju().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/obrisi.png")));
+        panelRezervacije.getBtnRealizovaneRezervacije().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/prosleRezervacije.png")));
+        panelRezervacije.getBtnRefreshTabela().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/refresh.png")));
     }
 
 }

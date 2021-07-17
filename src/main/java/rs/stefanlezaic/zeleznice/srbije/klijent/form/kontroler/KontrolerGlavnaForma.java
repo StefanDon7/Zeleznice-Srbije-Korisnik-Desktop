@@ -10,9 +10,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.Box;
-import rs.stefanlezaic.zeleznice.srbije.klijent.form.FormaLoginRegistracija;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
-import rs.stefanlezaic.zeleznice.srbije.klijent.form.PocetnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerKorisnik;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerPretragaPolazaka;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerRezervacije;
@@ -41,6 +39,7 @@ public class KontrolerGlavnaForma {
         tema.blackTheme();
         ucitajPotrebneKontrolere();
         otvoriFormu();
+        ucitajIkonice();
         pokreniPanelPretraga();
         centrirajFormu();
         menuOdjavaSaDesneStrane();
@@ -64,10 +63,14 @@ public class KontrolerGlavnaForma {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                glavnaForma.getMenuPretraga().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/search1.png")));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+                glavnaForma.getMenuPretraga().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/search.png")));
             }
         });
         glavnaForma.menuNalogActionListener(new MouseListener() {
@@ -86,10 +89,14 @@ public class KontrolerGlavnaForma {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                glavnaForma.getMenuNalog().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/user1.png")));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+                glavnaForma.getMenuNalog().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/user.png")));
             }
         });
         glavnaForma.menuMojeRezervacijeActionListener(new MouseListener() {
@@ -108,10 +115,15 @@ public class KontrolerGlavnaForma {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                glavnaForma.getMenuMojeRezervacije().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/karta1.png")));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+                glavnaForma.getMenuMojeRezervacije().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/karta.png")));
+
             }
         });
         glavnaForma.menuOdjavaActionListener(new MouseListener() {
@@ -130,10 +142,14 @@ public class KontrolerGlavnaForma {
 
             @Override
             public void mouseEntered(MouseEvent e) {
+                glavnaForma.getMenuOdjava().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/logOut1.png")));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+                glavnaForma.getMenuOdjava().setIcon(new javax.swing.ImageIcon(getClass().
+                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/logOut.png")));
             }
         });
 
@@ -153,7 +169,6 @@ public class KontrolerGlavnaForma {
 
     private void menuOdjaviSe() {
         glavnaForma.setVisible(false);
-        glavnaForma = null;
         kontrolerPocetneForme.otvoriFormu();
         kontrolerPocetneForme.getKontrolerRegistracija().ocistiFormu();
         kontrolerPocetneForme.getKontrolerUlogujSe().ocistiFormu();
@@ -201,6 +216,22 @@ public class KontrolerGlavnaForma {
         Toolkit toolkit = glavnaForma.getToolkit();
         Dimension size = toolkit.getScreenSize();
         glavnaForma.setLocation(size.width / 2 - glavnaForma.getWidth() / 2, size.height / 2 - glavnaForma.getHeight() / 2);
+    }
+
+    private void ucitajIkonice() {
+        try {
+            glavnaForma.getMenuPretraga().setIcon(new javax.swing.ImageIcon(getClass().
+                    getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/search.png")));
+            glavnaForma.getMenuNalog().setIcon(new javax.swing.ImageIcon(getClass().
+                    getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/user.png")));
+            glavnaForma.getMenuMojeRezervacije().setIcon(new javax.swing.ImageIcon(getClass().
+                    getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/karta.png")));
+            glavnaForma.getMenuOdjava().setIcon(new javax.swing.ImageIcon(getClass().
+                    getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/logOut.png")));
+        } catch (Exception e) {
+            System.out.println("ds;gaagd");
+        }
+
     }
 
 }

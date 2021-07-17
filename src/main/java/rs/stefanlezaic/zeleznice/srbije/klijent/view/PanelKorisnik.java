@@ -8,6 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.view;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -34,113 +35,130 @@ public class PanelKorisnik extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblEmailRegistracija = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        lblImeRegistracija = new javax.swing.JLabel();
+        lblIme = new javax.swing.JLabel();
         txtIme = new javax.swing.JTextField();
-        lblPrezimeRegistracija = new javax.swing.JLabel();
+        lblPrezime = new javax.swing.JLabel();
         txtPrezime = new javax.swing.JTextField();
-        lblKorisnickoImeRegistracija = new javax.swing.JLabel();
+        lblKorisnickoIme = new javax.swing.JLabel();
         txtKorisnickoIme = new javax.swing.JTextField();
-        lblLozinakRegistracija = new javax.swing.JLabel();
+        lblLozinak = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
-        lblPotvrdaLozinkeRegistracija = new javax.swing.JLabel();
+        lblPotvrdaLozinke = new javax.swing.JLabel();
         txtPasswordPotvrda = new javax.swing.JPasswordField();
         btnPromeni = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblEmailRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblEmailRegistracija.setForeground(java.awt.Color.white);
-        lblEmailRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_email_sign_32px_1.png"))); // NOI18N
-        lblEmailRegistracija.setText("Email:");
-        lblEmailRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblEmailRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 30));
+        lblEmail.setBackground(new java.awt.Color(34, 40, 44));
+        lblEmail.setForeground(java.awt.Color.white);
+        lblEmail.setText("Email:");
+        lblEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 40));
 
         txtEmail.setBackground(new java.awt.Color(102, 102, 102));
         txtEmail.setForeground(java.awt.Color.black);
         txtEmail.setBorder(null);
         txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtEmail.setEnabled(false);
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 220, 30));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 220, 40));
 
-        lblImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblImeRegistracija.setForeground(java.awt.Color.white);
-        lblImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
-        lblImeRegistracija.setText("Ime:");
-        add(lblImeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 140, 30));
+        lblIme.setBackground(new java.awt.Color(34, 40, 44));
+        lblIme.setForeground(java.awt.Color.white);
+        lblIme.setText("Ime:");
+        add(lblIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 140, 40));
 
         txtIme.setBackground(new java.awt.Color(102, 102, 102));
         txtIme.setForeground(java.awt.Color.black);
         txtIme.setBorder(null);
         txtIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtIme.setEnabled(false);
-        add(txtIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 220, 30));
+        add(txtIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 220, 40));
 
-        lblPrezimeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblPrezimeRegistracija.setForeground(java.awt.Color.white);
-        lblPrezimeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_tag_32px.png"))); // NOI18N
-        lblPrezimeRegistracija.setText("Prezime:");
-        lblPrezimeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblPrezimeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 30));
+        lblPrezime.setBackground(new java.awt.Color(34, 40, 44));
+        lblPrezime.setForeground(java.awt.Color.white);
+        lblPrezime.setText("Prezime:");
+        lblPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(lblPrezime, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 140, 40));
 
         txtPrezime.setBackground(new java.awt.Color(102, 102, 102));
         txtPrezime.setForeground(java.awt.Color.black);
         txtPrezime.setBorder(null);
         txtPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtPrezime.setEnabled(false);
-        add(txtPrezime, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 220, 30));
+        add(txtPrezime, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 220, 40));
 
-        lblKorisnickoImeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblKorisnickoImeRegistracija.setForeground(java.awt.Color.white);
-        lblKorisnickoImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_name_32px.png"))); // NOI18N
-        lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
-        lblKorisnickoImeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblKorisnickoImeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 140, 30));
+        lblKorisnickoIme.setBackground(new java.awt.Color(34, 40, 44));
+        lblKorisnickoIme.setForeground(java.awt.Color.white);
+        lblKorisnickoIme.setText("Korisnicko ime:");
+        lblKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(lblKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 140, 40));
 
         txtKorisnickoIme.setBackground(new java.awt.Color(102, 102, 102));
         txtKorisnickoIme.setForeground(java.awt.Color.black);
         txtKorisnickoIme.setBorder(null);
         txtKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(txtKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 220, 30));
+        add(txtKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 220, 40));
 
-        lblLozinakRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblLozinakRegistracija.setForeground(java.awt.Color.white);
-        lblLozinakRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_key_32px.png"))); // NOI18N
-        lblLozinakRegistracija.setText("Lozinka:");
-        lblLozinakRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblLozinakRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 140, 30));
+        lblLozinak.setBackground(new java.awt.Color(34, 40, 44));
+        lblLozinak.setForeground(java.awt.Color.white);
+        lblLozinak.setText("Lozinka:");
+        lblLozinak.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(lblLozinak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 140, 40));
 
         txtPassword.setBackground(new java.awt.Color(102, 102, 102));
         txtPassword.setForeground(java.awt.Color.black);
         txtPassword.setBorder(null);
         txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 220, 30));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 220, 40));
 
-        lblPotvrdaLozinkeRegistracija.setBackground(new java.awt.Color(34, 40, 44));
-        lblPotvrdaLozinkeRegistracija.setForeground(java.awt.Color.white);
-        lblPotvrdaLozinkeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_grand_master_key_32px.png"))); // NOI18N
-        lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
-        lblPotvrdaLozinkeRegistracija.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblPotvrdaLozinkeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 140, 30));
+        lblPotvrdaLozinke.setBackground(new java.awt.Color(34, 40, 44));
+        lblPotvrdaLozinke.setForeground(java.awt.Color.white);
+        lblPotvrdaLozinke.setText("Potvrda loznike:");
+        lblPotvrdaLozinke.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        add(lblPotvrdaLozinke, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 140, 40));
 
         txtPasswordPotvrda.setBackground(new java.awt.Color(102, 102, 102));
         txtPasswordPotvrda.setForeground(java.awt.Color.black);
         txtPasswordPotvrda.setBorder(null);
         txtPasswordPotvrda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(txtPasswordPotvrda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 220, 30));
+        add(txtPasswordPotvrda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 220, 40));
 
         btnPromeni.setBackground(new java.awt.Color(34, 40, 44));
         btnPromeni.setForeground(java.awt.Color.white);
-        btnPromeni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_update_64px.png"))); // NOI18N
         btnPromeni.setText("Promeni");
         btnPromeni.setBorder(null);
         btnPromeni.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnPromeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 220, 60));
+        add(btnPromeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 220, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnPromeni() {
         return btnPromeni;
+    }
+
+    public JLabel getLblEmail() {
+        return lblEmail;
+    }
+
+    public JLabel getLblIme() {
+        return lblIme;
+    }
+
+    public JLabel getLblKorisnickoIme() {
+        return lblKorisnickoIme;
+    }
+
+    public JLabel getLblLozinak() {
+        return lblLozinak;
+    }
+
+    public JLabel getLblPotvrdaLozinke() {
+        return lblPotvrdaLozinke;
+    }
+
+    public JLabel getLblPrezime() {
+        return lblPrezime;
     }
 
     public JTextField getTxtEmail() {
@@ -166,16 +184,18 @@ public class PanelKorisnik extends javax.swing.JPanel {
     public JTextField getTxtPrezime() {
         return txtPrezime;
     }
+  
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPromeni;
-    private javax.swing.JLabel lblEmailRegistracija;
-    private javax.swing.JLabel lblImeRegistracija;
-    private javax.swing.JLabel lblKorisnickoImeRegistracija;
-    private javax.swing.JLabel lblLozinakRegistracija;
-    private javax.swing.JLabel lblPotvrdaLozinkeRegistracija;
-    private javax.swing.JLabel lblPrezimeRegistracija;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblIme;
+    private javax.swing.JLabel lblKorisnickoIme;
+    private javax.swing.JLabel lblLozinak;
+    private javax.swing.JLabel lblPotvrdaLozinke;
+    private javax.swing.JLabel lblPrezime;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtKorisnickoIme;

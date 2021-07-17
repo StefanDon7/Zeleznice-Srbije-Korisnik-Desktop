@@ -107,7 +107,6 @@ public class PanelRegistracija extends javax.swing.JPanel {
         lblEmailRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblEmailRegistracija.setForeground(new java.awt.Color(0, 0, 0));
         lblEmailRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEmailRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_email.png"))); // NOI18N
         lblEmailRegistracija.setText("Email:");
         add(lblEmailRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 60));
 
@@ -115,7 +114,6 @@ public class PanelRegistracija extends javax.swing.JPanel {
         lblImeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblImeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
         lblImeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_ime_prezime.png"))); // NOI18N
         lblImeRegistracija.setText("Ime:");
         add(lblImeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 230, 60));
 
@@ -123,7 +121,6 @@ public class PanelRegistracija extends javax.swing.JPanel {
         lblPrezimeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblPrezimeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
         lblPrezimeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblPrezimeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_ime_prezime.png"))); // NOI18N
         lblPrezimeRegistracija.setText("Prezime:");
         add(lblPrezimeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 230, 60));
 
@@ -131,7 +128,6 @@ public class PanelRegistracija extends javax.swing.JPanel {
         lblKorisnickoImeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblKorisnickoImeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
         lblKorisnickoImeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblKorisnickoImeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_korisnickoime.png"))); // NOI18N
         lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
         add(lblKorisnickoImeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 230, 60));
 
@@ -139,7 +135,6 @@ public class PanelRegistracija extends javax.swing.JPanel {
         lblLozinakRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblLozinakRegistracija.setForeground(new java.awt.Color(0, 0, 0));
         lblLozinakRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblLozinakRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_password prvi.png"))); // NOI18N
         lblLozinakRegistracija.setText("Lozinka:");
         add(lblLozinakRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 230, 60));
 
@@ -147,7 +142,6 @@ public class PanelRegistracija extends javax.swing.JPanel {
         lblPotvrdaLozinkeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblPotvrdaLozinkeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
         lblPotvrdaLozinkeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblPotvrdaLozinkeRegistracija.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_password_drugi.png"))); // NOI18N
         lblPotvrdaLozinkeRegistracija.setText("Potvrda loznike:");
         add(lblPotvrdaLozinkeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 230, 60));
 
@@ -196,7 +190,6 @@ public class PanelRegistracija extends javax.swing.JPanel {
         btnRegistrujSe.setBackground(new java.awt.Color(102, 102, 102));
         btnRegistrujSe.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         btnRegistrujSe.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegistrujSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_registruj se.png"))); // NOI18N
         btnRegistrujSe.setText("Registruj se");
         btnRegistrujSe.setOpaque(false);
         add(btnRegistrujSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 250, 70));

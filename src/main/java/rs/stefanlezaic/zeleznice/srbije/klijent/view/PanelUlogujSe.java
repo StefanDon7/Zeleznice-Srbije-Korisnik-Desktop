@@ -67,7 +67,6 @@ public class PanelUlogujSe extends javax.swing.JPanel {
         lblEmailLogin.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblEmailLogin.setForeground(new java.awt.Color(0, 0, 0));
         lblEmailLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblEmailLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_email.png"))); // NOI18N
         lblEmailLogin.setText("Email:");
         add(lblEmailLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 230, 60));
 
@@ -82,7 +81,6 @@ public class PanelUlogujSe extends javax.swing.JPanel {
         lblLoznikaLogin.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblLoznikaLogin.setForeground(new java.awt.Color(0, 0, 0));
         lblLoznikaLogin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblLoznikaLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_password prvi.png"))); // NOI18N
         lblLoznikaLogin.setText("Lozinka:");
         add(lblLoznikaLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 230, 60));
 
@@ -96,7 +94,6 @@ public class PanelUlogujSe extends javax.swing.JPanel {
         btnPrijaviSe.setBackground(new java.awt.Color(102, 102, 102));
         btnPrijaviSe.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         btnPrijaviSe.setForeground(new java.awt.Color(0, 0, 0));
-        btnPrijaviSe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/registracija_login.png"))); // NOI18N
         btnPrijaviSe.setText("Uloguj se");
         btnPrijaviSe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPrijaviSe.setOpaque(false);

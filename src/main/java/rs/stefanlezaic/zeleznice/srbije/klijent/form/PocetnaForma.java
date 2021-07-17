@@ -5,7 +5,6 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.form;
 
-import java.awt.Dimension;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelDugme;
@@ -31,8 +30,8 @@ public class PocetnaForma extends javax.swing.JFrame {
 
         lblExit = new javax.swing.JLabel();
         panelDugme = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelDugme();
-        panelUlogujSe = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelUlogujSe();
         panelRegistracija = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRegistracija();
+        panelUlogujSe = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelUlogujSe();
         pozadinaSlika = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,23 +42,20 @@ public class PocetnaForma extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/icons8_close_window_96px.png"))); // NOI18N
-        lblExit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(561, -1, 40, 40));
+        lblExit.setAlignmentX(0.5F);
+        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 64, 64));
 
         panelDugme.setOpaque(false);
         getContentPane().add(panelDugme, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 480, -1));
 
-        panelUlogujSe.setOpaque(false);
-        getContentPane().add(panelUlogujSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 510, -1));
-
         panelRegistracija.setOpaque(false);
         getContentPane().add(panelRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 510, -1));
 
+        panelUlogujSe.setOpaque(false);
+        getContentPane().add(panelUlogujSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 510, -1));
+
         pozadinaSlika.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         pozadinaSlika.setForeground(new java.awt.Color(0, 0, 51));
-        pozadinaSlika.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/rffw88nr-1354076846.jpg"))); // NOI18N
         getContentPane().add(pozadinaSlika, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1810, 730));
 
         pack();

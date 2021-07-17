@@ -5,10 +5,10 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRegistracija;
@@ -31,6 +31,7 @@ public class KontrolerRegistracija {
     public KontrolerRegistracija(JFrame glavnaForma, PanelRegistracija panelRegistracija) {
         this.glavnaForma = glavnaForma;
         this.panelRegistracija = panelRegistracija;
+        ucitajSveIkonice();
         addListener();
     }
 
@@ -49,7 +50,7 @@ public class KontrolerRegistracija {
         char[] niz2 = panelRegistracija.getTxtPasswordPotvrda().getPassword();
         String lozinka2 = String.copyValueOf(niz2);
         if (!lozinka.equals(lozinka2)) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Potvrda lozinke neuspesna!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Potvrda lozinke neuspesna!"));
             ocistiPoljaLozinke();
             return;
         }
@@ -69,9 +70,11 @@ public class KontrolerRegistracija {
             if (ex instanceof InvalidProductException) {
                 new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.toString()));
             } else if (ex instanceof SQLException) {
-                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Korisnik ne moze biti unesen!"));
+                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Data email već postoji u sistemu!"));
+            } else if (ex instanceof Exception) {
+                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Sistem ne može da registruje korisnika!"));
             }
-        } 
+        }
     }
 
     public void ocistiFormu() {
@@ -91,6 +94,23 @@ public class KontrolerRegistracija {
     private void ocistiPoljaLozinke() {
         panelRegistracija.getTxtPassword().setText("");
         panelRegistracija.getTxtPasswordPotvrda().setText("");
+    }
+
+    private void ucitajSveIkonice() {
+        panelRegistracija.getLblEmailRegistracija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/email.png")));
+        panelRegistracija.getLblImeRegistracija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/ime.png")));
+        panelRegistracija.getLblPrezimeRegistracija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/ime.png")));
+        panelRegistracija.getLblKorisnickoImeRegistracija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/korisnickoIme.png")));
+        panelRegistracija.getLblLozinakRegistracija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/kljuc.png")));
+        panelRegistracija.getLblPotvrdaLozinkeRegistracija().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/kljuc2.png")));
+        panelRegistracija.getBtnRegistrujSe().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/register.png")));
     }
 
 }

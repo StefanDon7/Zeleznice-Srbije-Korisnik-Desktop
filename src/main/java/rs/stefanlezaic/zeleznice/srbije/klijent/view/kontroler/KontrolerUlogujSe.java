@@ -8,6 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler.KontrolerPocetneForme;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
@@ -29,11 +30,13 @@ public class KontrolerUlogujSe {
     private JFrame forma;
     private PanelUlogujSe panelUlogujSe;
     private KontrolerPocetneForme kontrolerPocetneForme;
+    
 
     public KontrolerUlogujSe(JFrame forma, PanelUlogujSe panelUlogujSe, KontrolerPocetneForme kontrolerPocetneForme) {
         this.forma = forma;
         this.panelUlogujSe = panelUlogujSe;
         this.kontrolerPocetneForme = kontrolerPocetneForme;
+        ucitajIkonice();
         addListener();
     }
 
@@ -68,7 +71,15 @@ public class KontrolerUlogujSe {
     public void ocistiFormu() {
         panelUlogujSe.getTxtEmailLogin().setText("");
         panelUlogujSe.getTxtPasswordLogin().setText("");
-        
+    }
+    
+    private void ucitajIkonice() {
+        panelUlogujSe.getLblEmailLogin().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/email.png")));
+        panelUlogujSe.getLblLoznikaLogin().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/kljuc.png")));
+        panelUlogujSe.getBtnPrijaviSe().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/logIn.png")));
     }
 
 }

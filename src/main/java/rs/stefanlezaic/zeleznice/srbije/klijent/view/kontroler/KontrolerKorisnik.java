@@ -5,9 +5,9 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
@@ -31,8 +31,9 @@ public class KontrolerKorisnik {
     public KontrolerKorisnik(GlavnaForma glavnaForma, PanelKorisnik panelKorisnik, Klijent korisnik) {
         this.glavnaForma = glavnaForma;
         this.korisnik = korisnik;
-        this.panelKorisnika=panelKorisnik;
+        this.panelKorisnika = panelKorisnik;
         popuniKorisnika();
+        ucitajIkonice();
         addListener();
     }
 
@@ -86,5 +87,23 @@ public class KontrolerKorisnik {
         panelKorisnika.getTxtPrezime().setText(korisnik.getPrezime());
         panelKorisnika.getTxtKorisnickoIme().setText(korisnik.getKorisnickoIme());
     }
+
+    private void ucitajIkonice() {
+        panelKorisnika.getLblEmail().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/email.png")));
+        panelKorisnika.getLblIme().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/ime.png")));
+        panelKorisnika.getLblPrezime().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/ime.png")));
+        panelKorisnika.getLblKorisnickoIme().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/korisnickoIme.png")));
+        panelKorisnika.getLblLozinak().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/kljuc.png")));
+        panelKorisnika.getLblPotvrdaLozinke().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/kljuc2.png")));
+        panelKorisnika.getBtnPromeni().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/save.png")));
+
+   }
 
 }

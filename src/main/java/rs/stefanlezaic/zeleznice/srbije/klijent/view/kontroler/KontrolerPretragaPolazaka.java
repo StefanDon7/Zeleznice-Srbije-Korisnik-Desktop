@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.FormaRezervacije;
-import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.Prikaz;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabelePolasci;
@@ -53,6 +53,7 @@ public class KontrolerPretragaPolazaka {
         this.korisnik = korisnik;
         this.panelPretragaPolazaka = panelPretragraPolazaka;
         urediPanelDatum();
+        ucitajIkonice();
         urediTabelu();
         ucitajStanice();
         addListener();
@@ -247,6 +248,26 @@ public class KontrolerPretragaPolazaka {
             panelPretragaPolazaka.getCmbPocetnaStanica().addItem(stanica);
             panelPretragaPolazaka.getCmbKrajnjaStanica().addItem(stanica);
         }
+
+    }
+
+    private void ucitajIkonice() {
+        panelPretragaPolazaka.getLblOd().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/lokacijaCovek.png")));
+        panelPretragaPolazaka.getLblDo().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/lokacija.png")));
+        panelPretragaPolazaka.getLblDatum().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/datumVreme.png")));
+        panelPretragaPolazaka.getBtnPretraziPolaske().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/pretraga.png")));
+        panelPretragaPolazaka.getBtnRefreshTabela().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/refresh2.png")));
+        panelPretragaPolazaka.getBtnSviPolasciDUGME().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/datumIVreme.png")));
+        panelPretragaPolazaka.getBtnRezervisi().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/potvrdi.png")));
+        panelPretragaPolazaka.getBtnViseOPolasku().setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/informacije.png")));
 
     }
 
