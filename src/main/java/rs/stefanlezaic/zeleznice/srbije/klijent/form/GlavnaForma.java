@@ -68,9 +68,9 @@ public class GlavnaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPretragraPolazaka = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka();
-        panelRezervacije = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRezervacije();
         panelKorisnik = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik();
+        panelRezervacije = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRezervacije();
+        panelPretragraPolazaka = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka();
         Menu = new javax.swing.JMenuBar();
         menuPretraga = new javax.swing.JMenu();
         menuNalog = new javax.swing.JMenu();
@@ -79,9 +79,9 @@ public class GlavnaForma extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(panelPretragraPolazaka, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 490));
-        getContentPane().add(panelRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
         getContentPane().add(panelKorisnik, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(panelRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(panelPretragraPolazaka, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 490));
 
         Menu.setMaximumSize(new java.awt.Dimension(1336, 80));
         Menu.setMinimumSize(new java.awt.Dimension(1336, 80));

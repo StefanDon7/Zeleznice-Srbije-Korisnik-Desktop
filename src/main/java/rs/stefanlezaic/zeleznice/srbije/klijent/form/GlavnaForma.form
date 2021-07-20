@@ -90,10 +90,10 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka" name="panelPretragraPolazaka">
+    <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik" name="panelKorisnik">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="10" width="1300" height="490"/>
+          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -104,10 +104,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik" name="panelKorisnik">
+    <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka" name="panelPretragraPolazaka">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+          <AbsoluteConstraints x="10" y="10" width="1300" height="490"/>
         </Constraint>
       </Constraints>
     </Component>

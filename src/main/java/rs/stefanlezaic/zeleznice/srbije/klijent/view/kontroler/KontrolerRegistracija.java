@@ -17,6 +17,7 @@ import rs.stefanlezaic.zeleznice.srbije.lib.exception.InvalidProductException;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelSuccess;
 
 /**
  *
@@ -65,10 +66,11 @@ public class KontrolerRegistracija {
 
         try {
             Kontroler.getInstance().RegistrujSe(korisnik);
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste se registrovali"));
             ocistiFormu();
         } catch (Exception ex) {
             if (ex instanceof InvalidProductException) {
-                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.toString()));
+                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.getMessage()));
             } else if (ex instanceof SQLException) {
                 new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Data email već postoji u sistemu!"));
             } else if (ex instanceof Exception) {
@@ -82,6 +84,8 @@ public class KontrolerRegistracija {
         panelRegistracija.getTxtPrezime().setText("");
         panelRegistracija.getTxtEmail().setText("");
         panelRegistracija.getTxtKorisnickoIme().setText("");
+        panelRegistracija.getTxtPassword().setText("");
+        panelRegistracija.getTxtPasswordPotvrda().setText("");
     }
 
     private void pokupiPodatke() {

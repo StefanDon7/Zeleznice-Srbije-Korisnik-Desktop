@@ -74,7 +74,7 @@ public class KontrolerKorisnik {
             korisnik = klijent;
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste izmenili podatake!"));
         } catch (Exception ex) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.toString()));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.getMessage()));
         } finally {
             panelKorisnika.getTxtPassword().setText("");
             panelKorisnika.getTxtPasswordPotvrda().setText("");
