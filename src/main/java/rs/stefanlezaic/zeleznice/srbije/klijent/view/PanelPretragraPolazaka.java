@@ -55,43 +55,46 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDo.setBackground(new java.awt.Color(34, 40, 44));
-        lblDo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDo.setForeground(java.awt.Color.white);
         lblDo.setText("Do:");
-        add(lblDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 90, 40));
+        add(lblDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 110, 40));
 
         lblOd.setBackground(new java.awt.Color(34, 40, 44));
-        lblOd.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblOd.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblOd.setForeground(java.awt.Color.white);
         lblOd.setText("Od:");
         lblOd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblOd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 90, 40));
+        add(lblOd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 40));
 
         cmbPocetnaStanica.setBackground(new java.awt.Color(34, 40, 44));
+        cmbPocetnaStanica.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cmbPocetnaStanica.setForeground(java.awt.Color.white);
         cmbPocetnaStanica.setBorder(null);
-        add(cmbPocetnaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 350, 40));
+        add(cmbPocetnaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 340, 40));
 
         cmbKrajnjaStanica.setBackground(new java.awt.Color(34, 40, 44));
+        cmbKrajnjaStanica.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cmbKrajnjaStanica.setForeground(java.awt.Color.white);
         cmbKrajnjaStanica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cmbKrajnjaStanica.setSelectedIndex(-1);
         cmbKrajnjaStanica.setToolTipText("");
         cmbKrajnjaStanica.setBorder(null);
-        add(cmbKrajnjaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 350, 40));
+        add(cmbKrajnjaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 340, 40));
 
         lblDatum.setBackground(new java.awt.Color(34, 40, 44));
-        lblDatum.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lblDatum.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDatum.setForeground(java.awt.Color.white);
         lblDatum.setText("Datum:");
-        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 90, 40));
+        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 110, 40));
 
         btnPretraziPolaske.setBackground(new java.awt.Color(34, 40, 44));
+        btnPretraziPolaske.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPretraziPolaske.setForeground(java.awt.Color.white);
         btnPretraziPolaske.setText("PRETRAZI POLASKE");
         btnPretraziPolaske.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPretraziPolaske.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnPretraziPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 350, 60));
+        add(btnPretraziPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 340, 60));
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -119,9 +122,10 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         lblNazivTabele.setBackground(new java.awt.Color(34, 40, 44));
         lblNazivTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblNazivTabele.setForeground(java.awt.Color.white);
-        add(lblNazivTabele, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 760, 40));
+        add(lblNazivTabele, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 670, 40));
 
         btnRezervisi.setBackground(new java.awt.Color(34, 40, 44));
+        btnRezervisi.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRezervisi.setForeground(java.awt.Color.white);
         btnRezervisi.setText("REZERVISI POLAZAK");
         btnRezervisi.setBorder(null);
@@ -132,14 +136,15 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnViseOPolasku.setForeground(java.awt.Color.white);
         btnViseOPolasku.setToolTipText("");
         btnViseOPolasku.setBorder(null);
-        add(btnViseOPolasku, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 10, 100, 60));
+        add(btnViseOPolasku, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, 100, 60));
 
         btnSviPolasciDanas.setBackground(new java.awt.Color(34, 40, 44));
+        btnSviPolasciDanas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnSviPolasciDanas.setForeground(java.awt.Color.white);
         btnSviPolasciDanas.setText("Danasnji polasci");
         btnSviPolasciDanas.setBorder(null);
         btnSviPolasciDanas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnSviPolasciDanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 200, 60));
+        add(btnSviPolasciDanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 240, 60));
 
         jLabel2.setBackground(new java.awt.Color(34, 40, 44));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -149,11 +154,11 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 40));
 
         btnRefreshTabela.setBackground(new java.awt.Color(34, 40, 44));
+        btnRefreshTabela.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRefreshTabela.setForeground(java.awt.Color.white);
         btnRefreshTabela.setBorder(null);
         btnRefreshTabela.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnRefreshTabela.setOpaque(false);
-        add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 60, 60));
+        add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 110, 60));
         add(panelDatum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 360, 60));
     }// </editor-fold>//GEN-END:initComponents
 

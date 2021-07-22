@@ -52,85 +52,98 @@ public class PanelKorisnik extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblEmail.setBackground(new java.awt.Color(34, 40, 44));
+        lblEmail.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblEmail.setForeground(java.awt.Color.white);
         lblEmail.setText("Email:");
         lblEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 40));
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 40));
 
         txtEmail.setBackground(new java.awt.Color(102, 102, 102));
+        txtEmail.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtEmail.setForeground(java.awt.Color.black);
         txtEmail.setBorder(null);
         txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtEmail.setEnabled(false);
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 220, 40));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 220, 40));
 
         lblIme.setBackground(new java.awt.Color(34, 40, 44));
+        lblIme.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblIme.setForeground(java.awt.Color.white);
         lblIme.setText("Ime:");
-        add(lblIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 140, 40));
+        add(lblIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 220, 40));
 
         txtIme.setBackground(new java.awt.Color(102, 102, 102));
+        txtIme.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtIme.setForeground(java.awt.Color.black);
         txtIme.setBorder(null);
         txtIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtIme.setEnabled(false);
-        add(txtIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 220, 40));
+        add(txtIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 220, 40));
 
         lblPrezime.setBackground(new java.awt.Color(34, 40, 44));
+        lblPrezime.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblPrezime.setForeground(java.awt.Color.white);
         lblPrezime.setText("Prezime:");
         lblPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblPrezime, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 140, 40));
+        add(lblPrezime, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 220, 40));
 
         txtPrezime.setBackground(new java.awt.Color(102, 102, 102));
+        txtPrezime.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPrezime.setForeground(java.awt.Color.black);
         txtPrezime.setBorder(null);
         txtPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtPrezime.setEnabled(false);
-        add(txtPrezime, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 220, 40));
+        add(txtPrezime, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 220, 40));
 
         lblKorisnickoIme.setBackground(new java.awt.Color(34, 40, 44));
+        lblKorisnickoIme.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblKorisnickoIme.setForeground(java.awt.Color.white);
         lblKorisnickoIme.setText("Korisnicko ime:");
         lblKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 140, 40));
+        add(lblKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 220, 40));
 
         txtKorisnickoIme.setBackground(new java.awt.Color(102, 102, 102));
+        txtKorisnickoIme.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtKorisnickoIme.setForeground(java.awt.Color.black);
         txtKorisnickoIme.setBorder(null);
         txtKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(txtKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 220, 40));
+        add(txtKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 220, 40));
 
         lblLozinak.setBackground(new java.awt.Color(34, 40, 44));
+        lblLozinak.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblLozinak.setForeground(java.awt.Color.white);
         lblLozinak.setText("Lozinka:");
         lblLozinak.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblLozinak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 140, 40));
+        add(lblLozinak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 220, 40));
 
         txtPassword.setBackground(new java.awt.Color(102, 102, 102));
+        txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPassword.setForeground(java.awt.Color.black);
         txtPassword.setBorder(null);
         txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 220, 40));
+        add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 220, 40));
 
         lblPotvrdaLozinke.setBackground(new java.awt.Color(34, 40, 44));
+        lblPotvrdaLozinke.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblPotvrdaLozinke.setForeground(java.awt.Color.white);
         lblPotvrdaLozinke.setText("Potvrda loznike:");
         lblPotvrdaLozinke.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblPotvrdaLozinke, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 140, 40));
+        add(lblPotvrdaLozinke, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 220, 40));
 
         txtPasswordPotvrda.setBackground(new java.awt.Color(102, 102, 102));
+        txtPasswordPotvrda.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPasswordPotvrda.setForeground(java.awt.Color.black);
         txtPasswordPotvrda.setBorder(null);
         txtPasswordPotvrda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(txtPasswordPotvrda, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 220, 40));
+        add(txtPasswordPotvrda, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 220, 40));
 
         btnPromeni.setBackground(new java.awt.Color(34, 40, 44));
+        btnPromeni.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPromeni.setForeground(java.awt.Color.white);
         btnPromeni.setText("Promeni");
         btnPromeni.setBorder(null);
         btnPromeni.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnPromeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 220, 60));
+        add(btnPromeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 220, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnPromeni() {

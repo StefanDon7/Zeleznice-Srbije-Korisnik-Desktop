@@ -122,11 +122,13 @@ public class KontrolerPocetneForme {
     private void prebaciNaPanelUlogujSe() {
         otvoriPanelUlogujSe();
         prebaciDugmeNaUlogujSe();
+        kontrolerRegistracija.ocistiFormu();
     }
 
     private void prebaciNaPanelRegistracija() {
         otvoriPanelRegistracija();
         prebaciDugmeNaRegistrujSe();
+        kontrolerUlogujSe.ocistiFormu();
     }
 
     private void otvoriPanelUlogujSe() {

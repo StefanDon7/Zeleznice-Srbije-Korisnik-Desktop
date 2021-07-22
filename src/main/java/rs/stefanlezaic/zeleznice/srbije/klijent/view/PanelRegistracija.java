@@ -188,7 +188,7 @@ public class PanelRegistracija extends javax.swing.JPanel {
         add(txtPasswordPotvrda, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 250, 60));
 
         btnRegistrujSe.setBackground(new java.awt.Color(102, 102, 102));
-        btnRegistrujSe.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        btnRegistrujSe.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRegistrujSe.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrujSe.setText("Registruj se");
         btnRegistrujSe.setOpaque(false);

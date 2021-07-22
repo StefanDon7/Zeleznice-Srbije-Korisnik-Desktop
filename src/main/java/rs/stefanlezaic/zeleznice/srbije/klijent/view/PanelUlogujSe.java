@@ -92,7 +92,7 @@ public class PanelUlogujSe extends javax.swing.JPanel {
         add(txtPasswordLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 250, 60));
 
         btnPrijaviSe.setBackground(new java.awt.Color(102, 102, 102));
-        btnPrijaviSe.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
+        btnPrijaviSe.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPrijaviSe.setForeground(new java.awt.Color(0, 0, 0));
         btnPrijaviSe.setText("Uloguj se");
         btnPrijaviSe.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

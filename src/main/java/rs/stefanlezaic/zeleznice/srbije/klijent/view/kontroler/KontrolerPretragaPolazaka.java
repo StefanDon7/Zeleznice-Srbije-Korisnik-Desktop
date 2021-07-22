@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import rs.stefanlezaic.zeleznice.srbije.klijent.form.FormaRezervacije;
+import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.Prikaz;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabelePolasci;
@@ -154,7 +154,7 @@ public class KontrolerPretragaPolazaka {
         try {
             date = panelPretragaPolazaka.getPanelDatum1().getUtilDate();
         } catch (Exception ex) {
-            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("vra");
         }
         Stanica pocetna = (Stanica) panelPretragaPolazaka.getCmbPocetnaStanica().getSelectedItem();
         Stanica krajnja = (Stanica) panelPretragaPolazaka.getCmbKrajnjaStanica().getSelectedItem();
@@ -165,7 +165,7 @@ public class KontrolerPretragaPolazaka {
         try {
             listPolazaka = Kontroler.getInstance().vratiMiPolaskeZaDatumPocetnuIKrajnjuStanicu(p);
         } catch (Exception ex) {
-            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         mtp.ocistiTabelu();
@@ -184,7 +184,7 @@ public class KontrolerPretragaPolazaka {
         try {
             listPolazaka = Kontroler.getInstance().vratiMiPolaskeZaDatum(p);
         } catch (Exception ex) {
-            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (listPolazaka.isEmpty()) {
             panelPretragaPolazaka.getLblNazivTabele().setText("Nema polazaka za datum: " + smf.format(date));
@@ -242,7 +242,7 @@ public class KontrolerPretragaPolazaka {
         try {
             listaStanica = Kontroler.getInstance().vratiMiSveStanice();
         } catch (Exception ex) {
-            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Stanica stanica : listaStanica) {
             panelPretragaPolazaka.getCmbPocetnaStanica().addItem(stanica);

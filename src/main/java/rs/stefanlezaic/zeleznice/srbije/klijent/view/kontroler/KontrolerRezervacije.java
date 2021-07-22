@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import rs.stefanlezaic.zeleznice.srbije.klijent.form.FormaRezervacije;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabeleRezervacija;
@@ -140,7 +139,7 @@ public class KontrolerRezervacije {
         try {
             listaRezervacija = Kontroler.getInstance().vratiMojeRezervacije(new Rezervacija(korisnik, null, null));
         } catch (Exception ex) {
-            Logger.getLogger(FormaRezervacije.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
         mtr.setList(listaRezervacija);
         panelRezervacije.getTabelMojeRezeravacije().setModel(mtr);
