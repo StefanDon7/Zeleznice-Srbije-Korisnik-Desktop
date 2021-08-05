@@ -8,6 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.form;
 import java.awt.event.MouseListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelBar;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRezervacije;
@@ -57,6 +58,11 @@ public class GlavnaForma extends javax.swing.JFrame {
     public PanelRezervacije getPanelRezervacije() {
         return panelRezervacije;
     }
+
+    public PanelBar getPanelBar() {
+        return panelBar;
+    }
+    
     
 
     /**
@@ -68,9 +74,11 @@ public class GlavnaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelKorisnik = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik();
         panelRezervacije = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRezervacije();
+        panelKorisnik = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik();
         panelPretragraPolazaka = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka();
+        panelBar = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelBar();
+        jSeparator = new javax.swing.JSeparator();
         Menu = new javax.swing.JMenuBar();
         menuPretraga = new javax.swing.JMenu();
         menuNalog = new javax.swing.JMenu();
@@ -79,9 +87,15 @@ public class GlavnaForma extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(panelKorisnik, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        getContentPane().add(panelRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        getContentPane().add(panelPretragraPolazaka, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 490));
+        getContentPane().add(panelRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 690));
+        getContentPane().add(panelKorisnik, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 690));
+        getContentPane().add(panelPretragraPolazaka, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 690));
+        getContentPane().add(panelBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 10, -1, 220));
+
+        jSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 3));
+        jSeparator.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        getContentPane().add(jSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 10, 3, 670));
 
         Menu.setMaximumSize(new java.awt.Dimension(1336, 80));
         Menu.setMinimumSize(new java.awt.Dimension(1336, 80));
@@ -119,10 +133,12 @@ public class GlavnaForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar Menu;
+    private javax.swing.JSeparator jSeparator;
     private javax.swing.JMenu menuMojeRezervacije;
     private javax.swing.JMenu menuNalog;
     private javax.swing.JMenu menuOdjava;
     private javax.swing.JMenu menuPretraga;
+    private rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelBar panelBar;
     private rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik panelKorisnik;
     private rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka panelPretragraPolazaka;
     private rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRezervacije panelRezervacije;

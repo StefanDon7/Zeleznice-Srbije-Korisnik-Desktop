@@ -4,9 +4,10 @@
  * and open the template in the editor.
  */
 
-package rs.stefanlezaic.zeleznice.srbije.klijent.view;
+package rs.stefanlezaic.zeleznice.srbije.klijent.view.component;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -212,8 +213,8 @@ public class PanelRegistracija extends javax.swing.JPanel {
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
-    public void btnRegistrujSeActionListener(ActionListener actionListener) {
-        btnRegistrujSe.addActionListener(actionListener);
+    public void btnRegistrujSeMouseListener(MouseListener mouseListener) {
+        btnRegistrujSe.addMouseListener(mouseListener);
     }
 
 }

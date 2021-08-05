@@ -5,8 +5,7 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,6 +19,7 @@ import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.Prikaz;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabelePolasci;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.MedjuStanica;
@@ -60,33 +60,34 @@ public class KontrolerPretragaPolazaka {
     }
 
     private void addListener() {
-        panelPretragaPolazaka.btnRezervisiActionListener(new ActionListener() {
+        panelPretragaPolazaka.btnPretraziPolaskeMouseListener(new AbstractButton(panelPretragaPolazaka.getBtnPretraziPolaske(), "pretraga", "pretraga1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                rezervisi();
-            }
-        });
-        panelPretragaPolazaka.btnPretraziPolaskeActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
                 pretrazi();
             }
         });
-        panelPretragaPolazaka.btnRefreshTabelaActionListener(new ActionListener() {
+        panelPretragaPolazaka.btnRefreshTabelaMouseListener(new AbstractButton(panelPretragaPolazaka.getBtnRefreshTabela(), "refresh", "refresh1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
                 refresh();
             }
         });
-        panelPretragaPolazaka.btnSviPolasciDanasActionListener(new ActionListener() {
+        panelPretragaPolazaka.btnRezervisiMouseListener(new AbstractButton(panelPretragaPolazaka.getBtnRezervisi(), "potvrda", "potvrda1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
+                rezervisi();
+            }
+        });
+        panelPretragaPolazaka.btnSviPolasciDanasMouseListener(new AbstractButton(panelPretragaPolazaka.getBtnSviPolasciDUGME(), "kalendar", "kalendar1") {
+            @Override
+            public void execute() {
                 sviPolasciDanas();
             }
         });
-        panelPretragaPolazaka.btnViseOPolaskuActionListener(new ActionListener() {
+
+        panelPretragaPolazaka.btnViseOPolaskuMouseListener(new AbstractButton(panelPretragaPolazaka.getBtnViseOPolasku(), "informacije", "informacije1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
                 viseOPolasku();
             }
         });
@@ -165,7 +166,7 @@ public class KontrolerPretragaPolazaka {
         try {
             listPolazaka = Kontroler.getInstance().vratiMiPolaskeZaDatumPocetnuIKrajnjuStanicu(p);
         } catch (Exception ex) {
-           Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         mtp.ocistiTabelu();
@@ -184,7 +185,7 @@ public class KontrolerPretragaPolazaka {
         try {
             listPolazaka = Kontroler.getInstance().vratiMiPolaskeZaDatum(p);
         } catch (Exception ex) {
-           Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (listPolazaka.isEmpty()) {
             panelPretragaPolazaka.getLblNazivTabele().setText("Nema polazaka za datum: " + smf.format(date));
@@ -242,7 +243,7 @@ public class KontrolerPretragaPolazaka {
         try {
             listaStanica = Kontroler.getInstance().vratiMiSveStanice();
         } catch (Exception ex) {
-           Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
         for (Stanica stanica : listaStanica) {
             panelPretragaPolazaka.getCmbPocetnaStanica().addItem(stanica);
@@ -261,11 +262,11 @@ public class KontrolerPretragaPolazaka {
         panelPretragaPolazaka.getBtnPretraziPolaske().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/pretraga.png")));
         panelPretragaPolazaka.getBtnRefreshTabela().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/refresh2.png")));
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/refresh.png")));
         panelPretragaPolazaka.getBtnSviPolasciDUGME().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/datumIVreme.png")));
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/kalendar.png")));
         panelPretragaPolazaka.getBtnRezervisi().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/potvrdi.png")));
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/potvrda.png")));
         panelPretragaPolazaka.getBtnViseOPolasku().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/informacije.png")));
 

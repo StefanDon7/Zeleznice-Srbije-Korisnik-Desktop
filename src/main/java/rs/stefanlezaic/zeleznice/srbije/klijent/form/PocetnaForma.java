@@ -7,9 +7,9 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.form;
 
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
-import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelDugme;
-import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRegistracija;
-import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelUlogujSe;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelDugme;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelRegistracija;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelUlogujSe;
 
 /**
  *
@@ -29,9 +29,9 @@ public class PocetnaForma extends javax.swing.JFrame {
     private void initComponents() {
 
         lblExit = new javax.swing.JLabel();
-        panelDugme = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelDugme();
-        panelRegistracija = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRegistracija();
-        panelUlogujSe = new rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelUlogujSe();
+        panelDugme = new rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelDugme();
+        panelRegistracija = new rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelRegistracija();
+        panelUlogujSe = new rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelUlogujSe();
         pozadinaSlika = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,10 +49,10 @@ public class PocetnaForma extends javax.swing.JFrame {
         getContentPane().add(panelDugme, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 480, -1));
 
         panelRegistracija.setOpaque(false);
-        getContentPane().add(panelRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 510, -1));
+        getContentPane().add(panelRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 510, 510));
 
         panelUlogujSe.setOpaque(false);
-        getContentPane().add(panelUlogujSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 510, -1));
+        getContentPane().add(panelUlogujSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 510, 220));
 
         pozadinaSlika.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         pozadinaSlika.setForeground(new java.awt.Color(0, 0, 51));
@@ -84,9 +84,9 @@ public class PocetnaForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblExit;
-    private rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelDugme panelDugme;
-    private rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRegistracija panelRegistracija;
-    private rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelUlogujSe panelUlogujSe;
+    private rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelDugme panelDugme;
+    private rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelRegistracija panelRegistracija;
+    private rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelUlogujSe panelUlogujSe;
     private javax.swing.JLabel pozadinaSlika;
     // End of variables declaration//GEN-END:variables
 

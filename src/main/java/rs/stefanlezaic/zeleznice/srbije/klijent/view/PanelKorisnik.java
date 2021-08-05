@@ -7,6 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.view;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -197,8 +198,6 @@ public class PanelKorisnik extends javax.swing.JPanel {
     public JTextField getTxtPrezime() {
         return txtPrezime;
     }
-  
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -217,7 +216,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
-    public void btnPromeniActionListener(ActionListener actionListener) {
-        btnPromeni.addActionListener(actionListener);
+    public void btnPromeniMouseListener(MouseListener mouseListener) {
+        btnPromeni.addMouseListener(mouseListener);
     }
 }

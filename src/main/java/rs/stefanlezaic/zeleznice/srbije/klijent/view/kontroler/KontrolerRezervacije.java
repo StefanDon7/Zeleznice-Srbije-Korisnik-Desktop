@@ -17,6 +17,7 @@ import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabeleRezervacija;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRezervacije;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Rezervacija;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.InvalidProductException;
@@ -50,27 +51,27 @@ public class KontrolerRezervacije {
     }
 
     private void addListener() {
-        panelRezervacije.btnAktivneRezervacijeActionListener(new ActionListener() {
+        panelRezervacije.btnAktivneRezervacijeMouseListener(new AbstractButton(panelRezervacije.getBtnAktivneRezervacije(), "voz", "voz1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
                 aktivneRezervacije();
             }
         });
-        panelRezervacije.btnRealizovaneRezervacijeActionListener(new ActionListener() {
+        panelRezervacije.btnOtkaziRezervacijuMouseListener(new AbstractButton(panelRezervacije.getBtnOtkaziRezervaciju(), "obrisi", "obrisi1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                realizovaneRezervacije();
-            }
-        });
-        panelRezervacije.btnOtkaziRezervacijuActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
                 otkaziRezervaciju();
             }
         });
-        panelRezervacije.btnRefreshTabelaActionListener(new ActionListener() {
+        panelRezervacije.btnRealizovaneRezervacijeMouseListener(new AbstractButton(panelRezervacije.getBtnRealizovaneRezervacije(), "potvrda", "potvrda1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
+                realizovaneRezervacije();
+            }
+        });
+        panelRezervacije.btnRefreshTabelaMouseListener(new AbstractButton(panelRezervacije.getBtnRefreshTabela(), "refresh", "refresh1") {
+            @Override
+            public void execute() {
                 ucitajSveRezervacije();
             }
         });
@@ -139,7 +140,7 @@ public class KontrolerRezervacije {
         try {
             listaRezervacija = Kontroler.getInstance().vratiMojeRezervacije(new Rezervacija(korisnik, null, null));
         } catch (Exception ex) {
-           Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
         mtr.setList(listaRezervacija);
         panelRezervacije.getTabelMojeRezeravacije().setModel(mtr);
@@ -158,7 +159,7 @@ public class KontrolerRezervacije {
         panelRezervacije.getBtnOtkaziRezervaciju().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/obrisi.png")));
         panelRezervacije.getBtnRealizovaneRezervacije().setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/prosleRezervacije.png")));
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/potvrda.png")));
         panelRezervacije.getBtnRefreshTabela().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/refresh.png")));
     }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.stefanlezaic.zeleznice.srbije.klijent.view;
+package rs.stefanlezaic.zeleznice.srbije.klijent.view.component;
 
 import javax.swing.JLabel;
 

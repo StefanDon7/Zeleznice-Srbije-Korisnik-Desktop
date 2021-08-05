@@ -11,7 +11,8 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
-import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRegistracija;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelRegistracija;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.InvalidProductException;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
@@ -37,9 +38,9 @@ public class KontrolerRegistracija {
     }
 
     private void addListener() {
-        panelRegistracija.btnRegistrujSeActionListener(new ActionListener() {
+        panelRegistracija.btnRegistrujSeMouseListener(new AbstractButton(panelRegistracija.getBtnRegistrujSe(), "register", "register1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
                 registrujse();
             }
         });

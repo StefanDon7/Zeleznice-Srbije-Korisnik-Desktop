@@ -7,14 +7,14 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.Box;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerKorisnik;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerPretragaPolazaka;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerRezervacije;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
+import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
 
 /**
@@ -26,6 +26,7 @@ public class KontrolerGlavnaForma {
     private GlavnaForma glavnaForma;
     private Klijent korisnik;
     private Tema tema;
+    private Sat sat;
     private KontrolerPretragaPolazaka kpk;
     private KontrolerKorisnik kk;
     private KontrolerRezervacije kr;
@@ -37,6 +38,7 @@ public class KontrolerGlavnaForma {
         this.kontrolerPocetneForme = kontrolerPocetneForme;
         tema = new Tema(glavnaForma);
         tema.blackTheme();
+        pokreniSat();
         ucitajPotrebneKontrolere();
         otvoriFormu();
         ucitajIkonice();
@@ -44,115 +46,34 @@ public class KontrolerGlavnaForma {
         centrirajFormu();
         menuOdjavaSaDesneStrane();
         addListener();
+        glavnaForma.setMinimumSize(new Dimension(1330, 820));
     }
 
     private void addListener() {
-        glavnaForma.menuPretragaActionListener(new MouseListener() {
+        glavnaForma.menuPretragaActionListener(new AbstractMenu(glavnaForma.getMenuPretraga(), "search", "search1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void execute() {
                 menuPretraga();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                glavnaForma.getMenuPretraga().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/search1.png")));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                glavnaForma.getMenuPretraga().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/search.png")));
-            }
         });
-        glavnaForma.menuNalogActionListener(new MouseListener() {
+        glavnaForma.menuNalogActionListener(new AbstractMenu(glavnaForma.getMenuNalog(), "user", "user1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void execute() {
                 menuNalog();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                glavnaForma.getMenuNalog().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/user1.png")));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                glavnaForma.getMenuNalog().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/user.png")));
-            }
         });
-        glavnaForma.menuMojeRezervacijeActionListener(new MouseListener() {
+        glavnaForma.menuMojeRezervacijeActionListener(new AbstractMenu(glavnaForma.getMenuMojeRezervacije(), "karta", "karta1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void execute() {
                 menuRezervacije();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                glavnaForma.getMenuMojeRezervacije().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/karta1.png")));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                glavnaForma.getMenuMojeRezervacije().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/karta.png")));
-
-            }
         });
-        glavnaForma.menuOdjavaActionListener(new MouseListener() {
+        glavnaForma.menuOdjavaActionListener(new AbstractMenu(glavnaForma.getMenuOdjava(), "logOut", "logOut1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void execute() {
                 menuOdjaviSe();
             }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                glavnaForma.getMenuOdjava().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/logOut1.png")));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                glavnaForma.getMenuOdjava().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/logOut.png")));
-            }
         });
-
     }
 
     private void menuPretraga() {
@@ -218,6 +139,23 @@ public class KontrolerGlavnaForma {
         glavnaForma.setLocation(size.width / 2 - glavnaForma.getWidth() / 2, size.height / 2 - glavnaForma.getHeight() / 2);
     }
 
+    public void ukljuciTamnuTemu() {
+        glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().setVisible(true);
+        glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().setVisible(false);
+        tema.blackTheme();
+    }
+
+    public void ukljuciSvetluTemu() {
+        glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().setVisible(false);
+        glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().setVisible(true);
+        tema.whiteTheme();
+    }
+
+    private void pokreniSat() {
+        sat = new Sat(glavnaForma.getPanelBar().getPanelSat().getLblVreme(), glavnaForma.getPanelBar().getPanelSat().getLblDatum());
+        sat.pokreniSat();
+    }
+
     private void ucitajIkonice() {
         try {
             glavnaForma.getMenuPretraga().setIcon(new javax.swing.ImageIcon(getClass().
@@ -229,9 +167,8 @@ public class KontrolerGlavnaForma {
             glavnaForma.getMenuOdjava().setIcon(new javax.swing.ImageIcon(getClass().
                     getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/logOut.png")));
         } catch (Exception e) {
-            System.out.println("ds;gaagd");
+            System.out.println("rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler;");
         }
-
     }
 
 }

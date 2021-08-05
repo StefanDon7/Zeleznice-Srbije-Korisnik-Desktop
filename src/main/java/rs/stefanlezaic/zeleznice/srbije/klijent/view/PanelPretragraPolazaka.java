@@ -7,6 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.view;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -58,20 +59,20 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         lblDo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDo.setForeground(java.awt.Color.white);
         lblDo.setText("Do:");
-        add(lblDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 110, 40));
+        add(lblDo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 110, 40));
 
         lblOd.setBackground(new java.awt.Color(34, 40, 44));
         lblOd.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblOd.setForeground(java.awt.Color.white);
         lblOd.setText("Od:");
         lblOd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(lblOd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 40));
+        add(lblOd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 40));
 
         cmbPocetnaStanica.setBackground(new java.awt.Color(34, 40, 44));
         cmbPocetnaStanica.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         cmbPocetnaStanica.setForeground(java.awt.Color.white);
         cmbPocetnaStanica.setBorder(null);
-        add(cmbPocetnaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 340, 40));
+        add(cmbPocetnaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 340, 40));
 
         cmbKrajnjaStanica.setBackground(new java.awt.Color(34, 40, 44));
         cmbKrajnjaStanica.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -80,13 +81,13 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         cmbKrajnjaStanica.setSelectedIndex(-1);
         cmbKrajnjaStanica.setToolTipText("");
         cmbKrajnjaStanica.setBorder(null);
-        add(cmbKrajnjaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 340, 40));
+        add(cmbKrajnjaStanica, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 340, 40));
 
         lblDatum.setBackground(new java.awt.Color(34, 40, 44));
         lblDatum.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDatum.setForeground(java.awt.Color.white);
         lblDatum.setText("Datum:");
-        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 110, 40));
+        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 110, 40));
 
         btnPretraziPolaske.setBackground(new java.awt.Color(34, 40, 44));
         btnPretraziPolaske.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -94,7 +95,7 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnPretraziPolaske.setText("PRETRAZI POLASKE");
         btnPretraziPolaske.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnPretraziPolaske.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnPretraziPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 340, 60));
+        add(btnPretraziPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 340, 60));
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -117,7 +118,7 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         tablePolasci.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tablePolasci);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 820, 320));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 1280, 320));
 
         lblNazivTabele.setBackground(new java.awt.Color(34, 40, 44));
         lblNazivTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -130,13 +131,14 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnRezervisi.setText("REZERVISI POLAZAK");
         btnRezervisi.setBorder(null);
         btnRezervisi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnRezervisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 410, 270, 60));
+        add(btnRezervisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 620, 270, 60));
 
         btnViseOPolasku.setBackground(new java.awt.Color(34, 40, 44));
         btnViseOPolasku.setForeground(java.awt.Color.white);
         btnViseOPolasku.setToolTipText("");
         btnViseOPolasku.setBorder(null);
-        add(btnViseOPolasku, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 10, 100, 60));
+        btnViseOPolasku.setOpaque(false);
+        add(btnViseOPolasku, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 620, 60, 60));
 
         btnSviPolasciDanas.setBackground(new java.awt.Color(34, 40, 44));
         btnSviPolasciDanas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -144,7 +146,7 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnSviPolasciDanas.setText("Danasnji polasci");
         btnSviPolasciDanas.setBorder(null);
         btnSviPolasciDanas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnSviPolasciDanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 240, 60));
+        add(btnSviPolasciDanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 210, 240, 60));
 
         jLabel2.setBackground(new java.awt.Color(34, 40, 44));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -158,8 +160,9 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnRefreshTabela.setForeground(java.awt.Color.white);
         btnRefreshTabela.setBorder(null);
         btnRefreshTabela.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 110, 60));
-        add(panelDatum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 360, 60));
+        btnRefreshTabela.setOpaque(false);
+        add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 210, 60, 60));
+        add(panelDatum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 360, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnPretraziPolaske() {
@@ -221,8 +224,6 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
     public JLabel getLblOd() {
         return lblOd;
     }
-    
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -243,23 +244,24 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
     private javax.swing.JTable tablePolasci;
     // End of variables declaration//GEN-END:variables
 
-    public void btnRezervisiActionListener(ActionListener actionListener) {
-        btnRezervisi.addActionListener(actionListener);
+    public void btnRezervisiMouseListener(MouseListener mouseListener) {
+        btnRezervisi.addMouseListener(mouseListener);
     }
 
-    public void btnPretraziPolaskeActionListener(ActionListener actionListener) {
-        btnPretraziPolaske.addActionListener(actionListener);
+    public void btnPretraziPolaskeMouseListener(MouseListener mouseListener) {
+        btnPretraziPolaske.addMouseListener(mouseListener);
     }
 
-    public void btnRefreshTabelaActionListener(ActionListener actionListener) {
-        btnRefreshTabela.addActionListener(actionListener);
+    public void btnRefreshTabelaMouseListener(MouseListener mouseListener) {
+        btnRefreshTabela.addMouseListener(mouseListener);
     }
 
-    public void btnSviPolasciDanasActionListener(ActionListener actionListener) {
-        btnSviPolasciDanas.addActionListener(actionListener);
+    public void btnViseOPolaskuMouseListener(MouseListener mouseListener) {
+        btnViseOPolasku.addMouseListener(mouseListener);
     }
-    public void btnViseOPolaskuActionListener(ActionListener actionListener) {
-        btnViseOPolasku.addActionListener(actionListener);
+    
+    public void btnSviPolasciDanasMouseListener(MouseListener mouseListener) {
+        btnSviPolasciDanas.addMouseListener(mouseListener);
     }
 
 }

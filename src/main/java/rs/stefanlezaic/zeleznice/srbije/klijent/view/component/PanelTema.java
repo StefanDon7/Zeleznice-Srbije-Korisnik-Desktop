@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.stefanlezaic.zeleznice.srbije.klijent.view;
+package rs.stefanlezaic.zeleznice.srbije.klijent.view.component;
 
-import java.awt.Container;
 import javax.swing.JLabel;
-import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
 
 /**
  *
@@ -15,28 +13,8 @@ import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
  */
 public class PanelTema extends javax.swing.JPanel {
 
-    Container container;
-    Tema tema;
-
     public PanelTema() {
         initComponents();
-    }
-
-    public void dodeliContainer(Container container) {
-        this.container = container;
-        tema = new Tema(container);
-    }
-
-    public void ukljuciTamnuTemu() {
-        lblWhiteMode.setVisible(true);
-        lblDarkMode.setVisible(false);
-        tema.blackTheme();
-    }
-
-    public void ukljuciSvetluTemu() {
-        lblWhiteMode.setVisible(false);
-        lblDarkMode.setVisible(true);
-        tema.whiteTheme();
     }
 
     public JLabel getLblDarkMode() {
@@ -59,33 +37,30 @@ public class PanelTema extends javax.swing.JPanel {
 
         lblDarkMode = new javax.swing.JLabel();
         lblWhiteMode = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDarkMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDarkMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDarkMode.setText("Tamna tema");
-        lblDarkMode.setDisabledIcon(null);
-        add(lblDarkMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 240, 65));
+        lblDarkMode.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
+        lblDarkMode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        add(lblDarkMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 60));
 
         lblWhiteMode.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblWhiteMode.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWhiteMode.setText("Svetla tema");
-        lblWhiteMode.setDisabledIcon(null);
+        lblWhiteMode.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
+        lblWhiteMode.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         lblWhiteMode.setMaximumSize(new java.awt.Dimension(176, 64));
         lblWhiteMode.setMinimumSize(new java.awt.Dimension(176, 64));
         lblWhiteMode.setName(""); // NOI18N
         lblWhiteMode.setPreferredSize(new java.awt.Dimension(176, 64));
-        add(lblWhiteMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 240, 65));
-
-        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 240, 65));
+        add(lblWhiteMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 60));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDarkMode;
     private javax.swing.JLabel lblWhiteMode;
     // End of variables declaration//GEN-END:variables

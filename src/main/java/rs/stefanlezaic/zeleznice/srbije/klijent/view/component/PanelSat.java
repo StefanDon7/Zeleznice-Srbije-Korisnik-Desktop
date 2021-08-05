@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.stefanlezaic.zeleznice.srbije.klijent.view;
+package rs.stefanlezaic.zeleznice.srbije.klijent.view.component;
 
 import javax.swing.JLabel;
-import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
 
 /**
  *
@@ -41,31 +40,23 @@ public class PanelSat extends javax.swing.JPanel {
 
         lblDatum = new javax.swing.JLabel();
         lblVreme = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDatum.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
         lblDatum.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDatum.setToolTipText("");
-        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 240, 60));
+        lblDatum.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
+        add(lblDatum, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 240, 60));
 
         lblVreme.setFont(new java.awt.Font("Nirmala UI", 3, 24)); // NOI18N
         lblVreme.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(lblVreme, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 70, 240, 60));
-
-        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 240, 60));
-
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 70, 240, 60));
+        lblVreme.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 2));
+        add(lblVreme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 240, 60));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblDatum;
     private javax.swing.JLabel lblVreme;
     // End of variables declaration//GEN-END:variables

@@ -6,6 +6,7 @@
 package rs.stefanlezaic.zeleznice.srbije.klijent.view;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -55,21 +56,22 @@ public class PanelRezervacije extends javax.swing.JPanel {
         btnRefreshTabela.setForeground(java.awt.Color.white);
         btnRefreshTabela.setBorder(null);
         btnRefreshTabela.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 60, 60));
+        btnRefreshTabela.setOpaque(false);
+        add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 60, 60));
 
         btnAktivneRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         btnAktivneRezervacije.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAktivneRezervacije.setForeground(java.awt.Color.white);
         btnAktivneRezervacije.setText("Aktivne rezervacije");
         btnAktivneRezervacije.setBorder(null);
-        add(btnAktivneRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, 300, 60));
+        add(btnAktivneRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 300, 60));
 
         btnRealizovaneRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         btnRealizovaneRezervacije.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRealizovaneRezervacije.setForeground(java.awt.Color.white);
         btnRealizovaneRezervacije.setText("Realizovane rezervacije");
         btnRealizovaneRezervacije.setBorder(null);
-        add(btnRealizovaneRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 300, 60));
+        add(btnRealizovaneRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 300, 60));
 
         btnOtkaziRezervaciju.setBackground(new java.awt.Color(34, 40, 44));
         btnOtkaziRezervaciju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -77,7 +79,7 @@ public class PanelRezervacije extends javax.swing.JPanel {
         btnOtkaziRezervaciju.setText("Oktazi rezervaciju");
         btnOtkaziRezervaciju.setBorder(null);
         btnOtkaziRezervaciju.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnOtkaziRezervaciju, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 310, 300, 60));
+        add(btnOtkaziRezervaciju, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 620, 300, 60));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(java.awt.Color.white);
@@ -103,7 +105,7 @@ public class PanelRezervacije extends javax.swing.JPanel {
         tabelMojeRezeravacije.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tabelMojeRezeravacije);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 1270, 220));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 1280, 530));
     }// </editor-fold>//GEN-END:initComponents
 
     public JButton getBtnOtkaziRezervaciju() {
@@ -133,7 +135,6 @@ public class PanelRezervacije extends javax.swing.JPanel {
     public JButton getBtnRefreshTabela() {
         return btnRefreshTabela;
     }
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -146,19 +147,20 @@ public class PanelRezervacije extends javax.swing.JPanel {
     private javax.swing.JTable tabelMojeRezeravacije;
     // End of variables declaration//GEN-END:variables
 
-    public void btnAktivneRezervacijeActionListener(ActionListener actionListener) {
-        btnAktivneRezervacije.addActionListener(actionListener);
+    public void btnAktivneRezervacijeMouseListener(MouseListener mouseListener) {
+        btnAktivneRezervacije.addMouseListener(mouseListener);
     }
 
-    public void btnOtkaziRezervacijuActionListener(ActionListener actionListener) {
-        btnOtkaziRezervaciju.addActionListener(actionListener);
+    public void btnOtkaziRezervacijuMouseListener(MouseListener mouseListener) {
+        btnOtkaziRezervaciju.addMouseListener(mouseListener);
     }
 
-    public void btnRealizovaneRezervacijeActionListener(ActionListener actionListener) {
-        btnRealizovaneRezervacije.addActionListener(actionListener);
+    public void btnRealizovaneRezervacijeMouseListener(MouseListener mouseListener) {
+        btnRealizovaneRezervacije.addMouseListener(mouseListener);
     }
 
-    public void btnRefreshTabelaActionListener(ActionListener actionListener) {
-        btnRefreshTabela.addActionListener(actionListener);
+    public void btnRefreshTabelaMouseListener(MouseListener mouseListener) {
+        btnRefreshTabela.addMouseListener(mouseListener);
     }
+
 }

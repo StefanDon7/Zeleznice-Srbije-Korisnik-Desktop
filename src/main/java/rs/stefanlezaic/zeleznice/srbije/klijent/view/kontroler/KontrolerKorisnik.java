@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
@@ -38,9 +39,9 @@ public class KontrolerKorisnik {
     }
 
     private void addListener() {
-        panelKorisnika.btnPromeniActionListener(new ActionListener() {
+        panelKorisnika.btnPromeniMouseListener(new AbstractButton(panelKorisnika.getBtnPromeni(), "save", "save1") {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void execute() {
                 promeni();
             }
         });
@@ -104,6 +105,6 @@ public class KontrolerKorisnik {
         panelKorisnika.getBtnPromeni().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/save.png")));
 
-   }
+    }
 
 }

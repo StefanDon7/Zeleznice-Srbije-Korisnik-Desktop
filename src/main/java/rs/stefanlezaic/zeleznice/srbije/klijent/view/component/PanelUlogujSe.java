@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rs.stefanlezaic.zeleznice.srbije.klijent.view;
+package rs.stefanlezaic.zeleznice.srbije.klijent.view.component;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -109,7 +110,7 @@ public class PanelUlogujSe extends javax.swing.JPanel {
     private javax.swing.JPasswordField txtPasswordLogin;
     // End of variables declaration//GEN-END:variables
 
-    public void btnPrijaviSeActionListener(ActionListener actionListener) {
-        btnPrijaviSe.addActionListener(actionListener);
+     public void btnPrijaviSeMouseListener(MouseListener mouseListener) {
+        btnPrijaviSe.addMouseListener(mouseListener);
     }
 }
