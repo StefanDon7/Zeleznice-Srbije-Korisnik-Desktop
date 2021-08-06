@@ -111,8 +111,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Uloguj se"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-            <BevelBorder/>
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder>
+              <Color PropertyName="color" blue="ff" green="ff" red="ff" type="rgb"/>
+            </LineBorder>
           </Border>
         </Property>
         <Property name="opaque" type="boolean" value="false"/>

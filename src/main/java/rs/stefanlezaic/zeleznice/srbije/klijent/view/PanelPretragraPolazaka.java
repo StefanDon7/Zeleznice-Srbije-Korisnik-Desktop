@@ -93,7 +93,7 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnPretraziPolaske.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPretraziPolaske.setForeground(java.awt.Color.white);
         btnPretraziPolaske.setText("PRETRAZI POLASKE");
-        btnPretraziPolaske.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnPretraziPolaske.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnPretraziPolaske.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btnPretraziPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 340, 60));
 
@@ -128,25 +128,26 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnRezervisi.setBackground(new java.awt.Color(34, 40, 44));
         btnRezervisi.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRezervisi.setForeground(java.awt.Color.white);
-        btnRezervisi.setText("REZERVISI POLAZAK");
-        btnRezervisi.setBorder(null);
+        btnRezervisi.setText("Rezerviši kartu");
+        btnRezervisi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnRezervisi.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btnRezervisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 620, 270, 60));
 
         btnViseOPolasku.setBackground(new java.awt.Color(34, 40, 44));
+        btnViseOPolasku.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnViseOPolasku.setForeground(java.awt.Color.white);
+        btnViseOPolasku.setText("Informacije o polasku");
         btnViseOPolasku.setToolTipText("");
-        btnViseOPolasku.setBorder(null);
-        btnViseOPolasku.setOpaque(false);
-        add(btnViseOPolasku, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 620, 60, 60));
+        btnViseOPolasku.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(btnViseOPolasku, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 620, 270, 60));
 
         btnSviPolasciDanas.setBackground(new java.awt.Color(34, 40, 44));
         btnSviPolasciDanas.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnSviPolasciDanas.setForeground(java.awt.Color.white);
-        btnSviPolasciDanas.setText("Danasnji polasci");
-        btnSviPolasciDanas.setBorder(null);
+        btnSviPolasciDanas.setText("Današnji polasci");
+        btnSviPolasciDanas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnSviPolasciDanas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        add(btnSviPolasciDanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 210, 240, 60));
+        add(btnSviPolasciDanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 210, 270, 60));
 
         jLabel2.setBackground(new java.awt.Color(34, 40, 44));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -158,10 +159,9 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnRefreshTabela.setBackground(new java.awt.Color(34, 40, 44));
         btnRefreshTabela.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRefreshTabela.setForeground(java.awt.Color.white);
-        btnRefreshTabela.setBorder(null);
-        btnRefreshTabela.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnRefreshTabela.setOpaque(false);
-        add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 210, 60, 60));
+        btnRefreshTabela.setText("Osveži tabelu");
+        btnRefreshTabela.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 210, 270, 60));
         add(panelDatum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 360, 60));
     }// </editor-fold>//GEN-END:initComponents
 

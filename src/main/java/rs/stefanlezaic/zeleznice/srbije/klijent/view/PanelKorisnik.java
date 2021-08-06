@@ -62,7 +62,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         txtEmail.setBackground(new java.awt.Color(102, 102, 102));
         txtEmail.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtEmail.setForeground(java.awt.Color.black);
-        txtEmail.setBorder(null);
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtEmail.setEnabled(false);
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 220, 40));
@@ -76,7 +76,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         txtIme.setBackground(new java.awt.Color(102, 102, 102));
         txtIme.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtIme.setForeground(java.awt.Color.black);
-        txtIme.setBorder(null);
+        txtIme.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtIme.setEnabled(false);
         add(txtIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 220, 40));
@@ -91,7 +91,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         txtPrezime.setBackground(new java.awt.Color(102, 102, 102));
         txtPrezime.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPrezime.setForeground(java.awt.Color.black);
-        txtPrezime.setBorder(null);
+        txtPrezime.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPrezime.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtPrezime.setEnabled(false);
         add(txtPrezime, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 220, 40));
@@ -106,7 +106,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         txtKorisnickoIme.setBackground(new java.awt.Color(102, 102, 102));
         txtKorisnickoIme.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtKorisnickoIme.setForeground(java.awt.Color.black);
-        txtKorisnickoIme.setBorder(null);
+        txtKorisnickoIme.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(txtKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 220, 40));
 
@@ -120,7 +120,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         txtPassword.setBackground(new java.awt.Color(102, 102, 102));
         txtPassword.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPassword.setForeground(java.awt.Color.black);
-        txtPassword.setBorder(null);
+        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 220, 40));
 
@@ -134,7 +134,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         txtPasswordPotvrda.setBackground(new java.awt.Color(102, 102, 102));
         txtPasswordPotvrda.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtPasswordPotvrda.setForeground(java.awt.Color.black);
-        txtPasswordPotvrda.setBorder(null);
+        txtPasswordPotvrda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPasswordPotvrda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(txtPasswordPotvrda, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 220, 40));
 
@@ -142,7 +142,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         btnPromeni.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPromeni.setForeground(java.awt.Color.white);
         btnPromeni.setText("Promeni");
-        btnPromeni.setBorder(null);
+        btnPromeni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnPromeni.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btnPromeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 220, 60));
     }// </editor-fold>//GEN-END:initComponents

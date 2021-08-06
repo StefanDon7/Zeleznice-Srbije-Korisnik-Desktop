@@ -29,8 +29,7 @@ public class GlavnaForma extends javax.swing.JFrame {
     public JMenuBar getMenu() {
         return Menu;
     }
-    
-    
+
     public JMenu getMenuOdjava() {
         return menuOdjava;
     }
@@ -62,8 +61,6 @@ public class GlavnaForma extends javax.swing.JFrame {
     public PanelBar getPanelBar() {
         return panelBar;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,21 +98,25 @@ public class GlavnaForma extends javax.swing.JFrame {
         Menu.setMinimumSize(new java.awt.Dimension(1336, 80));
         Menu.setPreferredSize(new java.awt.Dimension(1336, 80));
 
+        menuPretraga.setBorder(new javax.swing.border.MatteBorder(null));
         menuPretraga.setText("Pretraga");
         menuPretraga.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         menuPretraga.setMaximumSize(new java.awt.Dimension(200, 80));
         Menu.add(menuPretraga);
 
+        menuNalog.setBorder(new javax.swing.border.MatteBorder(null));
         menuNalog.setText("Nalog");
         menuNalog.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         menuNalog.setMaximumSize(new java.awt.Dimension(200, 80));
         Menu.add(menuNalog);
 
+        menuMojeRezervacije.setBorder(new javax.swing.border.MatteBorder(null));
         menuMojeRezervacije.setText("Rezervacije");
         menuMojeRezervacije.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         menuMojeRezervacije.setMaximumSize(new java.awt.Dimension(200, 80));
         Menu.add(menuMojeRezervacije);
 
+        menuOdjava.setBorder(new javax.swing.border.MatteBorder(null));
         menuOdjava.setText("Odjavi se");
         menuOdjava.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         menuOdjava.setMaximumSize(new java.awt.Dimension(200, 80));
@@ -159,4 +160,13 @@ public class GlavnaForma extends javax.swing.JFrame {
     public void menuOdjavaActionListener(MouseListener mouseListener) {
         menuOdjava.addMouseListener(mouseListener);
     }
+
+    public void lblTamnaTemaActionListener(MouseListener mouseListener) {
+        panelBar.getPanelTema().getLblDarkMode().addMouseListener(mouseListener);
+    }
+
+    public void lblSvetlaTemaActionListener(MouseListener mouseListener) {
+        panelBar.getPanelTema().getLblWhiteMode().addMouseListener(mouseListener);
+    }
+    
 }

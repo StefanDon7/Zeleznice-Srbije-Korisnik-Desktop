@@ -54,30 +54,29 @@ public class PanelRezervacije extends javax.swing.JPanel {
         btnRefreshTabela.setBackground(new java.awt.Color(34, 40, 44));
         btnRefreshTabela.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRefreshTabela.setForeground(java.awt.Color.white);
-        btnRefreshTabela.setBorder(null);
+        btnRefreshTabela.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnRefreshTabela.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnRefreshTabela.setOpaque(false);
         add(btnRefreshTabela, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 60, 60));
 
         btnAktivneRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         btnAktivneRezervacije.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAktivneRezervacije.setForeground(java.awt.Color.white);
         btnAktivneRezervacije.setText("Aktivne rezervacije");
-        btnAktivneRezervacije.setBorder(null);
+        btnAktivneRezervacije.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(btnAktivneRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 300, 60));
 
         btnRealizovaneRezervacije.setBackground(new java.awt.Color(34, 40, 44));
         btnRealizovaneRezervacije.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRealizovaneRezervacije.setForeground(java.awt.Color.white);
         btnRealizovaneRezervacije.setText("Realizovane rezervacije");
-        btnRealizovaneRezervacije.setBorder(null);
+        btnRealizovaneRezervacije.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(btnRealizovaneRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 300, 60));
 
         btnOtkaziRezervaciju.setBackground(new java.awt.Color(34, 40, 44));
         btnOtkaziRezervaciju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnOtkaziRezervaciju.setForeground(java.awt.Color.white);
         btnOtkaziRezervaciju.setText("Oktazi rezervaciju");
-        btnOtkaziRezervaciju.setBorder(null);
+        btnOtkaziRezervaciju.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnOtkaziRezervaciju.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btnOtkaziRezervaciju, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 620, 300, 60));
 
