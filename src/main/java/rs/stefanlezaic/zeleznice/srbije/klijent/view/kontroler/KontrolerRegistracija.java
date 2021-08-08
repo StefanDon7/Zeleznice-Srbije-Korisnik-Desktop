@@ -5,9 +5,9 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
@@ -15,6 +15,7 @@ import rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelRegistracija
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 import rs.stefanlezaic.zeleznice.srbije.lib.exception.InvalidProductException;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
@@ -57,8 +58,14 @@ public class KontrolerRegistracija {
             return;
         }
         korisnik = new Klijent();
-        korisnik.setLozinka(lozinka);
-        pokupiPodatke();
+
+        try {
+            pokupiPodatke();
+            korisnik.setLozinka(lozinka);
+        } catch (ParametarsException ex) {
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention(ex.getMessage()));
+            return;
+        }
         //mozda ne bih treba da smaram server sa upitom o tome da li je sve popunio al nema veze stoji i na serverskoj strani
         if (korisnik.getKorisnickoIme().isEmpty() || korisnik.getLozinka().isEmpty() || korisnik.getIme().isEmpty() || korisnik.getPrezime().isEmpty() || korisnik.getEmail().isEmpty()) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Sva polja moraju biti popunjena!"));
@@ -89,7 +96,7 @@ public class KontrolerRegistracija {
         panelRegistracija.getTxtPasswordPotvrda().setText("");
     }
 
-    private void pokupiPodatke() {
+    private void pokupiPodatke() throws ParametarsException {
         korisnik.setIme(panelRegistracija.getTxtIme().getText());
         korisnik.setPrezime(panelRegistracija.getTxtPrezime().getText());
         korisnik.setEmail(panelRegistracija.getTxtEmail().getText());
