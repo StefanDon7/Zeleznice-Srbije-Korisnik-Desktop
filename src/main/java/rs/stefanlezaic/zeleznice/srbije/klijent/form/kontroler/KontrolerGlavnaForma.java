@@ -7,10 +7,7 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerKorisnik;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerPretragaPolazaka;
@@ -18,9 +15,7 @@ import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerRezervac
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
-import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.SoundEffect;
-import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.constant.SoundConst;
-import rs.stefanlezaic.zeleznice.srbije.lib.theme.Tema;
+import rs.stefanlezaic.zeleznice.srbije.lib.theme.KontrolerTema;
 
 /**
  *
@@ -30,21 +25,17 @@ public class KontrolerGlavnaForma {
 
     private GlavnaForma glavnaForma;
     private Klijent korisnik;
-    private Tema tema;
     private Sat sat;
+    private KontrolerPocetneForme kontrolerPocetneForme;
     private KontrolerPretragaPolazaka kpk;
     private KontrolerKorisnik kk;
     private KontrolerRezervacije kr;
-    private KontrolerPocetneForme kontrolerPocetneForme;
-    private final SoundEffect soundEffect = new SoundEffect();
+    private KontrolerTema kontrolerTema;
 
     public KontrolerGlavnaForma(Klijent korisnik, KontrolerPocetneForme kontrolerPocetneForme) {
         this.glavnaForma = new GlavnaForma();
         this.korisnik = korisnik;
         this.kontrolerPocetneForme = kontrolerPocetneForme;
-        tema = new Tema(glavnaForma);
-        ukljuciTamnuTemu();
-        glavnaForma.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/srbija1.png")));
         pokreniSat();
         ucitajPotrebneKontrolere();
         otvoriFormu();
@@ -79,64 +70,6 @@ public class KontrolerGlavnaForma {
             @Override
             public void execute() {
                 menuOdjaviSe();
-            }
-        });
-
-        glavnaForma.lblTamnaTemaActionListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                ukljuciTamnuTemu();
-                soundEffect.startAudioKlip(SoundConst.BUP);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.KLIK);
-                glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/temaSredina.png")));
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/temaCrna.png")));
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        glavnaForma.lblSvetlaTemaActionListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                ukljuciSvetluTemu();
-                soundEffect.startAudioKlip(SoundConst.BUP);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                soundEffect.startAudioKlip(SoundConst.KLIK);
-                glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/temaSredina.png")));
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().
-                        setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/temaBela.png")));
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
             }
         });
     }
@@ -182,6 +115,8 @@ public class KontrolerGlavnaForma {
         kpk = new KontrolerPretragaPolazaka(glavnaForma, glavnaForma.getPanelPretragraPolazaka(), korisnik);
         kk = new KontrolerKorisnik(glavnaForma, glavnaForma.getPanelKorisnik(), korisnik);
         kr = new KontrolerRezervacije(glavnaForma, glavnaForma.getPanelRezervacije(), korisnik);
+        kontrolerTema = new KontrolerTema(glavnaForma.getPanelBar().getPanelTema(), glavnaForma);
+
     }
 
     private void menuOdjavaSaDesneStrane() {
@@ -204,18 +139,6 @@ public class KontrolerGlavnaForma {
         glavnaForma.setLocation(size.width / 2 - glavnaForma.getWidth() / 2, size.height / 2 - glavnaForma.getHeight() / 2);
     }
 
-    public void ukljuciTamnuTemu() {
-        glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().setVisible(true);
-        glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().setVisible(false);
-        tema.blackTheme();
-    }
-
-    public void ukljuciSvetluTemu() {
-        glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().setVisible(false);
-        glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().setVisible(true);
-        tema.whiteTheme();
-    }
-
     private void pokreniSat() {
         sat = new Sat(glavnaForma.getPanelBar().getPanelSat().getLblVreme(), glavnaForma.getPanelBar().getPanelSat().getLblDatum());
         sat.pokreniSat();
@@ -223,10 +146,6 @@ public class KontrolerGlavnaForma {
 
     private void ucitajIkonice() {
         try {
-            glavnaForma.getPanelBar().getPanelTema().getLblWhiteMode().
-                    setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/temaBela.png")));
-            glavnaForma.getPanelBar().getPanelTema().getLblDarkMode().
-                    setIcon(new ImageIcon(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/temaCrna.png")));
             glavnaForma.getMenuPretraga().setIcon(new javax.swing.ImageIcon(getClass().
                     getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/search.png")));
             glavnaForma.getMenuNalog().setIcon(new javax.swing.ImageIcon(getClass().
