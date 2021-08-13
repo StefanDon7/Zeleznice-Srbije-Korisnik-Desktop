@@ -28,6 +28,8 @@ public class KontrolerPocetneForme {
         this.pocetnaForma = pocetnaForma;
         this.kontrolerUlogujSe = new KontrolerUlogujSe(pocetnaForma, pocetnaForma.getPanelUlogujSe(), this);
         this.kontrolerRegistracija = new KontrolerRegistracija(pocetnaForma, pocetnaForma.getPanelRegistracija());
+        pocetnaForma.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/train.png")));
+        pocetnaForma.setTitle("Železnice Srbije");
         prebaciNaPanelUlogujSe();
         ucitajIkonice();
         centrirajFormu();

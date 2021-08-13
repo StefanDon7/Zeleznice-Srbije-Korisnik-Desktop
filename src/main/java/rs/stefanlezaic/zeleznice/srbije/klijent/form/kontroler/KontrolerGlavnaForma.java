@@ -36,6 +36,9 @@ public class KontrolerGlavnaForma {
         this.glavnaForma = new GlavnaForma();
         this.korisnik = korisnik;
         this.kontrolerPocetneForme = kontrolerPocetneForme;
+        glavnaForma.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/train.png")));
+        glavnaForma.setTitle("Železnice Srbije");
+
         pokreniSat();
         ucitajPotrebneKontrolere();
         otvoriFormu();
