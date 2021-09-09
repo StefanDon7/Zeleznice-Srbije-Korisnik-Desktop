@@ -23,8 +23,7 @@ public abstract class AbstractButton extends AbstractMouseListener {
         this.button = button;
         this.icon = icon;
         this.icon1 = icon1;
-        button.setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/" + icon + ".png")));
+        dodajIkonicu();
     }
 
     @Override
@@ -48,5 +47,14 @@ public abstract class AbstractButton extends AbstractMouseListener {
     }
 
     public abstract void execute();
+
+    public void sakriIkonicu() {
+        button.setIcon(null);
+    }
+
+    public void dodajIkonicu() {
+        button.setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/" + icon + ".png")));
+    }
 
 }

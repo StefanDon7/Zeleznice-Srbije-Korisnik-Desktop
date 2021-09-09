@@ -20,7 +20,7 @@ public abstract class AbstractMouseListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+        pustiClickedZvuk();
     }
 
     @Override
@@ -33,12 +33,19 @@ public abstract class AbstractMouseListener implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        soundEffect.startAudioKlip(SoundConst.KLIK);
+        pustiMouseEntered();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
     }
 
+    protected void pustiClickedZvuk() {
+        soundEffect.startAudioKlip(SoundConst.INTERFEJS);
+    }
+
+    protected void pustiMouseEntered() {
+        soundEffect.startAudioKlip(SoundConst.KLIK);
+    }
 
 }

@@ -23,8 +23,7 @@ public abstract class AbstractMenu extends AbstractMouseListener {
         this.menu = menu;
         this.icon = icon;
         this.icon1 = icon1;
-        menu.setIcon(new ImageIcon(getClass().
-                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/" + icon + ".png")));
+        dodajIkonicu();
     }
 
     @Override
@@ -48,5 +47,14 @@ public abstract class AbstractMenu extends AbstractMouseListener {
     }
 
     public abstract void execute();
+
+    public void sakriIkonicu(){
+        menu.setIcon(null);
+    }
+    
+    public  void dodajIkonicu() {
+         menu.setIcon(new ImageIcon(getClass().
+                getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/menu/" + icon + ".png")));
+    }
 
 }
