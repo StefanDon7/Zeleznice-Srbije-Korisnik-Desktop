@@ -15,6 +15,7 @@ import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerRezervac
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractMenu;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
+import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.KontrolerSoundEffect;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.KontrolerTema;
 
 /**
@@ -119,6 +120,7 @@ public class KontrolerGlavnaForma {
         kk = new KontrolerKorisnik(glavnaForma, glavnaForma.getPanelKorisnik(), korisnik);
         kr = new KontrolerRezervacije(glavnaForma, glavnaForma.getPanelRezervacije(), korisnik);
         kontrolerTema = new KontrolerTema(glavnaForma.getPanelBar().getPanelTema(), glavnaForma);
+        new KontrolerSoundEffect(glavnaForma.getPanelBar().getPanelSound());
 
     }
 

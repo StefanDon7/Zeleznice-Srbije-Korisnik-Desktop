@@ -87,7 +87,7 @@ public class GlavnaForma extends javax.swing.JFrame {
         getContentPane().add(panelRezervacije, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 690));
         getContentPane().add(panelKorisnik, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 690));
         getContentPane().add(panelPretragraPolazaka, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1300, 690));
-        getContentPane().add(panelBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 10, -1, 220));
+        getContentPane().add(panelBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1330, 10, -1, 290));
 
         jSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.lightGray, 3));

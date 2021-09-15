@@ -134,7 +134,7 @@
     <Component class="rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelBar" name="panelBar">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1330" y="10" width="-1" height="220"/>
+          <AbsoluteConstraints x="1330" y="10" width="-1" height="290"/>
         </Constraint>
       </Constraints>
     </Component>
