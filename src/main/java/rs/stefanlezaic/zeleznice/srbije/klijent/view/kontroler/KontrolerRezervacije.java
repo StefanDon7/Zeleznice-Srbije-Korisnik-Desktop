@@ -5,8 +5,7 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -138,6 +137,7 @@ public class KontrolerRezervacije {
     public void ucitajSveRezervacije() {
         listaRezervacija = new ArrayList<>();
         try {
+            Kontroler.getInstance().vratiMojeRezervacijeHTTP(korisnik);
             listaRezervacija = Kontroler.getInstance().vratiMojeRezervacije(new Rezervacija(korisnik, null, null));
         } catch (Exception ex) {
             Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);

@@ -119,7 +119,7 @@ public class KontrolerPretragaPolazaka {
         Date d = new Date();
         rezervacija = new Rezervacija(korisnik, p, d);
         try {
-            Kontroler.getInstance().rezervisiPolazak(rezervacija);
+            Kontroler.getInstance().rezervisiPolazakHTTP(rezervacija);
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste rezervisali kartu za polazak!"));
         } catch (Exception ex) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.getMessage()));
@@ -155,7 +155,7 @@ public class KontrolerPretragaPolazaka {
         try {
             date = panelPretragaPolazaka.getPanelDatum1().getUtilDate();
         } catch (Exception ex) {
-            System.out.println("vra");
+            System.out.println("vraca");
         }
         Stanica pocetna = (Stanica) panelPretragaPolazaka.getCmbPocetnaStanica().getSelectedItem();
         Stanica krajnja = (Stanica) panelPretragaPolazaka.getCmbKrajnjaStanica().getSelectedItem();

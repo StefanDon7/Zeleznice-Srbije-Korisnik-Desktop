@@ -6,8 +6,6 @@
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
@@ -73,7 +71,11 @@ public class KontrolerRegistracija {
         }
 
         try {
-            Kontroler.getInstance().RegistrujSe(korisnik);
+            //OVO JE TCP  
+            //Kontroler.getInstance().registrujSe(korisnik);
+            //HTTP
+            Klijent korisnikVracen=Kontroler.getInstance().registrujSeHTTP(korisnik);
+            System.out.println(korisnikVracen);
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste se registrovali"));
             ocistiFormu();
         } catch (Exception ex) {

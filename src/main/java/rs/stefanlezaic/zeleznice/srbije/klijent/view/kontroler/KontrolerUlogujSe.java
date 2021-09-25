@@ -5,8 +5,6 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -60,13 +58,16 @@ public class KontrolerUlogujSe {
         }
         Klijent klijent;
         try {
-            klijent = Kontroler.getInstance().UlogujSe(korisnik);
+            //TCP
+            //klijent = Kontroler.getInstance().ulogujSe(korisnik);
+            //HTTP
+            klijent=Kontroler.getInstance().ulogujSeHTTP(email, lozinka);
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ".\nUspesno ste se prijavili!"));
             kontrolerPocetneForme.prikaziGlavnuFormu(klijent);
-        } catch (EntityNotFoundException ex) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
-        } catch (SQLException ex) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
+//        } catch (EntityNotFoundException ex) {
+//            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
+//        } catch (SQLException ex) {
+//            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
         } catch (Exception ex) {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
         }
