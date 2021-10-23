@@ -15,13 +15,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
-import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.Prikaz;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabelePolasci;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelPretragraPolazaka;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
-import rs.stefanlezaic.zeleznice.srbije.lib.domen.Linija;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.MedjuStanica;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Rezervacija;
@@ -116,10 +115,9 @@ public class KontrolerPretragaPolazaka {
         //        } else {
         //            JOptionPane.showMessageDialog(this, "Popunjena su sva mesta!");
         //        }
-        Date d = new Date();
-        rezervacija = new Rezervacija(korisnik, p, d);
+        rezervacija = new Rezervacija(new Klijent(korisnik.getKlijentID()), new Polazak(p.getPolazakID()));
         try {
-            Kontroler.getInstance().rezervisiPolazakHTTP(rezervacija);
+            KontrolerHTTP.getInstance().rezervisiPolazak(rezervacija);
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste rezervisali kartu za polazak!"));
         } catch (Exception ex) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.getMessage()));
@@ -151,24 +149,21 @@ public class KontrolerPretragaPolazaka {
     }
 
     private void pretraziPolaskeZaPocetnuKrajnuDatum() {
-        Date date = null;
+        String date = null;
         try {
-            date = panelPretragaPolazaka.getPanelDatum1().getUtilDate();
+            date = panelPretragaPolazaka.getPanelDatum1().getSQLDate();
         } catch (Exception ex) {
             System.out.println("vraca");
         }
         Stanica pocetna = (Stanica) panelPretragaPolazaka.getCmbPocetnaStanica().getSelectedItem();
         Stanica krajnja = (Stanica) panelPretragaPolazaka.getCmbKrajnjaStanica().getSelectedItem();
 
-        Polazak p = new Polazak(-1, "", date, null, new Linija(-1, null, -1, -1, pocetna, krajnja, null), null);
-
         ArrayList<Polazak> listPolazaka = new ArrayList<>();
         try {
-            listPolazaka = Kontroler.getInstance().vratiMiPolaskeZaDatumPocetnuIKrajnjuStanicu(p);
+            listPolazaka = KontrolerHTTP.getInstance().vratiMiPolaske(pocetna,krajnja,date);
         } catch (Exception ex) {
             Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         mtp.ocistiTabelu();
         if (listPolazaka.isEmpty()) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Nema polazaka za datu realaciju!"));
@@ -180,10 +175,15 @@ public class KontrolerPretragaPolazaka {
 
     private void pretraziPolaskeZaDatum() {
         Date date = new Date();
-        Polazak p = new Polazak(-1, "", date, null, null, null);
+        String datum = null;
+        try {
+            datum = panelPretragaPolazaka.getPanelDatum1().getSQLDate(date);
+        } catch (Exception ex) {
+            Logger.getLogger(KontrolerPretragaPolazaka.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ArrayList<Polazak> listPolazaka = new ArrayList<>();
         try {
-            listPolazaka = Kontroler.getInstance().vratiMiPolaskeZaDatum(p);
+            listPolazaka = KontrolerHTTP.getInstance().vratiMiPolaskeZaDatum(datum);
         } catch (Exception ex) {
             Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -205,10 +205,9 @@ public class KontrolerPretragaPolazaka {
             return;
         }
         Polazak p = mtp.getList().get(broj);
-        MedjuStanica m = new MedjuStanica(null, p.getLinija(), 0);
         ArrayList<MedjuStanica> listaMedjustanica;
         try {
-            listaMedjustanica = Kontroler.getInstance().vratiMiMedjustaniceLiniju(m);
+            listaMedjustanica = KontrolerHTTP.getInstance().vratiMiMedjustaniceLiniju(p.getLinija());
             JOptionPane.showMessageDialog(glavnaForma, ispisiListu(listaMedjustanica), p.getLinija().getStanicaPocetna() + "-" + p.getLinija().getStanicaKrajnja() + " (" + p.getLinija().getTipLinije() + ")", 1);
         } catch (Exception ex) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.toString()));
@@ -241,7 +240,7 @@ public class KontrolerPretragaPolazaka {
 
         ArrayList<Stanica> listaStanica = new ArrayList<>();
         try {
-            listaStanica = Kontroler.getInstance().vratiMiSveStanice();
+            listaStanica = KontrolerHTTP.getInstance().vratiMiSveStanice();
         } catch (Exception ex) {
             Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }

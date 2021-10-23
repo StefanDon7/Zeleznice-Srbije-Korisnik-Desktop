@@ -11,6 +11,7 @@ import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
+import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 
 /**
  *
@@ -39,10 +40,9 @@ public class ModelTabelePolasci extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Polazak p = list.get(rowIndex);
-        Rezervacija r = new Rezervacija(null, p, null);
         switch (columnIndex) {
             case 0:
-                return p.getLinija().getNaziv();
+                return p.getLinija().getNazivLinije();
             case 1:
                 return smfVreme.format(p.getDatumPolaska());
             case 2:
@@ -66,7 +66,7 @@ public class ModelTabelePolasci extends AbstractTableModel {
             case 6:
                 return p.getLinija().getTipLinije().getNaziv();
             case 7:
-                return vratiBroj(r) + "/" + p.getVoz().getBrojSedista();
+                return vratiBroj(p) + "/" + p.getVoz().getBrojSedista();
             case 8:
                 return p.getNapomena();
             default:
@@ -110,20 +110,20 @@ public class ModelTabelePolasci extends AbstractTableModel {
         return list;
     }
 
-    public int vratiBroj(Rezervacija r) {
+    public int vratiBroj(Polazak p) {
         int broj = 0;
         try {
-            return Kontroler.getInstance().vratiBrojRezervacija(r);
+            return KontrolerHTTP.getInstance().vratiBrojRezervacija(p);
         } catch (Exception ex) {
             return broj;
         }
     }
 
-    public boolean popunjeno(Rezervacija r) {
-        if (vratiBroj(r) == r.getPolazak().getVoz().getBrojSedista()) {
-            return true;
+    public boolean popunjeno(Polazak p) {
+        if (vratiBroj(p) < p.getVoz().getBrojSedista()) {
+            return false;
         }
-        return false;
+        return true;
     }
 
 }

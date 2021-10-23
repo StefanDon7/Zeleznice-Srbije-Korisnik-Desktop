@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
-import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabeleRezervacija;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelRezervacije;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
@@ -79,7 +79,7 @@ public class KontrolerRezervacije {
     private void otkaziRezervaciju() {
         int broj = panelRezervacije.getTabelMojeRezeravacije().getSelectedRow();
         if (broj == -1) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Izaberite polazak!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Izaberite rezervaciju!"));
             return;
         }
         Rezervacija r = mtr.getList().get(broj);
@@ -91,7 +91,7 @@ public class KontrolerRezervacije {
             return;
         }
         try {
-            Kontroler.getInstance().otkaziRezervaciju(r);
+            KontrolerHTTP.getInstance().otkaziRezervaciju(new Rezervacija(r.getRezervacijaID()));
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste otkazali rezervaciju!"));
             mtr.izbrisiIzTabele(broj);
         } catch (InvalidProductException ex) {
@@ -137,8 +137,8 @@ public class KontrolerRezervacije {
     public void ucitajSveRezervacije() {
         listaRezervacija = new ArrayList<>();
         try {
-            Kontroler.getInstance().vratiMojeRezervacijeHTTP(korisnik);
-            listaRezervacija = Kontroler.getInstance().vratiMojeRezervacije(new Rezervacija(korisnik, null, null));
+            KontrolerHTTP.getInstance().vratiMojeRezervacije(korisnik);
+            listaRezervacija = KontrolerHTTP.getInstance().vratiMojeRezervacije(korisnik);
         } catch (Exception ex) {
             Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }

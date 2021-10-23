@@ -5,15 +5,14 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler.KontrolerPocetneForme;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelUlogujSe;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
-import rs.stefanlezaic.zeleznice.srbije.lib.exception.EntityNotFoundException;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
@@ -50,7 +49,7 @@ public class KontrolerUlogujSe {
     private void ulogujSe() {
         String email = panelUlogujSe.getTxtEmailLogin().getText();
         String lozinka = new String(panelUlogujSe.getTxtPasswordLogin().getPassword());
-        korisnik = new Klijent(-1, "korisnickoIme", lozinka, "ime", "prezime", email);
+        korisnik = new Klijent(email, lozinka);
 
         if (email.isEmpty() || lozinka.isEmpty()) {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Sva polja moraju biti popunjena!"));
@@ -61,7 +60,7 @@ public class KontrolerUlogujSe {
             //TCP
             //klijent = Kontroler.getInstance().ulogujSe(korisnik);
             //HTTP
-            klijent=Kontroler.getInstance().ulogujSeHTTP(email, lozinka);
+            klijent=KontrolerHTTP.getInstance().ulogujSe(korisnik);
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ".\nUspesno ste se prijavili!"));
             kontrolerPocetneForme.prikaziGlavnuFormu(klijent);
 //        } catch (EntityNotFoundException ex) {

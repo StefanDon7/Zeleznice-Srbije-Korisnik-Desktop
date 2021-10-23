@@ -49,7 +49,7 @@ public class ModelTabeleRezervacija extends AbstractTableModel {
             case 5:
                 return smfVreme.format(r.getPolazak().getDatumDolaska());
             case 6:
-                return smfDatumIVreme.format(r.getDatum());
+                return smfDatumIVreme.format(r.getDate());
             case 7:
                 return r.getPolazak().getNapomena();
             default:

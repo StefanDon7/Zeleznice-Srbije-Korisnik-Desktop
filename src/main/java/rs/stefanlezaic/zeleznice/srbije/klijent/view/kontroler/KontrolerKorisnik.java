@@ -8,7 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
-import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.PanelKorisnik;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
@@ -67,13 +67,13 @@ public class KontrolerKorisnik {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Potrvrda lozinke nije dobra!"));
             return;
         }
-        Klijent klijent = new Klijent(korisnik.getKlijentID(), korisnickoIme, lozinka, ime, prezime, email);
+        Klijent klijent = new Klijent(korisnik.getKlijentID(), email, korisnickoIme, ime, prezime, lozinka);
         try {
             if (!korisnickoIme.isEmpty()) {
-                Kontroler.getInstance().izmeniKorisnickoImeHTTP(klijent);
+                KontrolerHTTP.getInstance().izmeniKorisnickoIme(klijent);
             }
             if (!lozinka.isEmpty()) {
-                 Kontroler.getInstance().izmeniLozinkuHTTP(klijent);
+                 KontrolerHTTP.getInstance().izmeniLozinku(klijent);
             }
 //            Kontroler.getInstance().izmeniNalog(klijent);
             korisnik = klijent;

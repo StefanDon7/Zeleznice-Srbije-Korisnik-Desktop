@@ -8,7 +8,7 @@ package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
+import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelRegistracija;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
@@ -74,7 +74,7 @@ public class KontrolerRegistracija {
             //OVO JE TCP  
             //Kontroler.getInstance().registrujSe(korisnik);
             //HTTP
-            Klijent korisnikVracen=Kontroler.getInstance().registrujSeHTTP(korisnik);
+            Klijent korisnikVracen=KontrolerHTTP.getInstance().registrujSe(korisnik);
             System.out.println(korisnikVracen);
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste se registrovali"));
             ocistiFormu();
