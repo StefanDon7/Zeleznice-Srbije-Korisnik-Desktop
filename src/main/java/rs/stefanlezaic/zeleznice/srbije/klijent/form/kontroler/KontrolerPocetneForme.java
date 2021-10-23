@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.PocetnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerRegistracija;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.KontrolerUlogujSe;
+import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractLabel;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 
 /**
@@ -67,7 +68,6 @@ public class KontrolerPocetneForme {
             public void mouseExited(MouseEvent e) {
 
             }
-
         });
         pocetnaForma.lblRegistrujSeActionListener(new MouseListener() {
             @Override
@@ -91,32 +91,12 @@ public class KontrolerPocetneForme {
             public void mouseExited(MouseEvent e) {
 
             }
-        });
-        pocetnaForma.lblExitSeActionListener(new MouseListener() {
+        });        
+        pocetnaForma.lblExitSeActionListener(new AbstractLabel(pocetnaForma.getLblExit(), "exit", "exit1") {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void execute() {
                 zatvoriFormu();
                 System.exit(0);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                pocetnaForma.getLblExit().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/exit1.png")));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                pocetnaForma.getLblExit().setIcon(new javax.swing.ImageIcon(getClass().
-                        getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/exit.png")));
             }
         });
     }

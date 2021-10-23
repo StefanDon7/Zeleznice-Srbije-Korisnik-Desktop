@@ -5,7 +5,6 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -160,7 +159,12 @@ public class KontrolerPretragaPolazaka {
 
         ArrayList<Polazak> listPolazaka = new ArrayList<>();
         try {
-            listPolazaka = KontrolerHTTP.getInstance().vratiMiPolaske(pocetna,krajnja,date);
+            panelPretragaPolazaka.getLblNazivTabele().setText("Svi polasci od " + pocetna.getNaziv() + " do " + krajnja.getNaziv() + " za datum " + smf.format(panelPretragaPolazaka.getPanelDatum1().getUtilDate()));
+        } catch (Exception ex) {
+
+        }
+        try {
+            listPolazaka = KontrolerHTTP.getInstance().vratiMiPolaske(pocetna, krajnja, date);
         } catch (Exception ex) {
             Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }

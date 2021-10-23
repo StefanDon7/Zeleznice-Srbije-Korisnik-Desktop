@@ -123,7 +123,7 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         lblNazivTabele.setBackground(new java.awt.Color(34, 40, 44));
         lblNazivTabele.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblNazivTabele.setForeground(java.awt.Color.white);
-        add(lblNazivTabele, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 670, 40));
+        add(lblNazivTabele, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 1140, 40));
 
         btnRezervisi.setBackground(new java.awt.Color(34, 40, 44));
         btnRezervisi.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
