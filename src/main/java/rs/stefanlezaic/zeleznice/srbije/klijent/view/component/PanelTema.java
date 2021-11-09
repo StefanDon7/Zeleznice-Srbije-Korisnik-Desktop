@@ -13,18 +13,18 @@ import javax.swing.JLabel;
  */
 public class PanelTema extends javax.swing.JPanel {
 
-    public PanelTema() {
-        initComponents();
-    }
-
-    public JLabel getLblDarkMode() {
-        return lblDarkMode;
-    }
-
-    public JLabel getLblWhiteMode() {
-        return lblWhiteMode;
-    }
-    
+//    public PanelTema() {
+//        initComponents();
+//    }
+//
+//    public JLabel getLblDarkMode() {
+//        return lblDarkMode;
+//    }
+//
+//    public JLabel getLblWhiteMode() {
+//        return lblWhiteMode;
+//    }
+//    
 
     /**
      * This method is called from within the constructor to initialize the form.

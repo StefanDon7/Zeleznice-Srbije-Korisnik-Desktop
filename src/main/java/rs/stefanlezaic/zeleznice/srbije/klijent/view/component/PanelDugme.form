@@ -45,7 +45,7 @@
           <Color blue="33" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Uloguj se"/>
+        <Property name="text" type="java.lang.String" value="Prijavi se"/>
         <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
       <Constraints>
@@ -63,11 +63,11 @@
           <Color blue="33" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Registruj se"/>
+        <Property name="text" type="java.lang.String" value="Napravi nalog"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="10" width="150" height="40"/>
+          <AbsoluteConstraints x="0" y="10" width="160" height="40"/>
         </Constraint>
       </Constraints>
     </Component>

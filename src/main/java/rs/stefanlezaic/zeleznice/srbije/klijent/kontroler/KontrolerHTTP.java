@@ -48,6 +48,7 @@ public class KontrolerHTTP {
     }
 
     public Klijent ulogujSe(Klijent k) throws IOException, Exception {
+        System.out.println("uloguj se");
         String json = gson.toJson(k);
 
         RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
@@ -72,6 +73,7 @@ public class KontrolerHTTP {
     }
 
     public Klijent registrujSe(Klijent k) throws IOException, Exception {
+        System.out.println("registruj se");
         String json = gson.toJson(k);
         RequestBody body = RequestBody.create(
                 json,
@@ -97,6 +99,7 @@ public class KontrolerHTTP {
     }
 
     public void rezervisiPolazak(Rezervacija r) throws Exception {
+        System.out.println("rezervisi polazak");
         String json = gson.toJson(r);
         RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
         System.out.println(json);
@@ -116,6 +119,7 @@ public class KontrolerHTTP {
     }
 
     public ArrayList<Rezervacija> vratiMojeRezervacije(Klijent klijent) throws Exception {
+        System.out.println("vrati moje rezervacije");
         String json = gson.toJson(klijent);
         RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
         Request request = new Request.Builder()
@@ -140,6 +144,7 @@ public class KontrolerHTTP {
     }
 
     public void izmeniNalog(Klijent k) throws Exception {
+        System.out.println("izmeni nalog");
         String json = gson.toJson(k);
         RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
         Request request = new Request.Builder()

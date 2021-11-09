@@ -191,7 +191,7 @@ public class PanelRegistracija extends javax.swing.JPanel {
         btnRegistrujSe.setBackground(new java.awt.Color(102, 102, 102));
         btnRegistrujSe.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRegistrujSe.setForeground(new java.awt.Color(0, 0, 0));
-        btnRegistrujSe.setText("Registruj se");
+        btnRegistrujSe.setText("Napravi nalog");
         btnRegistrujSe.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnRegistrujSe.setOpaque(false);
         add(btnRegistrujSe, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 250, 70));
