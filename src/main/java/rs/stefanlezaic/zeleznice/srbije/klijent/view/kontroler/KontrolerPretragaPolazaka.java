@@ -12,7 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.Prikaz;
@@ -94,30 +96,22 @@ public class KontrolerPretragaPolazaka {
     private void rezervisi() {
         int red = panelPretragaPolazaka.getTablePolasci().getSelectedRow();
         if (red == -1) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Morate izabrati polazak!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Izaberite polazak!"));
             return;
         }
         Polazak p = mtp.vratiListu().get(red);
-        //        if (p.getNapomena() != null && (p.getNapomena().contains("OTKAZANO") || p.getNapomena().contains("Otkazano") || p.getNapomena().contains("Otkazan"))) {
-        //            JOptionPane.showMessageDialog(this, "Polazak je otkazan. Ne mozete ga rezervisati!");
-        //            return;
-        //        }
-        //ovo moze u validaciji
-        //        if (p.getDatumPolaska().before(new Date())) {
-        //            JOptionPane.showMessageDialog(this, "Ne mozete rezervisati kartu za polazak koji je vec realizovan!");
-        //            return;
-        //        }
-        //        Rezervacija rez = new Rezervacija(null, p, null);
-        //        boolean popunjeno = mtp.popunjeno(rez);
-        //        if (!popunjeno) {
-        //            pretraziPolaskeZaDatum();
-        //        } else {
-        //            JOptionPane.showMessageDialog(this, "Popunjena su sva mesta!");
-        //        }
+        if (p.getNapomena() != null && (p.getNapomena().contains("OTKAZANO") || p.getNapomena().contains("Otkazano") || p.getNapomena().contains("Otkazan"))) {
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Polazak je otkazan!"));
+            return;
+        }
+        if (mtp.popunjeno(p)) {
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Sva mesta za ovaj polazak su popunjena!"));
+            return;
+        }
         rezervacija = new Rezervacija(new Klijent(korisnik.getKlijentID()), new Polazak(p.getPolazakID()));
         try {
             KontrolerHTTP.getInstance().rezervisiPolazak(rezervacija);
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste rezervisali kartu za polazak!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspešno ste rezervisali kartu za polazak!"));
         } catch (Exception ex) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.getMessage()));
         }
@@ -152,7 +146,7 @@ public class KontrolerPretragaPolazaka {
         try {
             date = panelPretragaPolazaka.getPanelDatum1().getSQLDate();
         } catch (Exception ex) {
-            System.out.println("vraca");
+            System.out.println("pretraziPolaskeZaPocetnuKrajnuDatum");
         }
         Stanica pocetna = (Stanica) panelPretragaPolazaka.getCmbPocetnaStanica().getSelectedItem();
         Stanica krajnja = (Stanica) panelPretragaPolazaka.getCmbKrajnjaStanica().getSelectedItem();
@@ -161,7 +155,7 @@ public class KontrolerPretragaPolazaka {
         try {
             panelPretragaPolazaka.getLblNazivTabele().setText("Svi polasci od " + pocetna.getNaziv() + " do " + krajnja.getNaziv() + " za datum " + smf.format(panelPretragaPolazaka.getPanelDatum1().getUtilDate()));
         } catch (Exception ex) {
-
+            System.out.println("pretraziPolaskeZaPocetnuKrajnuDatum");
         }
         try {
             listPolazaka = KontrolerHTTP.getInstance().vratiMiPolaske(pocetna, krajnja, date);
@@ -170,7 +164,7 @@ public class KontrolerPretragaPolazaka {
         }
         mtp.ocistiTabelu();
         if (listPolazaka.isEmpty()) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Nema polazaka za datu realaciju!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Nema polazaka za datu relaciju!"));
             return;
         }
         mtp.setList(listPolazaka);
@@ -205,7 +199,7 @@ public class KontrolerPretragaPolazaka {
     private void viseOPolasku() {
         int broj = panelPretragaPolazaka.getTablePolasci().getSelectedRow();
         if (broj == -1) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Izaberite polazak za koji zelite da vidite sve medjustanice!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Izaberite polazak za koji želite da vidite sve medjustanice!"));
             return;
         }
         Polazak p = mtp.getList().get(broj);
@@ -231,6 +225,11 @@ public class KontrolerPretragaPolazaka {
     private void urediTabelu() {
         panelPretragaPolazaka.getTablePolasci().setModel(mtp);
         tabela.urediTabelu(panelPretragaPolazaka.getTablePolasci());
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < panelPretragaPolazaka.getTablePolasci().getColumnCount(); i++) {
+            panelPretragaPolazaka.getTablePolasci().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     private void urediPanelDatum() {

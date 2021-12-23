@@ -75,7 +75,7 @@ public class PanelRezervacije extends javax.swing.JPanel {
         btnOtkaziRezervaciju.setBackground(new java.awt.Color(34, 40, 44));
         btnOtkaziRezervaciju.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnOtkaziRezervaciju.setForeground(java.awt.Color.white);
-        btnOtkaziRezervaciju.setText("Oktazi rezervaciju");
+        btnOtkaziRezervaciju.setText("Otkaži rezervaciju");
         btnOtkaziRezervaciju.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnOtkaziRezervaciju.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btnOtkaziRezervaciju, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 620, 300, 60));

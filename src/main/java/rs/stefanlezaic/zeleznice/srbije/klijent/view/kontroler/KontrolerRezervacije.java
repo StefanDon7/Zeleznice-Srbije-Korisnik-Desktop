@@ -5,13 +5,14 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.GlavnaForma;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela.ModelTabeleRezervacija;
@@ -49,6 +50,10 @@ public class KontrolerRezervacije {
         addListener();
     }
 
+    public ModelTabeleRezervacija getMtr() {
+        return mtr;
+    }
+    
     private void addListener() {
         panelRezervacije.btnAktivneRezervacijeMouseListener(new AbstractButton(panelRezervacije.getBtnAktivneRezervacije(), "voz", "voz1") {
             @Override
@@ -87,12 +92,12 @@ public class KontrolerRezervacije {
 
         //Ovo bi trebalo da ide u validaciju
         if (danasnji.after(r.getPolazak().getDatumPolaska())) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Polazak je vec realizovan!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Polazak je već realizovan!"));
             return;
         }
         try {
             KontrolerHTTP.getInstance().otkaziRezervaciju(new Rezervacija(r.getRezervacijaID()));
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste otkazali rezervaciju!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspešno ste otkazali rezervaciju!"));
             mtr.izbrisiIzTabele(broj);
         } catch (InvalidProductException ex) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.toString()));
@@ -143,12 +148,16 @@ public class KontrolerRezervacije {
             Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
         }
         mtr.setList(listaRezervacija);
-        panelRezervacije.getTabelMojeRezeravacije().setModel(mtr);
     }
 
     private void uradiTabelu() {
         tabela.urediTabelu(panelRezervacije.getTabelMojeRezeravacije());
         panelRezervacije.getTabelMojeRezeravacije().setModel(mtr);
+         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < panelRezervacije.getTabelMojeRezeravacije().getColumnCount(); i++) {
+           panelRezervacije.getTabelMojeRezeravacije().getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     private void ucitajIkonice() {

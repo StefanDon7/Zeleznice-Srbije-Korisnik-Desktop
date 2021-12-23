@@ -6,8 +6,6 @@
 package rs.stefanlezaic.zeleznice.srbije.klijent.modeli.tabela;
 
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Polazak;
-import rs.stefanlezaic.zeleznice.srbije.lib.domen.Rezervacija;
-import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -120,10 +118,7 @@ public class ModelTabelePolasci extends AbstractTableModel {
     }
 
     public boolean popunjeno(Polazak p) {
-        if (vratiBroj(p) < p.getVoz().getBrojSedista()) {
-            return false;
-        }
-        return true;
+        return !(vratiBroj(p) < p.getVoz().getBrojSedista());
     }
 
 }

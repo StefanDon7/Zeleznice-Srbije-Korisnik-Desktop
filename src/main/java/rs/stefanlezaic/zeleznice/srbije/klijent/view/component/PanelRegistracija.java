@@ -129,7 +129,7 @@ public class PanelRegistracija extends javax.swing.JPanel {
         lblKorisnickoImeRegistracija.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
         lblKorisnickoImeRegistracija.setForeground(new java.awt.Color(0, 0, 0));
         lblKorisnickoImeRegistracija.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblKorisnickoImeRegistracija.setText("Korisnicko ime:");
+        lblKorisnickoImeRegistracija.setText("Korisničko ime:");
         add(lblKorisnickoImeRegistracija, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 230, 60));
 
         lblLozinakRegistracija.setBackground(new java.awt.Color(102, 102, 102));

@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.lib.transfer.KlijentskiZahtev;
 import rs.stefanlezaic.zeleznice.srbije.lib.transfer.ServerskiOdgovor;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
-import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
 
 /**

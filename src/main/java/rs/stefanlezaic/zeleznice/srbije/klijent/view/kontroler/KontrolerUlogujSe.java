@@ -5,14 +5,15 @@
  */
 package rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler.KontrolerPocetneForme;
-import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.Kontroler;
 import rs.stefanlezaic.zeleznice.srbije.klijent.kontroler.KontrolerHTTP;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.component.PanelUlogujSe;
 import rs.stefanlezaic.zeleznice.srbije.klijent.view.kontroler.buttons.AbstractButton;
 import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
+import rs.stefanlezaic.zeleznice.srbije.lib.exception.ParametarsException;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
 import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelError;
@@ -47,26 +48,17 @@ public class KontrolerUlogujSe {
     }
 
     private void ulogujSe() {
-        String email = panelUlogujSe.getTxtEmailLogin().getText();
-        String lozinka = new String(panelUlogujSe.getTxtPasswordLogin().getPassword());
-        korisnik = new Klijent(email, lozinka);
-
-        if (email.isEmpty() || lozinka.isEmpty()) {
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention("Sva polja moraju biti popunjena!"));
-            return;
+        try {
+            pokupiPodatke();
+        } catch (ParametarsException ex) {
+             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelAttention(ex.getMessage()));
+             return;
         }
         Klijent klijent;
         try {
-            //TCP
-            //klijent = Kontroler.getInstance().ulogujSe(korisnik);
-            //HTTP
             klijent=KontrolerHTTP.getInstance().ulogujSe(korisnik);
-            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ".\nUspesno ste se prijavili!"));
+            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelSuccess("Korisnik: " + klijent.getIme() + " " + klijent.getPrezime() + ". \nUspešno ste se prijavili!"));
             kontrolerPocetneForme.prikaziGlavnuFormu(klijent);
-//        } catch (EntityNotFoundException ex) {
-//            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
-//        } catch (SQLException ex) {
-//            new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
         } catch (Exception ex) {
             new JOptionPaneExample().createAndDisplayGUI(forma, new PanelError(ex.getMessage()));
         }
@@ -84,6 +76,12 @@ public class KontrolerUlogujSe {
                 getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/label/kljuc.png")));
         panelUlogujSe.getBtnPrijaviSe().setIcon(new ImageIcon(getClass().
                 getResource("/rs/stefanlezaic/zeleznice/srbije/klijent/resources/icons/buttons/logIn.png")));
+    }
+
+    private void pokupiPodatke() throws ParametarsException {
+        korisnik=new Klijent();
+        korisnik.setEmail(panelUlogujSe.getTxtEmailLogin().getText());
+        korisnik.setLozinka(new String(panelUlogujSe.getTxtPasswordLogin().getPassword()));
     }
 
 }

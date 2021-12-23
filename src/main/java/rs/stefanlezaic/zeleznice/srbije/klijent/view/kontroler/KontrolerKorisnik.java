@@ -59,12 +59,9 @@ public class KontrolerKorisnik {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Niste napravili nikakvu promenu!"));
             return;
         }
-//        if (lozinka.isEmpty() && lozinka2.isEmpty()) {
-//            lozinka = korisnik.getLozinka();
-//            lozinka2 = korisnik.getLozinka();
-//        }
+
         if (!lozinka.equals(lozinka2)) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Potrvrda lozinke nije dobra!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Potrvrda lozinke nije uspela!"));
             return;
         }
         Klijent klijent = new Klijent(korisnik.getKlijentID(), email, korisnickoIme, ime, prezime, lozinka);
@@ -75,9 +72,8 @@ public class KontrolerKorisnik {
             if (!lozinka.isEmpty()) {
                  KontrolerHTTP.getInstance().izmeniLozinku(klijent);
             }
-//            Kontroler.getInstance().izmeniNalog(klijent);
             korisnik = klijent;
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste izmenili podatake!"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspešno ste izmenili podatake!"));
         } catch (Exception ex) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.getMessage()));
         } finally {

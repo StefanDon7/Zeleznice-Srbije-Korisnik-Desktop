@@ -64,44 +64,36 @@ public class KontrolerRegistracija {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention(ex.getMessage()));
             return;
         }
-        //mozda ne bih treba da smaram server sa upitom o tome da li je sve popunio al nema veze stoji i na serverskoj strani
-        if (korisnik.getKorisnickoIme().isEmpty() || korisnik.getLozinka().isEmpty() || korisnik.getIme().isEmpty() || korisnik.getPrezime().isEmpty() || korisnik.getEmail().isEmpty()) {
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Sva polja moraju biti popunjena!"));
-            return;
-        }
 
         try {
-            //OVO JE TCP  
-            //Kontroler.getInstance().registrujSe(korisnik);
-            //HTTP
-            Klijent korisnikVracen=KontrolerHTTP.getInstance().registrujSe(korisnik);
+            Klijent korisnikVracen = KontrolerHTTP.getInstance().registrujSe(korisnik);
             System.out.println(korisnikVracen);
-            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspesno ste se registrovali"));
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspešno ste napravili nalog!"));
             ocistiFormu();
         } catch (Exception ex) {
             if (ex instanceof InvalidProductException) {
                 new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError(ex.getMessage()));
             } else if (ex instanceof SQLException) {
-                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Data email već postoji u sistemu!"));
+                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Data email adresa već postoji u sistemu!"));
             } else if (ex instanceof Exception) {
-                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Sistem ne može da registruje korisnika!"));
+                new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelError("Sistem ne može da napravi nalog!"));
             }
         }
     }
 
     public void ocistiFormu() {
+        panelRegistracija.getTxtEmail().setText("");
         panelRegistracija.getTxtIme().setText("");
         panelRegistracija.getTxtPrezime().setText("");
-        panelRegistracija.getTxtEmail().setText("");
         panelRegistracija.getTxtKorisnickoIme().setText("");
         panelRegistracija.getTxtPassword().setText("");
         panelRegistracija.getTxtPasswordPotvrda().setText("");
     }
 
     private void pokupiPodatke() throws ParametarsException {
+        korisnik.setEmail(panelRegistracija.getTxtEmail().getText());
         korisnik.setIme(panelRegistracija.getTxtIme().getText());
         korisnik.setPrezime(panelRegistracija.getTxtPrezime().getText());
-        korisnik.setEmail(panelRegistracija.getTxtEmail().getText());
         korisnik.setKorisnickoIme(panelRegistracija.getTxtKorisnickoIme().getText());
     }
 

@@ -17,6 +17,8 @@ import rs.stefanlezaic.zeleznice.srbije.lib.domen.Klijent;
 import rs.stefanlezaic.zeleznice.srbije.lib.sat.Sat;
 import rs.stefanlezaic.zeleznice.srbije.lib.soundEffect.KontrolerSoundEffect;
 import rs.stefanlezaic.zeleznice.srbije.lib.theme.KontrolerTema;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.JOptionPaneExample;
+import rs.stefanlezaic.zeleznice.srbije.lib.view.dialog.PanelAttention;
 
 /**
  *
@@ -32,6 +34,7 @@ public class KontrolerGlavnaForma {
     private KontrolerKorisnik kk;
     private KontrolerRezervacije kr;
     private KontrolerTema kontrolerTema;
+    private static boolean prikaziPanelUpozorenja = false;
 
     public KontrolerGlavnaForma(Klijent korisnik, KontrolerPocetneForme kontrolerPocetneForme) {
         this.glavnaForma = new GlavnaForma();
@@ -87,7 +90,12 @@ public class KontrolerGlavnaForma {
     }
 
     private void menuRezervacije() {
+
         pokreniPanelMojeRezervacije();
+        if (kr.getMtr().getList().isEmpty() && !prikaziPanelUpozorenja) {
+            prikaziPanelUpozorenja = true;
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Vaša lista rezvervacija je prazna!"));
+        }
     }
 
     private void menuOdjaviSe() {

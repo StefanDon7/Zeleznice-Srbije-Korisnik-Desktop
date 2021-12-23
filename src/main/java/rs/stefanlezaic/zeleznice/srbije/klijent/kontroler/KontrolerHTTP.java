@@ -67,7 +67,7 @@ public class KontrolerHTTP {
             JSONObject jsonResponse = new JSONObject(response.body().string());
             klijent = gson.fromJson(jsonResponse.toString(), Klijent.class);
         } catch (Exception ex) {
-            throw new Exception("Neuspešan pokušaj prijave!");
+            throw new Exception("Sistem ne može da pronađe korisnika!");
         }
         return klijent;
     }
@@ -86,11 +86,11 @@ public class KontrolerHTTP {
                 .build();
         Klijent klijent;
         try (Response response = httpClient.newCall(request).execute()) {
-
             if (!response.isSuccessful()) {
                 throw new IOException("Unexpected code " + response);
             }
             JSONObject jsonResponse = new JSONObject(response.body().string());
+
             klijent = gson.fromJson(jsonResponse.toString(), Klijent.class);
         } catch (Exception ex) {
             throw new Exception("Neuspešan pokušaj registracije!");
@@ -114,7 +114,7 @@ public class KontrolerHTTP {
             }
 
         } catch (Exception ex) {
-            throw new Exception("Neuspešan pokušaj rezervacije karata!");
+            throw new Exception("Sistem ne može da sačuva rezervaciju!");
         }
     }
 

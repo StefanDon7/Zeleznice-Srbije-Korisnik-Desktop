@@ -92,7 +92,7 @@ public class PanelPretragraPolazaka extends javax.swing.JPanel {
         btnPretraziPolaske.setBackground(new java.awt.Color(34, 40, 44));
         btnPretraziPolaske.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPretraziPolaske.setForeground(java.awt.Color.white);
-        btnPretraziPolaske.setText("PRETRAZI POLASKE");
+        btnPretraziPolaske.setText("Pretraži ");
         btnPretraziPolaske.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnPretraziPolaske.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btnPretraziPolaske, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 340, 60));

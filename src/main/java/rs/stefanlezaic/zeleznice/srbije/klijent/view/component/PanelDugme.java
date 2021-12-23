@@ -50,21 +50,21 @@ public class PanelDugme extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Arial Unicode MS", 2, 36)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("/");
         jLabel6.setToolTipText("");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 40, 40));
 
         lblU.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
-        lblU.setForeground(new java.awt.Color(0, 0, 51));
+        lblU.setForeground(new java.awt.Color(0, 0, 0));
         lblU.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblU.setText("Prijavi se");
         lblU.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         add(lblU, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 150, 40));
 
         lblR.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
-        lblR.setForeground(new java.awt.Color(0, 0, 51));
+        lblR.setForeground(new java.awt.Color(0, 0, 0));
         lblR.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblR.setText("Napravi nalog");
         add(lblR, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 160, 40));

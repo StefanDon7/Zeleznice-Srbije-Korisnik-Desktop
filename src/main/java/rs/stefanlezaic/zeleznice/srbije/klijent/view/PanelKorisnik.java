@@ -99,7 +99,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         lblKorisnickoIme.setBackground(new java.awt.Color(34, 40, 44));
         lblKorisnickoIme.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblKorisnickoIme.setForeground(java.awt.Color.white);
-        lblKorisnickoIme.setText("Korisnicko ime:");
+        lblKorisnickoIme.setText("Korisničko ime:");
         lblKorisnickoIme.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(lblKorisnickoIme, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 220, 40));
 
@@ -141,7 +141,7 @@ public class PanelKorisnik extends javax.swing.JPanel {
         btnPromeni.setBackground(new java.awt.Color(34, 40, 44));
         btnPromeni.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnPromeni.setForeground(java.awt.Color.white);
-        btnPromeni.setText("Promeni");
+        btnPromeni.setText("Sačuvaj");
         btnPromeni.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnPromeni.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btnPromeni, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 220, 60));
