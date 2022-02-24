@@ -104,6 +104,11 @@ public class KontrolerPretragaPolazaka {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Polazak je otkazan!"));
             return;
         }
+        if((p.getDatumPolaska().before(new Date()))){
+            new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Polazak je već realizovan!"));
+            return;
+       
+        }
         if (mtp.popunjeno(p)) {
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelAttention("Sva mesta za ovaj polazak su popunjena!"));
             return;

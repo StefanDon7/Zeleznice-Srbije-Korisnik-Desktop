@@ -66,8 +66,7 @@ public class KontrolerRegistracija {
         }
 
         try {
-            Klijent korisnikVracen = KontrolerHTTP.getInstance().registrujSe(korisnik);
-            System.out.println(korisnikVracen);
+            KontrolerHTTP.getInstance().registrujSe(korisnik);
             new JOptionPaneExample().createAndDisplayGUI(glavnaForma, new PanelSuccess("Uspešno ste napravili nalog!"));
             ocistiFormu();
         } catch (Exception ex) {

@@ -21,21 +21,22 @@ import rs.stefanlezaic.zeleznice.srbije.lib.transfer.ServerskiOdgovor;
  *
  * @author sleza
  */
-public class Kontroler {
+public class KontrolerTCP implements KontrolerServis{
 
-    private static Kontroler instance;
+    private static KontrolerTCP instance;
     private KlijentskiZahtev kz;
 
-    private Kontroler() {
+    private KontrolerTCP() {
     }
 
-    public static Kontroler getInstance() {
+    public static KontrolerTCP getInstance() {
         if (instance == null) {
-            instance = new Kontroler();
+            instance = new KontrolerTCP();
         }
         return instance;
     }
 
+    @Override
     public Klijent ulogujSe(Klijent k) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setParametar(k);
@@ -49,6 +50,7 @@ public class Kontroler {
         return (Klijent) so.getOdgovor();
     }
 
+    @Override
     public void registrujSe(Klijent k) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.REGISTRACIJA);
@@ -61,6 +63,7 @@ public class Kontroler {
         }
     }
 
+    @Override
     public void rezervisiPolazak(Rezervacija r) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.REZERVISI_POLAZAK);
@@ -73,6 +76,7 @@ public class Kontroler {
         }
     }
 
+    @Override
     public ArrayList<Rezervacija> vratiMojeRezervacije(Rezervacija r) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.VRATI_REZERVACIJE_ZA_KLIJENTA);
@@ -83,6 +87,7 @@ public class Kontroler {
         return lista;
     }
 
+    @Override
     public void izmeniNalog(Klijent klijent) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.IZMENA_KORISNICKOG_NALOGA);
@@ -95,6 +100,7 @@ public class Kontroler {
         }
     }
 
+    @Override
     public int vratiBrojRezervacija(Rezervacija r) throws Exception {
         int broj = 0;
         kz = new KlijentskiZahtev();
@@ -106,6 +112,7 @@ public class Kontroler {
         return broj;
     }
 
+    @Override
     public void otkaziRezervaciju(Rezervacija r) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.OTKAZI_REZERVACIJU);
@@ -118,19 +125,7 @@ public class Kontroler {
         }
     }
 
-//    public ArrayList<MedjuStanica> vratiMiSveMedjustanica() throws Exception {
-//        KlijentskiZahtev kz = new KlijentskiZahtev();
-//        kz.setOperacija(Konstante.VRATI_MEDJUSTANICE);
-//        KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
-//        ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
-//        ArrayList<MedjuStanica> listaMedjuStanica = (ArrayList<MedjuStanica>) so.getOdgovor();
-//        if (so.getStatus() == ResponseStatus.ERROR) {
-//            Exception ex = (Exception) so.getError();
-//            throw ex;
-//        }
-//        return listaMedjuStanica;
-//    }
-
+    @Override
     public ArrayList<MedjuStanica> vratiMiMedjustaniceLiniju(MedjuStanica medjuStanica) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.VRATI_MEDJUSTANICE_LINIJE);
@@ -145,6 +140,7 @@ public class Kontroler {
         return listaMedjustanica;
     }
 
+    @Override
     public ArrayList<Stanica> vratiMiSveStanice() throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.VRATI_STANICE);
@@ -158,6 +154,7 @@ public class Kontroler {
         return listaStanica;
     }
 
+    @Override
     public ArrayList<Polazak> vratiMiPolaskeZaDatum(Polazak p) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.VRATI_POLASKE_ZA_DATUM);
@@ -172,6 +169,7 @@ public class Kontroler {
         return listaPolazaka;
     }
 
+    @Override
     public ArrayList<Polazak> vratiMiPolaskeZaDatumPocetnuIKrajnjuStanicu(Polazak p) throws Exception {
         kz = new KlijentskiZahtev();
         kz.setOperacija(Konstante.VRATI_POLASKE_ZA_POCETNU_I_KRAJNJU_STANICU);

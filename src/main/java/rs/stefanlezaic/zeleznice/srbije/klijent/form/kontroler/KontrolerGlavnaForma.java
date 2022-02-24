@@ -118,6 +118,7 @@ public class KontrolerGlavnaForma {
     }
 
     private void pokreniPanelMojeRezervacije() {
+        kr.ucitajSveRezervacije();
         glavnaForma.getPanelPretragraPolazaka().setVisible(false);
         glavnaForma.getPanelKorisnik().setVisible(false);
         glavnaForma.getPanelRezervacije().setVisible(true);

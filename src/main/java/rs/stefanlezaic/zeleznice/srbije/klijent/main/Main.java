@@ -18,15 +18,15 @@ import rs.stefanlezaic.zeleznice.srbije.klijent.form.kontroler.KontrolerPocetneF
 public class Main {
 
     public static void main(String[] args) {
-
+        KontrolerPocetneForme kontrolerPocetneForme = new KontrolerPocetneForme(new PocetnaForma());
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 UIManager.put("OptionPane.background", Color.WHITE);
                 UIManager.put("Panel.background", Color.WHITE);
                 UIManager.put("Button.background", new Color(155, 155, 155));
+                kontrolerPocetneForme.otvoriFormu();
+
             }
         });
-        KontrolerPocetneForme kontrolerPocetneForme=new KontrolerPocetneForme(new PocetnaForma());
-        kontrolerPocetneForme.otvoriFormu();
     }
 }

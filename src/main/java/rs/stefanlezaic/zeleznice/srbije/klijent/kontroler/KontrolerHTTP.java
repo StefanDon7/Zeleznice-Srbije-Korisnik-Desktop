@@ -311,7 +311,7 @@ public class KontrolerHTTP {
         RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
         System.out.println(json);
         Request request = new Request.Builder()
-                .url("http://localhost:8089/api/rezervacija/delete")
+                .url("http://localhost:8089/api/rezervacija/delete/"+r.getRezervacijaID())
                 .addHeader("Accept-Encoding", "gzip")
                 .delete(body)
                 .build();
